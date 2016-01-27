@@ -2,9 +2,9 @@ class CreateActivities < ActiveRecord::Migration
   def change
     create_table :activities do |t|
       t.references :host, index: true
-      t.string :action
+      t.string :name
       t.datetime :datetime
-      t.real :cost
+      t.float :cost
       t.integer :guest_min
       t.integer :guest_max
       t.string :details
@@ -12,6 +12,6 @@ class CreateActivities < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-     add_foreign_key :activity, :users, column: :host_id
+     add_foreign_key :activities, :users, column: :host_id
   end
 end
