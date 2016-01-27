@@ -1,0 +1,2 @@
+module ActivityGuestsHelper
+end

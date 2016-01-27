@@ -1,0 +1,2 @@
+class ProfileTagsController < ApplicationController
+end
