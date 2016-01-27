@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "users#index"
   resources :activity_guests
   resources :profile_tags
   resources :activity_tags
