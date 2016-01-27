@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root "users#index"
+  root "activities#index"
+  resources :registrations
+  resources :sessions
   resources :activity_guests
   resources :profile_tags
   resources :activity_tags
