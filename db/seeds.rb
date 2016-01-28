@@ -13,7 +13,7 @@ alltags = Tag.all
 
 20.times do
   user = User.create(token: "FdsafasdfasdfsdfasdF4432432423432432fasdfa", uid: Faker::Number.number(17), name: Faker::Name.name, email: Faker::Internet.email, bio: Faker::Hipster.paragraph, image_url: "josh")
-  user.image_url = Faker::Avatar.image("#{user.name}")
+  user.update(image_url: Faker::Avatar.image("#{user.name}"))
   # profile = Profile.create(user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::Hipster.paragraph, image_url: Faker::Avatar.image("#{user.username}"))
   user.tags << alltags.sample(3)
 end
