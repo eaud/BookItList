@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BookItList</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
 </head>
-  <body>
-    <%= render "layouts/header" %>
-    <div class="container">
-      <%= yield %>
-    </div>
-    <%= render "layouts/footer" %>
-  </body>
+<body>
+
+  <%#=link_to "Log In with Facebook", login_path("facebook")%>
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+<div id="status">
+</div>
+
+</body>
 </html>

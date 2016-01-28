@@ -32,6 +32,10 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem "rails_12factor"
 gem "bootstrap-sass"
+gem "omniauth-facebook"
+gem 'figaro'
+gem 'pry'
+gem 'rails-erd'
 
 
 group :development, :test do
