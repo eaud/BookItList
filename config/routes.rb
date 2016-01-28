@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :activities
   resources :profiles
   resources :users
+  get '/auth/:provider/callback', to: 'sessions#create', as: "login"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
