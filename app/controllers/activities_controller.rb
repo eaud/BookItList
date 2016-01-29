@@ -35,8 +35,12 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity = Activity.find(params[:id])
-    @activity.destroy
-    redirect_to root_path
+    if current_user.id != @activity.host_id
+      redirect_to root_path
+    else
+      @activity.destroy
+      redirect_to root_path
+    end
   end
 
   private
