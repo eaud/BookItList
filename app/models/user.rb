@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_from_oauth(auth)
     if user = self.find_by(uid: auth.uid)
       user.update(token: auth.credentials.token, token_expiration: Time.at(auth.credentials.expires_at))
+      user
     else
       self.new_from_oauth(auth)
     end
