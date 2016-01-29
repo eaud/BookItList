@@ -4,6 +4,14 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
   end
 
+  def myindex
+    if logged_in?
+      @activities = Activity.where(host_id: current_user.id)
+    else
+      redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
+    end
+  end
+
   def new
     @activity = Activity.new
 
