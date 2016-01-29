@@ -1,15 +1,30 @@
+<div>
+  <%= image_tag(@user.image_url) %>
+</div>
+
 <%= form_for @user do |f| %>
-  <%= f.label :name%>
-  <%= f.text_field :name %><br />
+  <div>
+    <%= f.label :image_url %>:
+    <%= f.url_field :image_url %><br />
+  </div>
 
-  <%= f.label :email %>:
-  <%= f.email_field :email %><br />
+  <div>
+    <%= f.label :name%>
+    <%= f.text_field :name %><br />
+  </div>
 
-  <%= f.label :image_url %>:
-  <%= f.url_field :image_url %><br />
+  <div>
+    <%= f.label :email %>:
+    <%= f.email_field :email %><br />
+  </div>
 
-  <%= f.label :bio %>:
-  <%= f.text_field :bio %><br />
+
+  <div>
+    <%= f.label :bio %>:
+    <div>
+      <%= f.text_area :bio %><br />
+    </div>
+  </div>
 
   <%= f.submit %>
 <% end %>
