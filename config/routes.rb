@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
   root "activities#index"
   resources :registrations
-  resources :sessions
-  resources :activity_guests
-  resources :profile_tags
-  resources :activity_tags
+  # resources :sessions
   resources :tags
   resources :activities
-  resources :profiles
   resources :users
   get '/auth/:provider/callback', to: 'sessions#create', as: "login"
-
+  get '/logout', to: 'sessions#delete', as: 'logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

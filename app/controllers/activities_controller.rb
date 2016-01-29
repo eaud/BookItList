@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    binding.pry
+    # binding.pry
     @activities = Activity.all
   end
 
