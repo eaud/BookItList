@@ -5,13 +5,16 @@ class UsersController < ApplicationController
   end
 
   def edit
-    binding.pry
     @user = current_user
   end
 
   def update
-    binding.pry
     @user = current_user
+    @user.update(email: params[:user][:email],
+    name: params[:user][:name],
+    bio: params[:user][:bio],
+    image_url: params[:user][:image_url])
+    redirect_to user_path
   end
 
   def destroy

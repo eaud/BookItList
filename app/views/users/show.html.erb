@@ -1,6 +1,6 @@
 <% if @user = current_user %>
   <%= link_to "Update user info", edit_user_path %>
-
+<% end %>
 <h1> <%=@user.name%> </h1>
 <div>
   <%= image_tag(@user.image_url) %>
