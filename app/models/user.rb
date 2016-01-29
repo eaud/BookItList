@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
   has_many :tags, through: :user_tags
   validates_presence_of :uid, :name, :token, :image_url
   validates_uniqueness_of :uid, :email
+
+  def self.new_from_oauth(auth)
+    user = User.new
+    user.uid = 
+  end
+
+
 end
