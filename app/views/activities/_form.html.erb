@@ -1,0 +1,30 @@
+<%= form_for(@activity) do |f| %>
+  <div class="">
+    <%= f.label :name, "Activity Name" %>
+    <%= f.text_field :name, placeholder: "What do you want to do?" %>
+  </div>
+  <div class="">
+    <%= f.label :guest_min, "Min number of guests" %>
+    <%= f.text_field :guest_min, placeholder: "Is this a 1-on-1" %>
+  </div>
+  <div class="">
+    <%= f.label :guest_max, "Max number of guests" %>
+    <%= f.text_field :guest_max, placeholder: "Is this a group activity" %>
+  </div>
+  <div class="">
+    <%= f.label :details, "Let people know more about this activity" %>
+    <div class="">
+      <%= f.text_area :details, placeholder: "This is gon be Drunk herstory" %>
+    </div>
+  </div>
+  <div class="">
+    <%= f.label :cost %>
+    <%= f.text_field :cost, placeholder: "You rollin?" %>
+  </div>
+  <div class="">
+    <%= f.label :image_url, "Put an image on it!" %>
+    <%= f.url_field :image_url, placeholder: "Go get an image URL from google" %>
+  </div>
+  <%= f.submit %>
+
+<% end %>

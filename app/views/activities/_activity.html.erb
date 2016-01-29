@@ -6,11 +6,11 @@
   <div class="">
     <%= activity.name %>
   </div>
+  <%= link_to "delete this", activity_path(activity), method: :delete %>
   <ul>
     <% activity.tags.each do |tag| %>
       <li><%= tag.name %> </li>
     <% end %>
   </ul>
   <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
-
 </div>
