@@ -1,2 +1,0 @@
-class ActivityTagsController < ApplicationController
-end
