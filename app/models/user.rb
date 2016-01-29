@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     user.uid = auth.uid
     user.name = auth.info.name
     user.email = auth.info.email
-    user.image_url = auth.info.image
+    user.image_url = auth.info.image + "?type=large"
     user.token = auth.credentials.token
     user.token_expiration = Time.at(auth.credentials.expires_at)
     user.save

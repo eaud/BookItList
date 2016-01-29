@@ -15,6 +15,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user = current_user
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_path
   end
 
   private
