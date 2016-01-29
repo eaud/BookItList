@@ -14,7 +14,10 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
   end
 
   def create
