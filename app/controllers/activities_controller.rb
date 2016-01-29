@@ -4,9 +4,20 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
   end
 
+  def myindex
+    if logged_in?
+      @activities = Activity.where(host_id: current_user.id)
+    else
+      redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
+    end
+  end
+
   def new
     @activity = Activity.new
-
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
   end
 
   def create
@@ -35,8 +46,12 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity = Activity.find(params[:id])
-    @activity.destroy
-    redirect_to root_path
+    if current_user.id != @activity.host_id
+      redirect_to root_path
+    else
+      @activity.destroy
+      redirect_to root_path
+    end
   end
 
   private

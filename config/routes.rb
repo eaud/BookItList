@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :destroy, :show]
   get '/auth/:provider/callback', to: 'sessions#create', as: "login"
   get '/logout', to: 'sessions#delete', as: 'logout'
+  get '/mylist', to: 'activities#myindex', as: 'mylist'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
