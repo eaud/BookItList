@@ -12,3 +12,10 @@
     <%= link_to "Please update your bio", edit_user_path %>
   <% end %>
 </div>
+
+<div class = "tag-list">
+ Tags:
+    <% @user.tags.each do |tag| %>
+      <a href="#"><%= " " + tag.name + " " %></a>
+    <% end %>
+</div>

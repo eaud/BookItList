@@ -26,6 +26,11 @@
     </div>
   </div>
 
+  <div class="">
+     <%= f.label :tag_ids, "What kinds of activities are you interested in?" %>
+     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+  </div>
+
   <%= f.submit %>
 
 
