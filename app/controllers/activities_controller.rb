@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.all
+      @activities = Activity.all
   end
 
   def myindex
@@ -13,10 +13,14 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new
-    respond_to do |format|
-      format.html{}
-      format.js{}
+    if logged_in?
+      @activity = Activity.new
+      respond_to do |format|
+        format.html{}
+        format.js{}
+      end
+    else
+      redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
     end
   end
 
