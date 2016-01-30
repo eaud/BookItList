@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "activities#index"
+  root "sessions#index"
   resources :registrations
   # resources :sessions
   resources :tags
