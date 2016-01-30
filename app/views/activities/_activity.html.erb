@@ -1,13 +1,7 @@
 
-<div class="col-md-4 col-xs-12" style="border-style:solid;border-color:grey;">
-  <div class="interest">
-      <div class="dislike">
-        I don't want to go  <span class="glyphicon glyphicon-thumbs-down" ></span>
-      </div>
-      <div class="like">
-        I want to go  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </div>
-  </div>
+<div class="col-md-4 col-xs-12" id="<%= activity.id %>" style="border-style:solid;border-color:grey;">
+  <%= render 'voting' if activity.host != current_user %>
+
   <div class="">
     <%= image_tag(activity.image_url, class: "img-responsive") %>
   </div>

@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
       end
       @fresh_activities = current_user.funtimes.map do |funtime|
         funtime if funtime.activity_guests[0].aasm_state == "unseen"
-      end
+      end.compact
     end
   end
 
