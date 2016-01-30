@@ -39,7 +39,6 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
-    binding.pry
     @activity.update(activity_params)
     redirect_to activity_path(@activity)
   end
@@ -56,6 +55,6 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require("activity").permit(:name, :guest_min, :guest_max, :details, :cost, :image_url, :host_id)
+    params.require("activity").permit(:name, :guest_min, :guest_max, :details, :cost, :image_url, :host_id, :tag_ids => [])
   end
 end
