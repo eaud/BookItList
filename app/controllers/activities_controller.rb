@@ -15,7 +15,6 @@ class ActivitiesController < ApplicationController
         end
 
       end
-      binding.pry
       @fresh_activities = current_user.funtimes.map do |funtime|
         funtime if funtime.activity_guests[0].aasm_state == "unseen"
       end
