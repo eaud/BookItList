@@ -2,22 +2,10 @@ class ActivitiesController < ApplicationController
 
   def index
     if logged_in?
-      @activities = Activity.where.not(host: current_user)
-      current_user_AGs = ActivityGuest.where(guest_id: current_user.id, aasm_state: "unseen")
-      if current_user_AGs.length < 5
-        # Find activities that have not been show to the current_user
-        unshown_activities = @activities.map do |activity|
-            activity if (!current_user.funtimes.include?(activity)  && activity.host != current_user)
-        end.compact
-        # For the first 5 unshown activities, create Activity_Guests with current_user
-        unshown_activities[0..4].each do |unshown|
-          ActivityGuest.create(guest_id: current_user.id, activity_id: unshown.id)
-        end
-
+      if current_user.unseen_activity_guests.length < 5
+        current_user.generate_activity_guests(5)
       end
-      @fresh_activities = current_user.funtimes.map do |funtime|
-        funtime if funtime.activity_guests[0].aasm_state == "unseen"
-      end.compact
+      @fresh_activities = current_user.fresh_activities
     end
   end
 
