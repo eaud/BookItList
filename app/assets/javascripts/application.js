@@ -74,6 +74,10 @@ var hiddenBioListen = function(){
        });
 };
 
+jQuery.validator.addMethod("greaterThanMin", function(value, element) {
+    return this.optional(element) || (parseFloat(value) >= $('#activity_guest_min').val());
+}, "* Amount must be greater than min guests");
+
 function FormValidations(){
 
 }
@@ -99,7 +103,8 @@ FormValidations.prototype.activityForm = function () {
       },
       activity_guest_max: {
         required: true,
-        digits: true
+        digits: true,
+        greaterThanMin: true
       },
       activity_details: {
         required: true,
@@ -129,7 +134,8 @@ FormValidations.prototype.activityForm = function () {
       },
       activity_guest_max: {
         required: "Don't let it get too crowded",
-        digits: "It's gotta be a number"
+        digits: "It's gotta be a number",
+        greaterThanMin: "Must be greater than or equal to minimum guest number"
       },
       activity_details: {
         required: "Seriously let us know what's up",
