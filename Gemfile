@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 #Use AASM for activity_guest state
 gem 'aasm'
 
+#Use Sprockets Rails to manage the asset pipeline
+# gem 'sprockets-rails', require => 'sprockets/railtie'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 # Use Capistrano for deployment
