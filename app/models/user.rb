@@ -28,5 +28,32 @@ class User < ActiveRecord::Base
     end
   end
 
+  def unshown_activities
+    activities =  Activity.where.not(host: self)
+    unshown_activities = activities.map do |activity|
+        activity if (!self.funtimes.include?(activity)  && activity.host != self)
+    end.compact
+    unshown_activities
+  end
+
+  def unseen_activity_guests
+    current_user_AGs = ActivityGuest.where(guest_id: self.id, aasm_state: "unseen")
+    current_user_AGs
+  end
+
+  def fresh_activities
+    fresh_activities = self.funtimes.map do |funtime|
+      funtime if funtime.activity_guests[0].aasm_state == "unseen"
+    end.compact
+    fresh_activities
+  end
+
+  def generate_activity_guests(num)
+    new_activity_guests = self.unshown_activities[0..num].each do |unshown|
+      ActivityGuest.create(guest_id: self.id, activity_id: unshown.id)
+    end
+    new_activity_guests
+  end
+
 
 end
