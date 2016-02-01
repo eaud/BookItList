@@ -91,29 +91,29 @@ FormValidations.prototype.activityForm = function () {
       }
     },
     rules: {
-      activity_name: {
+      "activity[name]": {
         required: true,
         minlength: 2,
         maxlength: 60
       },
-      activity_guest_min: {
+      "activity[guest_min]": {
         required: true,
         digits: true
       },
-      activity_guest_max: {
+      "activity[guest_max]": {
         required: true,
         digits: true,
         greaterThanMin: true
       },
-      activity_details: {
+      "activity[details]": {
         required: true,
         minlength: 10
       },
-      activity_cost: {
+      "activity[cost]": {
         required: true,
         digits: true
       },
-      activity_image_url: {
+      "activity[image_url]": {
         required: true,
       },
       "activity[tag_ids][]": {
@@ -122,29 +122,29 @@ FormValidations.prototype.activityForm = function () {
 
     },
     messages: {
-      activity_name: {
+      "activity[name]": {
         required: "Your activity must have a name, silly!",
         minlength: "Type more... size matters.",
         maxlength: "..But it doesn't matter that much"
       },
-      activity_guest_min: {
+      "activity[guest_min]": {
         required: "Don't you want someone to come?",
         digits: "It's gotta be a number"
       },
-      activity_guest_max: {
+      "activity[guest_max]": {
         required: "Don't let it get too crowded",
         digits: "It's gotta be a number",
         greaterThanMin: "Must be greater than or equal to minimum guest number"
       },
-      activity_details: {
+      "activity[details]": {
         required: "Seriously let us know what's up",
         minlength: "Give us an actual description"
       },
-      activity_cost: {
+      "activity[cost]": {
         required: "tell us bout the $$$",
         digits: "provide a guess at the cost as a whole number, no $"
       },
-      activity_image_url: {
+      "activity[image_url]": {
         required: "It has to be pretty!"
       },
       "activity[tag_ids][]": {
