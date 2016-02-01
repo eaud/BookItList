@@ -1,3 +1,12 @@
+<% if @activity.errors %>
+  <ul>
+    <% @activity.errors.full_messages.each do |error| %>
+      <li><%=error%></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <%= form_for(@activity, html:{id: 'activityForm'}) do |f| %>
   <p class="">
     <%= f.label :name, "Activity Name" %>
@@ -34,14 +43,3 @@
     <%= f.submit %>
   </p>
 <% end %>
-
-<!-- <script>
-  $("#activityForm").validate({
-    rules: {
-      activity_name: "required"
-    },
-    messages: {
-      activity_name: "YOU A HO"
-    }
-  });
-</script> -->
