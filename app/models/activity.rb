@@ -3,7 +3,7 @@ class Activity < ActiveRecord::Base
   has_many :activity_tags, dependent: :destroy
   has_many :tags, through: :activity_tags
   has_many :activity_guests, dependent: :destroy
-  has_many :guests, through: :activity_guests, source: :user
+  has_many :guests, through: :activity_guests, class_name: "User"
   validates_presence_of :host_id, :name, :details, :cost, :guest_min, :guest_max
   validates :guest_max, numericality: {:greater_than_or_equal_to => :guest_min}
   validates :cost, numericality: {greater_than_or_equal_to: 0}
