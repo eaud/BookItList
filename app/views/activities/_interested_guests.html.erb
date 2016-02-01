@@ -1,0 +1,12 @@
+<div class="interested-guests">
+  Interested Guests:
+  <ul>
+    <% activity.activity_guests.where(aasm_state: "liked").each do |ag| %>
+        <li><%=link_to ag.guest.name, user_path(ag.guest), class: "mouseover-bio", id: "guest-#{ag.guest.id}" %></li>
+        <div id="guest-<%=ag.guest.id%>-info" class="hidden-bio">
+          <%= image_tag(ag.guest.image_url, class: "col-md-3 col-xs-3") %>
+          <%= ag.guest.bio %>
+        </div>
+    <% end %>
+  </ul>
+</div>
