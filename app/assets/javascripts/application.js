@@ -80,22 +80,70 @@ function FormValidations(){
 
 FormValidations.prototype.activityForm = function () {
   $("#activityForm").validate({
+    errorPlacement: function(error,element) {
+      if (element.attr("name") == "activity[tag_ids][]"){
+        error.insertAfter($(".tag-checkboxes"));
+      }else{
+        error.insertAfter(element);
+      }
+    },
     rules: {
       activity_name: {
         required: true,
-        minlength: 2
+        minlength: 2,
+        maxlength: 60
       },
       activity_guest_min: {
-
+        required: true,
+        digits: true
       },
+      activity_guest_max: {
+        required: true,
+        digits: true
+      },
+      activity_details: {
+        required: true,
+        minlength: 10
+      },
+      activity_cost: {
+        required: true,
+        digits: true
+      },
+      activity_image_url: {
+        required: true,
+      },
+      "activity[tag_ids][]": {
+        required: true,
+      },
+
     },
     messages: {
       activity_name: {
         required: "Your activity must have a name, silly!",
-        minlength: "Type more... size matters."
+        minlength: "Type more... size matters.",
+        maxlength: "..But it doesn't matter that much"
       },
       activity_guest_min: {
-        
+        required: "Don't you want someone to come?",
+        digits: "It's gotta be a number"
+      },
+      activity_guest_max: {
+        required: "Don't let it get too crowded",
+        digits: "It's gotta be a number"
+      },
+      activity_details: {
+        required: "Seriously let us know what's up",
+        minlength: "Give us an actual description"
+      },
+      activity_cost: {
+        required: "tell us bout the $$$",
+        digits: "provide a guess at the cost as a whole number, no $"
+      },
+      activity_image_url: {
+        required: "It has to be pretty!"
+      },
+      "activity[tag_ids][]": {
+        required: "Include at least one tag so people can find your activity!"
       },
     }
   });
