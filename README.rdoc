@@ -1,28 +1,35 @@
-== README
+Readme v1.0, last update 01/31/16
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# BookitList
 
-Things you may want to cover:
+Creators: @jappleba, @kaylee42, & @eaud
 
-* Ruby version
+BookitList is a social app built in Ruby on Rails that helps its users find activity partners for the activities that interest them.
 
-* System dependencies
+Each user inputs their "Bookit List" of activities they'd like to do.  The activities on each users list are compiled and sorted and suggested to other users who might be interested in joining.
 
-* Configuration
+## System & Configuration
+* Ruby version: 2.2.3
+* Rails version: 4.2.5
 
-* Database creation
+* **System dependencies:** running bundle install should give you all the Gems you need to make this app work.
+To deploy your own version of this app you will need to register as a developer with Facebook, as user authentication for this app involves signing in with Facebook.
 
-* Database initialization
+* **Configuration**
 
-* How to run the test suite
+* **Database creation:** This project uses a PostGRES database, meaning the following steps will need to be taken to create a database to run this project:
+  * rake db:create
+  * rake db:migrate
+  * rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+
+* **Database initialization**
+
+* **How to run the test suite**
 
 * Deployment instructions
 
-* ...
-
+<hr>
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
