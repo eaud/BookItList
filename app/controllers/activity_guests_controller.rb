@@ -28,4 +28,11 @@ class ActivityGuestsController < ApplicationController
     denied_activity[0].deny!
   end
 
+  # def approved_activity_guests(host, guest)
+  #   Activity.all.map do |activity|
+  #     activity.
+  #   end
+  #
+  # end
+
 end
