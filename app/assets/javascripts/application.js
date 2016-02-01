@@ -74,7 +74,6 @@ var hiddenBioListen = function(){
        });
 };
 
-<<<<<<< HEAD
 var addApproveGuestListener = function(){
   $("span.glyphicon-plus").on("click", function(event){
     var guest_container = $(this.closest("li"));
@@ -103,7 +102,8 @@ var addDenyGuestListener = function(){
     });
     guest_container.remove();
   });
-=======
+};
+
 jQuery.validator.addMethod("greaterThanMin", function(value, element) {
     return this.optional(element) || (parseFloat(value) >= $('#activity_guest_min').val());
 }, "* Amount must be greater than min guests");
@@ -184,5 +184,4 @@ FormValidations.prototype.activityForm = function () {
     }
   });
 
->>>>>>> master
 };
