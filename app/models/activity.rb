@@ -16,4 +16,21 @@ class Activity < ActiveRecord::Base
       errors.add(:datetime, "stop living in the past.")
     end
   end
+
+  def interested_guests
+    activity_guests = ActivityGuest.where(activity_id: self.id, aasm_state: "liked")
+    guests = activity_guests.map do |activity_guest|
+      activity_guest.guest
+    end
+    guests
+  end
+
+  def approved_guests
+    activity_guests = ActivityGuest.where(activity_id: self.id, aasm_state: "approved")
+    guests = activity_guests.map do |activity_guest|
+      activity_guest.guest
+    end
+    guests
+  end
+
 end
