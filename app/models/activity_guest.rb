@@ -28,5 +28,15 @@ class ActivityGuest < ActiveRecord::Base
     end
   end
 
+  def self.approved_activity_guests(host, guest)
+    host.activities.map do |activity|
+      activity if activity.approved_guests.include?(guest)
+    end.compact
+  end
 
+  def self.interested_activity_guests(host, guest)
+    host.activities.map do |activity|
+      activity if activity.interested_guests.include?(guest)
+    end.compact
+  end
 end

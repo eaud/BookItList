@@ -12,6 +12,7 @@ class ActivityGuestsController < ApplicationController
   end
 
   def approve
+    binding.pry
     approved_activity = ActivityGuest.where(activity_id: params[:activity_id], guest_id: params[:guest_id])
     approved_activity[0].approve!
     @activity = Activity.find(params[:activity_id])
@@ -28,11 +29,5 @@ class ActivityGuestsController < ApplicationController
     denied_activity[0].deny!
   end
 
-  # def approved_activity_guests(host, guest)
-  #   Activity.all.map do |activity|
-  #     activity.
-  #   end
-  #
-  # end
 
 end

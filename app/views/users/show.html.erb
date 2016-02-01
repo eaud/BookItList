@@ -20,4 +20,17 @@
     <% end %>
 </div>
 
-<%= binding.pry %>
+<div class="approved-list">
+  <h3>Approved events:</h3>
+    <% ActivityGuest.approved_activity_guests(current_user, @user).each do |x| %>
+      <h4><%=x.name%></h4>
+    <% end %>
+</div>
+
+<div class="pending-list">
+  <h3>Pending events:</h3>
+    <% ActivityGuest.interested_activity_guests(current_user, @user).each do |x| %>
+      <h4><%=x.name%>:</h4>
+      <div><%= render 'activities/approval' %></div>
+    <% end %>
+</div>
