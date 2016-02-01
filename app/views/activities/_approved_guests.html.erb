@@ -1,9 +1,9 @@
-<div class="accepted-guests">
+<div class="accepted-guests" id="<%=activity.id%>">
   Accepted Guests:
   <ul>
     <% activity.activity_guests.where(aasm_state: "approved").each do |ag| %>
-        <li><%=link_to ag.guest.name, user_path(ag.guest), class: "mouseover-bio", id: "guest-#{ag.guest.id}" %></li>
-        <div id="guest-<%=ag.guest.id%>-info" class="hidden-bio">
+        <li><%=link_to ag.guest.name, user_path(ag.guest), class: "mouseover-bio", id: "#{ag.guest.id}" %></li>
+        <div id="<%=ag.guest.id%>-info" class="hidden-bio">
           <strong>Get in touch! <%= ag.guest.email %> </strong>
           <%= image_tag(ag.guest.image_url, class: "col-md-3 col-xs-3") %>
           <%= ag.guest.bio %>

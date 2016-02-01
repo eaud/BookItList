@@ -11,6 +11,21 @@ class ActivityGuestsController < ApplicationController
     disliked_activity[0].dislike!
   end
 
-  private
+  def approve
+    approved_activity = ActivityGuest.where(activity_id: params[:activity_id], guest_id: params[:guest_id])
+    approved_activity[0].approve!
+    @activity = Activity.find(params[:activity_id])
+
+    respond_to do |format|
+      format.js{}
+      format.html{}
+    end
+
+  end
+
+  def deny
+    denied_activity = ActivityGuest.where(activity_id: params[:activity_id], guest_id: params[:guest_id])
+    denied_activity[0].deny!
+  end
 
 end
