@@ -25,20 +25,13 @@ $(document).ready(function(){
   addDenyGuestListener();
   var formValidator = new FormValidations();
     formValidator.activityForm();
+    formValidator.userForm();
 });
 
 
 var addThumbsUpListener = function(){
   $("span.glyphicon-thumbs-up").on("click", function(event){
     console.log("thumbs up!");
-    $("activityForm").validate({
-      rules: {
-        thisname: "required"
-      },
-      messages: {
-        thisname: "YOU A HO"
-      }
-    });
     var activity_container = this.parentElement.parentElement.parentElement;
     var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;
     $.ajax({
@@ -108,81 +101,3 @@ var addDenyGuestListener = function(){
 jQuery.validator.addMethod("greaterThanMin", function(value, element) {
     return this.optional(element) || (parseFloat(value) >= $('#activity_guest_min').val());
 }, "* Amount must be greater than min guests");
-
-function FormValidations(){
-
-}
-
-FormValidations.prototype.activityForm = function () {
-  $("#activityForm").validate({
-    errorPlacement: function(error,element) {
-      if (element.attr("name") == "activity[tag_ids][]"){
-        error.insertAfter($(".tag-checkboxes"));
-      }else{
-        error.insertAfter(element);
-      }
-    },
-    rules: {
-      "activity[name]": {
-        required: true,
-        minlength: 2,
-        maxlength: 60
-      },
-      "activity[guest_min]": {
-        required: true,
-        digits: true
-      },
-      "activity[guest_max]": {
-        required: true,
-        digits: true,
-        greaterThanMin: true
-      },
-      "activity[details]": {
-        required: true,
-        minlength: 10
-      },
-      "activity[cost]": {
-        required: true,
-        digits: true
-      },
-      "activity[image_url]": {
-        required: true,
-      },
-      "activity[tag_ids][]": {
-        required: true,
-      },
-
-    },
-    messages: {
-      "activity[name]": {
-        required: "Your activity must have a name, silly!",
-        minlength: "Type more... size matters.",
-        maxlength: "..But it doesn't matter that much"
-      },
-      "activity[guest_min]": {
-        required: "Don't you want someone to come?",
-        digits: "It's gotta be a number"
-      },
-      "activity[guest_max]": {
-        required: "Don't let it get too crowded",
-        digits: "It's gotta be a number",
-        greaterThanMin: "Must be greater than or equal to minimum guest number"
-      },
-      "activity[details]": {
-        required: "Seriously let us know what's up",
-        minlength: "Give us an actual description"
-      },
-      "activity[cost]": {
-        required: "tell us bout the $$$",
-        digits: "provide a guess at the cost as a whole number, no $"
-      },
-      "activity[image_url]": {
-        required: "It has to be pretty!"
-      },
-      "activity[tag_ids][]": {
-        required: "Include at least one tag so people can find your activity!"
-      },
-    }
-  });
-
-};

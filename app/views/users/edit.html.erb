@@ -1,37 +1,45 @@
-<div>
-  <%= image_tag(@user.image_url) %>
-</div>
+<% if @user.errors %>
+  <ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <li><%=error%></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<%= form_for @user do |f| %>
-  <div>
+<p>
+  <%= image_tag(@user.image_url) %>
+</p>
+
+<%= form_for(@user, html:{id: 'userForm'}) do |f| %>
+  <p>
     <%= f.label :image_url %>:
     <%= f.url_field :image_url %><br />
-  </div>
+  </p>
 
-  <div>
+  <p>
     <%= f.label :name%>
     <%= f.text_field :name %><br />
-  </div>
+  </p>
 
-  <div>
+  <p>
     <%= f.label :email %>:
     <%= f.email_field :email %><br />
-  </div>
-
-
-  <div>
+  </p>
+  <p>
     <%= f.label :bio %>:
-    <div>
+    <p>
       <%= f.text_area :bio %><br />
-    </div>
-  </div>
+    </p>
+  </p>
 
-  <div class="">
+  <p class="tag-checkboxes">
      <%= f.label :tag_ids, "What kinds of activities are you interested in?" %>
      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
-  </div>
+  </p>
 
-  <%= f.submit %>
+  <p>
+    <%= f.submit %>
+  </p>
 
 
 <% end %>
