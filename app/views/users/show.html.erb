@@ -1,4 +1,4 @@
-<% if @user = current_user %>
+<% if @user == current_user %>
   <%= link_to "Update user info", edit_user_path %>
 <% end %>
 <h1> <%=@user.name%> </h1>
@@ -8,12 +8,12 @@
 <div>
   <% if @user.bio %>
     <%=@user.bio%>
-  <% elsif @user = current_user %>
+  <% elsif @user == current_user %>
     <%= link_to "Please update your bio", edit_user_path %>
   <% end %>
 </div>
 
-<div class = "tag-list">
+<div class="tag-list">
  Tags:
     <% @user.tags.each do |tag| %>
       <a href="#"><%= " " + tag.name + " " %></a>
