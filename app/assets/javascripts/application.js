@@ -22,6 +22,7 @@ $(document).ready(function(){
   addThumbsDownListener();
   hiddenBioListen();
   addApproveGuestListener();
+  addDenyGuestListener();
   var formValidator = new FormValidations();
     formValidator.activityForm();
 });
@@ -90,7 +91,7 @@ var addApproveGuestListener = function(){
 };
 
 var addDenyGuestListener = function(){
-  $("span.glyphicon-plus").on("click", function(event){
+  $("span.glyphicon-minus").on("click", function(event){
     var guest_container = $(this.closest("li"));
     var guest_id = guest_container.find("a").attr("id");
     var activity_id = $(this).closest(".activity").attr("id");
