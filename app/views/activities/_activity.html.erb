@@ -13,7 +13,11 @@
       Interested Guests:
       <ul>
         <% activity.guests.each do |guest| %>
-          <li><%=link_to guest.name, user_path(guest) %></li>
+            <li><%=link_to guest.name, user_path(guest), class: "mouseover-bio", id: "guest-#{guest.id}" %></li>
+            <div id="guest-<%=guest.id%>-info" class="hidden-bio">
+              <%= image_tag(guest.image_url, class: "col-md-3 col-xs-3") %>
+              <%= guest.bio %>
+            </div>
         <% end %>
       </ul>
     </div>

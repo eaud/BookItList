@@ -20,6 +20,7 @@ $(document).ready(function(){
   $(".dropdown-toggle").dropdown();
   addThumbsUpListener();
   addThumbsDownListener();
+  hiddenBioListen();
 });
 
 
@@ -49,4 +50,15 @@ var addThumbsDownListener = function(){
     });
     activity_container.remove();
   });
+};
+
+var hiddenBioListen = function(){
+
+  $('.hidden-bio').hide();
+  $(".mouseover-bio").hover(
+     function(){
+         $("#" + this.id + "-info").show();
+     }, function(){
+         $("#" + this.id + "-info").hide();
+       });
 };
