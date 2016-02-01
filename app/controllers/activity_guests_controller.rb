@@ -12,7 +12,6 @@ class ActivityGuestsController < ApplicationController
   end
 
   def approve
-    binding.pry
     approved_activity = ActivityGuest.where(activity_id: params[:activity_id], guest_id: params[:guest_id])
     approved_activity[0].approve!
     @activity = Activity.find(params[:activity_id])

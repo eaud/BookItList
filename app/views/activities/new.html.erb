@@ -1,1 +1,9 @@
+<% if @activity.errors %>
+  <ul>
+    <% @activity.errors.full_messages.each do |error| %>
+      <li><%=error%></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= render 'form' %>
