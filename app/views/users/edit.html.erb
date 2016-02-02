@@ -6,14 +6,22 @@
   </ul>
 <% end %>
 
-<p>
-  <%= image_tag(@user.image_url) %>
-</p>
+<h1> <%=@user.name%> </h1>
+
+  <div>
+    <% if @user.profilepic %>
+      <%= image_tag(@user.profilepic, size: "200x200") %>
+    <% else %>
+      <%= image_tag(@user.image_url, size: "200x200") %>
+    <% end %>
+  </div>
 
 <%= form_for(@user, html:{id: 'userForm'}) do |f| %>
+
   <p>
-    <%= f.label :image_url %>:
-    <%= f.url_field :image_url %><br />
+    <%= f.label :profilepic %>:
+    <%= f.file_field :profilepic %>
+    <br />
   </p>
 
   <p>

@@ -2,9 +2,13 @@
   <%= link_to "Update user info", edit_user_path %>
 <% end %>
 <h1> <%=@user.name%> </h1>
-<div>
-  <%= image_tag(@user.image_url) %>
-</div>
+  <div>
+    <% if @user.profilepic %>
+      <%= image_tag(@user.profilepic, size: "200x200") %>
+    <% else %>
+      <%= image_tag(@user.image_url, size: "200x200") %>
+    <% end %>
+  </div>
 <div>
   <% if @user.bio %>
     <%=@user.bio%>
