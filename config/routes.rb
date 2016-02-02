@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create', as: "login"
   get '/logout', to: 'sessions#delete', as: 'logout'
   get '/mylist', to: 'activities#myindex', as: 'mylist'
-  # resources :activity_guests
   post 'like/:id', to: 'activity_guests#like'
   post 'dislike/:id', to: 'activity_guests#dislike'
   post 'approve', to: 'activity_guests#approve'
   post 'deny', to: 'activity_guests#deny'
+
+  resources :chats do
+    resources :messages
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

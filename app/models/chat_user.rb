@@ -2,7 +2,7 @@ class ChatUser < ActiveRecord::Base
   belongs_to :chat
   belongs_to :user
 
-  validates_presence_of :chat_id, :user_id, :host
+  validates_presence_of :chat_id, :user_id
   validates :chat, uniqueness: {scope: :user_id}
   include AASM
 
