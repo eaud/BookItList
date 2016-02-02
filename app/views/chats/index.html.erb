@@ -1,6 +1,9 @@
 <h1>My current chats:</h1>
 <ul>
   <% @chats.each do |chat| %>
-    <li> <%= link_to chat.name, chat_path(chat) %> </li>
+    <li> <strong><%= "UNREAD" if chat.chat_users.where(user: current_user)[0].aasm_state == "unread" %></strong> <%= link_to chat.name, chat_path(chat) %> with <% chat.users.each do |user| %>
+        <%= (link_to user.name, user_path(user)) unless user == current_user %>
+      <% end %>
+    </li>
   <% end %>
 </ul>

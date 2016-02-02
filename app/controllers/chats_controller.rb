@@ -7,6 +7,8 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @message = Message.new
+    cu = ChatUser.find_by(chat: @chat, user: current_user)
+    cu.view! if cu.aasm_state == "unread"
   end
 
 end
