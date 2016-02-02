@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chat_id: 
+  user_id: 
+  aasm_state: MyString
+  host: false
+
+two:
+  chat_id: 
+  user_id: 
+  aasm_state: MyString
+  host: false

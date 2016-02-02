@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :chat_users
+  resources :messages
+  resources :chats
   root "sessions#index"
   resources :registrations
   # resources :sessions
