@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :funtimes, through: :activity_guests, source: :activity
   has_many :user_tags, dependent: :destroy
   has_many :tags, through: :user_tags
+  has_many :chat_users
+  has_many :chats, through: :chat_users
   validates_presence_of :uid, :name, :token, :image_url, :token_expiration
   validates_uniqueness_of :uid, :email
 

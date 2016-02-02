@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202170713) do
+ActiveRecord::Schema.define(version: 20160202172206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20160202170713) do
     t.integer  "chat_id"
     t.integer  "user_id"
     t.string   "aasm_state"
-    t.boolean  "host"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "host",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "chat_users", ["chat_id"], name: "index_chat_users_on_chat_id", using: :btree
