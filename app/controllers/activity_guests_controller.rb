@@ -12,20 +12,46 @@ class ActivityGuestsController < ApplicationController
   end
 
   def approve
-    approved_activity = ActivityGuest.where(activity_id: params[:activity_id], guest_id: params[:guest_id])
-    approved_activity[0].approve!
-    @activity = Activity.find(params[:activity_id])
+    approved_activity = ActivityGuest.find(params[:activity_guest_id])
+    # approved_activity.approve!
+    @activity = Activity.find(approved_activity.activity_id)
+    @guest = approved_activity.guest
+    source = request.env["HTTP_REFERER"].split("/")[3]
 
-    respond_to do |format|
-      format.js{}
-      format.html{}
+    if source == "users"
+      respond_to do |format|
+        format.js{render 'approve_from_users'}
+        format.html{}
+      end
+    elsif source == "mylist"
+      respond_to do |format|
+        format.js{render 'approve_from_my_list'}
+        format.html{}
+      end
     end
 
   end
 
   def deny
-    denied_activity = ActivityGuest.where(activity_id: params[:activity_id], guest_id: params[:guest_id])
-    denied_activity[0].deny!
+    binding.pry
+    denied_activity = ActivityGuest.find(params[:activity_guest_id])
+    # denied_activity.deny!
+    @activity = Activity.find(denied_activity.activity_id)
+    @guest = denied_activity.guest
+    source = request.env["HTTP_REFERER"].split("/")[3]
+    source = request.env["HTTP_REFERER"].split("/")[3]
+
+    if source == "users"
+      respond_to do |format|
+        format.js{}
+        format.html{}
+      end
+    elsif source == "mylist"
+      respond_to do |format|
+        format.js{render 'approve_from_my_list'}
+        format.html{}
+      end
+    end
   end
 
 

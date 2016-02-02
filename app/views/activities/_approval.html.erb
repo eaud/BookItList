@@ -1,8 +1,14 @@
 <div class="approval">
     <div class="approve">
-      They are in  <span class="glyphicon glyphicon-plus" ></span>
+      They are in
+      <%= link_to approve_path(activity_guest_id: activity_guest.id), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-plus" ></span>
+      <% end %>
     </div>
     <div class="disapprove">
-      They are out  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+      They are out
+      <%= link_to deny_path(activity_guest_id: activity_guest.id), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-minus" ></span>
+      <% end %>
     </div>
 </div>

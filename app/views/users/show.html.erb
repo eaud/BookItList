@@ -23,14 +23,16 @@
 <div class="approved-list">
   <h3>Approved events:</h3>
     <% ActivityGuest.approved_activity_guests(current_user, @user).each do |x| %>
-      <h4><%=x.name%></h4>
+      <h4><%=link_to x.activity.name, activity_path(x.activity)%></h4>
     <% end %>
 </div>
 
-<div class="pending-list">
+<div class="pending-list" id= "<%=@user.id%>">
   <h3>Pending events:</h3>
     <% ActivityGuest.interested_activity_guests(current_user, @user).each do |x| %>
-      <h4><%=x.name%>:</h4>
-      <div><%= render 'activities/approval' %></div>
+      <div id = "<%=x.id%>">
+        <h4><%=x.activity.name%>:</h4>
+        <div><%= render partial: 'activities/approval', locals:{activity_guest: x} %></div>
+      </div>
     <% end %>
 </div>
