@@ -13,7 +13,7 @@ class ActivityGuestsController < ApplicationController
 
   def approve
     @activity_guest = ActivityGuest.find(params[:activity_guest_id])
-    # @activity_guest.approve!
+    @activity_guest.approve!
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
     source = request.env["HTTP_REFERER"].split("/")[3]
@@ -35,7 +35,7 @@ class ActivityGuestsController < ApplicationController
   def deny
     binding.pry
     @activity_guest = ActivityGuest.find(params[:activity_guest_id])
-    # @activity_guest.deny!
+    @activity_guest.deny!
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
     source = request.env["HTTP_REFERER"].split("/")[3]
