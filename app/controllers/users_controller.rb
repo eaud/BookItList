@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      UserMailer.welcome_email(@user).deliver_now
       redirect_to user_path
     else
       render "edit"
