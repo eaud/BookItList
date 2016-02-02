@@ -21,35 +21,33 @@ class ActivityGuestsController < ApplicationController
     if source == "users"
       respond_to do |format|
         format.js{render 'approve_from_users'}
-        format.html{}
+        format.html{redirect_to user_path(@guest)}
       end
     elsif source == "mylist"
       respond_to do |format|
         format.js{render 'approve_from_my_list'}
-        format.html{}
+        format.html{redirect_to mylist_path}
       end
     end
 
   end
 
   def deny
-    binding.pry
     @activity_guest = ActivityGuest.find(params[:activity_guest_id])
     @activity_guest.deny!
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
     source = request.env["HTTP_REFERER"].split("/")[3]
-    source = request.env["HTTP_REFERER"].split("/")[3]
 
     if source == "users"
       respond_to do |format|
         format.js{}
-        format.html{}
+        format.html{redirect_to user_path(@guest)}
       end
     elsif source == "mylist"
       respond_to do |format|
         format.js{render 'approve_from_my_list'}
-        format.html{}
+        format.html{redirect_to mylist_path}
       end
     end
   end
