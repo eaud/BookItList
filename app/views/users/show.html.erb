@@ -5,6 +5,13 @@
 <div>
   <%= image_tag(@user.image_url) %>
 </div>
+
+<% if current_user.my_approved_guests.include? @user %>
+<div class="send-message">
+  <h3><%= link_to "Send Private Message", new_chat_path %></h3>
+</div>
+<% end %>
+
 <div>
   <% if @user.bio %>
     <%=@user.bio%>

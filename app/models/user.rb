@@ -57,5 +57,13 @@ class User < ActiveRecord::Base
     new_activity_guests
   end
 
+  def my_approved_guests
+    approved_guests = []
+    self.activities.each do |activity|
+      approved_guests << activity.approved_guests
+    end
+    approved_guests.flatten
+  end
+
 
 end
