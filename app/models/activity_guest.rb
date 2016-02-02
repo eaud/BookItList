@@ -30,13 +30,13 @@ class ActivityGuest < ActiveRecord::Base
 
   def self.approved_activity_guests(host, guest)
     host.activities.map do |activity|
-      activity if activity.approved_guests.include?(guest)
+      ActivityGuest.where(activity: activity, guest: guest)[0] if activity.approved_guests.include?(guest)
     end.compact
   end
 
   def self.interested_activity_guests(host, guest)
     host.activities.map do |activity|
-      activity if activity.interested_guests.include?(guest)
+      ActivityGuest.where(activity: activity, guest: guest)[0] if activity.interested_guests.include?(guest)
     end.compact
   end
 end

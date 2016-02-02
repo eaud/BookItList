@@ -1,4 +1,4 @@
-<div class="interested-guests">
+<div class="interested-guests" id="<%=activity.id%>">
   Interested Guests:
   <ul>
     <% activity.activity_guests.where(aasm_state: "liked").each do |ag| %>
@@ -8,7 +8,7 @@
             <%= ag.guest.bio %>
           </div>
           <div>
-            <%= render 'approval' %>
+            <%= render partial: 'approval', locals:{activity_guest: ag} %>
           </div>
         </li>
     <% end %>

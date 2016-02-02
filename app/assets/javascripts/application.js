@@ -21,8 +21,6 @@ $(document).ready(function(){
   addThumbsUpListener();
   addThumbsDownListener();
   hiddenBioListen();
-  addApproveGuestListener();
-  addDenyGuestListener();
   var formValidator = new FormValidations();
     formValidator.activityForm();
     formValidator.userForm();
@@ -66,36 +64,6 @@ var hiddenBioListen = function(){
      }, function(){
          $("#" + this.id + "-info").hide();
        });
-};
-
-var addApproveGuestListener = function(){
-  $("span.glyphicon-plus").on("click", function(event){
-    var guest_container = $(this.closest("li"));
-    var guest_id = guest_container.find("a").attr("id");
-    var activity_id = $(this).closest(".activity").attr("id");
-    $.ajax({
-      url: "/approve",
-      method: "POST",
-      data: {guest_id: guest_id, activity_id: activity_id},
-      datatype: 'script'
-    });
-    guest_container.remove();
-  });
-};
-
-var addDenyGuestListener = function(){
-  $("span.glyphicon-minus").on("click", function(event){
-    var guest_container = $(this.closest("li"));
-    var guest_id = guest_container.find("a").attr("id");
-    var activity_id = $(this).closest(".activity").attr("id");
-    $.ajax({
-      url: "/deny",
-      method: "POST",
-      data: {guest_id: guest_id, activity_id: activity_id},
-      datatype: 'script'
-    });
-    guest_container.remove();
-  });
 };
 
 jQuery.validator.addMethod("greaterThanMin", function(value, element) {
