@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   def fresh_activities
     fresh_activities = self.funtimes.map do |funtime|
-      funtime if funtime.activity_guests[0].aasm_state == "unseen"
+      funtime if funtime.activity_guests.where(guest: self)[0].aasm_state == "unseen"
     end.compact
     fresh_activities
   end
