@@ -5,7 +5,10 @@ class MessagesController < ApplicationController
     if @message.save
       other_users = @message.chat.chat_users.where.not(user: current_user)
       other_users.update_all(aasm_state: "unread")
-      redirect_to chat_path(@message.chat)
+      respond_to do |format|
+        format.js {}
+        format.html{redirect_to chat_path(@message.chat)}
+      end
     else
       render chat_path(@message.chat)
     end

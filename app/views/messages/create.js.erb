@@ -1,0 +1,4 @@
+var message = '<div class="message <%= "sender" if @message.sender == current_user %>"><strong><%=link_to @message.sender.name, user_path(@message.sender)%>:</strong><br><%= @message.content %></div>'
+
+$('#chat-box').append(message)
+$('#new_message')[0].reset()

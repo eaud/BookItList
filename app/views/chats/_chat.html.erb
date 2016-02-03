@@ -1,13 +1,15 @@
 <h2 class="chat-name"><%=chat.name%></h2>
 <div class="col-md-4">
-  <% chat.messages.each do |message| %>
-    <div class="message <%= "sender" if message.sender == current_user %>">
-      <strong><%=link_to message.sender.name, user_path(message.sender)%>:</strong><br>
-      <%= message.content %>
-    </div>
-  <% end %>
+  <div id="chat-box">
+    <% chat.messages.each do |message| %>
+      <div class="message <%= "sender" if message.sender == current_user %>">
+        <strong><%=link_to message.sender.name, user_path(message.sender)%>:</strong><br>
+        <%= message.content %>
+      </div>
+    <% end %>
+  </div>
   <br><br>
-  <%= form_for [chat, message] do |f| %>
+  <%= form_for [chat, message], remote: true do |f| %>
   <p>
     <%= f.label :content, "New message" %><br>
     <%= f.text_area :content, placeholder: "Send a new message!" %>
