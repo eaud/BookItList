@@ -46,6 +46,14 @@ class User < ActiveRecord::Base
     current_user_AGs
   end
 
+  def score_unshown_activities
+    unshown_scores = {}
+    self.unshown_activities[0..20].each do |activity|
+      unshown_scores[activity.id] = self.overall_score(activity)
+    end
+    unshown_scores
+  end
+
   def fresh_activities
     fresh_activities = self.funtimes.map do |funtime|
       funtime if funtime.activity_guests.where(guest: self)[0].aasm_state == "unseen"
@@ -53,11 +61,18 @@ class User < ActiveRecord::Base
     fresh_activities
   end
 
+  # def generate_activity_guests(num)
+  #   new_activity_guests = self.unshown_activities[0..num].each do |unshown|
+  #     ActivityGuest.create(guest_id: self.id, activity_id: unshown.id)
+  #   end
+  #   new_activity_guests
+  # end
+
   def generate_activity_guests(num)
-    new_activity_guests = self.unshown_activities[0..num].each do |unshown|
-      ActivityGuest.create(guest_id: self.id, activity_id: unshown.id)
+    unshown_scores = score_unshown_activities
+    unshown_scores.select{|k, v| unshown_scores.values.max(5).include?(v)}.each do |actid, score|
+      ActivityGuest.create(guest_id: self.id, activity_id: actid, serv_score: score)
     end
-    new_activity_guests
   end
 
   def my_approved_guests
