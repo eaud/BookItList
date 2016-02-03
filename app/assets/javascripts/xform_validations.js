@@ -1,6 +1,10 @@
 function FormValidations(){
 
 }
+jQuery.validator.addMethod("greaterThanMin", function(value, element) {
+    return this.optional(element) || (parseFloat(value) >= $('#activity_guest_min').val());
+}, "* Amount must be greater than min guests");
+
 
 FormValidations.prototype.activityForm = function () {
   $("#activityForm").validate({
