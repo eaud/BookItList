@@ -1,4 +1,4 @@
-module ServScore
+module UserLikeData
   def set_hash
     initial_hash = {
       activity: {
@@ -8,8 +8,8 @@ module ServScore
         tag_dislikes: {}
       },
       host: {
-        liked: [],
-        disliked: [],
+        liked: {},
+        disliked: {},
         tag_likes: {},
         tag_dislikes: {}
       }
@@ -37,7 +37,7 @@ module ServScore
     tag_ids.each do |tag_id|
       included_tag = score_data["activity"]["tag_likes"][tag_id.to_s]
       if included_tag
-        included_tag += 1
+        score_data["activity"]["tag_likes"][tag_id.to_s] += 1
       elsif !included_tag
         score_data["activity"]["tag_likes"][tag_id.to_s] = 1
       end
@@ -49,7 +49,7 @@ module ServScore
     tag_ids.each do |tag_id|
       included_tag = score_data["activity"]["tag_dislikes"][tag_id.to_s]
       if included_tag
-        included_tag += 1
+        score_data["activity"]["tag_dislikes"][tag_id.to_s] += 1
       elsif !included_tag
         score_data["activity"]["tag_dislikes"][tag_id.to_s] = 1
       end
@@ -58,12 +58,22 @@ module ServScore
   end
 
   def like_host(score_data, host)
-    score_data["host"]["liked"] << host.id
+    included_host = score_data["host"]["liked"][host.id.to_s]
+    if !!included_host
+      score_data["host"]["liked"][host.id.to_s] += 1
+    elsif !included_host
+      score_data["host"]["liked"][host.id.to_s] = 1
+    end
     score_data_with_liked_host_tags = like_host_tag(score_data, host)
   end
 
   def dislike_host(score_data, host)
-    score_data["host"]["disliked"] << host.id
+    included_host = score_data["host"]["disliked"][host.id.to_s]
+    if !!included_host
+      score_data["host"]["disliked"][host.id.to_s] += 1
+    elsif !included_host
+      score_data["host"]["disliked"][host.id.to_s] = 1
+    end
     score_data_with_disliked_host_tags = dislike_host_tag(score_data, host)
   end
 
@@ -71,7 +81,7 @@ module ServScore
     host.tag_ids.each do |tag_id|
       included_tag = score_data["host"]["tag_likes"][tag_id.to_s]
       if !!included_tag
-        included_tag += 1
+        score_data["host"]["tag_likes"][tag_id.to_s] += 1
       elsif !included_tag
         score_data["host"]["tag_likes"][tag_id.to_s] = 1
       end
@@ -83,7 +93,7 @@ module ServScore
     host.tag_ids.each do |tag_id|
       included_tag = score_data["host"]["tag_dislikes"][tag_id.to_s]
       if !!included_tag
-        included_tag += 1
+        score_data["host"]["tag_dislikes"][tag_id.to_s] += 1
       elsif !included_tag
         score_data["host"]["tag_dislikes"][tag_id.to_s] = 1
       end

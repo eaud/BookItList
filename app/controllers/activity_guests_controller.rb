@@ -5,12 +5,18 @@ class ActivityGuestsController < ApplicationController
     liked_AG = ActivityGuest.where(activity_id: params[:id], guest_id: current_user.id)[0]
     current_user.like_activity(liked_AG.activity)
     liked_AG.like!
+    respond_to do |format|
+      format.all { render :nothing => true, :status => 200 }
+    end
   end
 
   def dislike
     disliked_AG = ActivityGuest.where(activity_id: params[:id], guest_id: current_user.id)[0]
     current_user.dislike_activity(disliked_AG.activity)
     disliked_AG.dislike!
+    respond_to do |format|
+      format.all { render :nothing => true, :status => 200 }
+    end
   end
 
   def approve
