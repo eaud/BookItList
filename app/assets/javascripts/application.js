@@ -14,6 +14,7 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
+//= require private_pub
 //= require_tree .
 
 $(document).ready(function(){
