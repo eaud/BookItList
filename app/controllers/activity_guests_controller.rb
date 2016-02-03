@@ -18,6 +18,14 @@ class ActivityGuestsController < ApplicationController
     @guest = @activity_guest.guest
     source = request.env["HTTP_REFERER"].split("/")[3]
 
+    if old_chat = Chat.find_by(activity: @activity)
+      old_chat.users << @guest
+    else
+      chat = Chat.new(name: @activity.name, activity: @activity)
+      chat.save
+      chat.users << [@guest, current_user]
+    end
+
     if source == "users"
       respond_to do |format|
         format.js{render 'approve_from_users'}

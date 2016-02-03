@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :funtimes, through: :activity_guests, source: :activity
   has_many :user_tags, dependent: :destroy
   has_many :tags, through: :user_tags
+  has_many :chat_users
+  has_many :chats, through: :chat_users
   validates_presence_of :uid, :name, :token, :image_url, :token_expiration
   validates_uniqueness_of :uid, :email
 
@@ -43,7 +45,7 @@ class User < ActiveRecord::Base
 
   def fresh_activities
     fresh_activities = self.funtimes.map do |funtime|
-      funtime if funtime.activity_guests[0].aasm_state == "unseen"
+      funtime if funtime.activity_guests.where(guest: self)[0].aasm_state == "unseen"
     end.compact
     fresh_activities
   end
@@ -53,6 +55,14 @@ class User < ActiveRecord::Base
       ActivityGuest.create(guest_id: self.id, activity_id: unshown.id)
     end
     new_activity_guests
+  end
+
+  def my_approved_guests
+    approved_guests = []
+    self.activities.each do |activity|
+      approved_guests << activity.approved_guests
+    end
+    approved_guests.flatten
   end
 
 
