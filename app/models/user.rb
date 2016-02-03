@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :tags, through: :user_tags
   validates_presence_of :uid, :name, :token, :image_url, :token_expiration
   validates_uniqueness_of :uid, :email
+  include ServScore
 
   def self.new_from_oauth(auth)
     user = User.new
