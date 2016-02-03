@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202191158) do
+ActiveRecord::Schema.define(version: 20160203043606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "activities", force: :cascade do |t|
     t.integer  "host_id"
@@ -24,9 +25,10 @@ ActiveRecord::Schema.define(version: 20160202191158) do
     t.integer  "guest_min"
     t.integer  "guest_max"
     t.string   "details"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "image_url"
+    t.string   "activitypic"
   end
 
   add_index "activities", ["host_id"], name: "index_activities_on_host_id", using: :btree
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160202191158) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "aasm_state"
+    t.integer  "serv_score"
   end
 
   add_index "activity_guests", ["activity_id"], name: "index_activity_guests_on_activity_id", using: :btree
@@ -110,6 +113,8 @@ ActiveRecord::Schema.define(version: 20160202191158) do
     t.string   "image_url"
     t.string   "token"
     t.datetime "token_expiration"
+    t.string   "profilepic"
+    t.json     "score_data"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
