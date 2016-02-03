@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     user.token = auth.credentials.token
     user.token_expiration = Time.at(auth.credentials.expires_at)
     user.save
+    user.set_hash #updates hash data, method is in serv_score.rb helper
     user
   end
 
