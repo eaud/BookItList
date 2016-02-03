@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :chats, through: :chat_users
   validates_presence_of :uid, :name, :token, :image_url, :token_expiration
   validates_uniqueness_of :uid, :email
+  include UserLikeData
+  include UserScoresActivity
 
   def self.new_from_oauth(auth)
     user = User.new
@@ -18,6 +20,7 @@ class User < ActiveRecord::Base
     user.token = auth.credentials.token
     user.token_expiration = Time.at(auth.credentials.expires_at)
     user.save
+    user.set_hash #updates hash data, method is in serv_score.rb helper
     user
   end
 
