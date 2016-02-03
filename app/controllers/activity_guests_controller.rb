@@ -18,7 +18,6 @@ class ActivityGuestsController < ApplicationController
     @guest = @activity_guest.guest
     source = request.env["HTTP_REFERER"].split("/")[3]
 
-    binding.pry
     if old_chat = Chat.find_by(activity: @activity)
       old_chat.users << @guest
     else
