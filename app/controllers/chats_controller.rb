@@ -22,4 +22,12 @@ class ChatsController < ApplicationController
     cu.view! if cu.aasm_state == "unread"
   end
 
+  def read
+    cu = ChatUser.find_by(chat: params[:chat_id], user: current_user)
+    cu.view! if cu.aasm_state == "unread"
+    respond_to do |format|
+      format.all { render :nothing => true, :status => 200 }
+    end
+  end
+
 end

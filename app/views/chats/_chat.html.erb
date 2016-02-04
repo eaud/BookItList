@@ -1,6 +1,6 @@
 <h2 class="chat-name"><%=chat.name%></h2>
-<div class="col-md-4">
-  <div id="chat-box">
+<div id="chat-<%=chat.id%>" class="chat-zone col-md-4">
+  <div id="messages-<%=chat.id%>" class="chat-box">
     <% chat.messages.each do |message| %>
       <div class="message <%= "sender" if message.sender == current_user %>">
         <strong><%=link_to message.sender.name, user_path(message.sender)%>:</strong><br>
@@ -17,3 +17,17 @@
     <%= f.submit "Send" %>
   <% end %>
 </div>
+
+<script>
+  function readMessage() {
+    var chatId = <%= chat.id %>
+    $('.chat-zone').on('click', function(){
+      $.ajax({
+        type: "POST",
+        url: "<%= read_path %>",
+        data: {chat_id: chatId}
+      })
+    });
+  }
+  readMessage()
+</script>
