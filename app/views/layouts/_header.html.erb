@@ -1,58 +1,75 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Bookit List</a>
+
+<!-- CODEON VERSION OF HEADER -->
+
+<section id="navigation" class="fixed-navigation">
+    <div class="navbar navbar-default navbar-static-top navbar-transparent" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%= link_to "romp", root_path, class:"navbar-brand" %>
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right scrollto">
+                    <li class="active"><%= link_to "My List", mylist_path %></li>
+                    <li><%= link_to "Add an Activity", new_activity_path %></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-list.html">Blog List</a></li>
+                            <li><a href="blog-post.html">Blog Post</a></li>
+                            <li><a href="portfolio-3.html">Portfolio 3 columns</a></li>
+                            <li><a href="portfolio-full.html">Portfolio Full width</a></li>
+                            <li><a href="portfolio-masonry.html">Portfolio Masonry</a></li>
+                            <li><a href="single-work.html">Portfolio Single</a></li>
+                            <li><a href="soon.html">Coming Soon</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Find Plans <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Plan Partners</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="#">Past Plans</a></li>
+                          <li><a href="#">Separated link</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Demos <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="demo-default.html">Slider revolution</a></li>
+                            <li><a href="video-slider.html">Slider Video</a></li>
+                            <li><a href="fullscreen-parallax-bg-demo.html">Full screen parallax</a></li>
+                            <li><a href="demo-video-bg.html">Video background</a></li>
+
+                            <li><a href="transparent-header-demo.html">Header transparent</a></li>
+                        </ul>
+                    </li>
+                    <% if logged_in? %>
+                      <li class="dropdown">
+                          <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Your Account <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                            <li><%=link_to "View Profile", current_user%></li>
+                            <li><%=link_to "Edit Profile", edit_user_path(current_user)%></li>
+                            <li><%=link_to "Logout", logout_path%></li>
+                            <li role="separator" class="divider"></li>
+                            <li><%= link_to "Chat Center", chats_path %></li>
+                          </ul>
+                      </li>
+                    <% end %>
+
+                </ul>
+
+            </div><!--/.nav-collapse -->
+        </div><!--/.container -->
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "My List", mylist_path %></li>
-        <li class="active"><%= link_to "Add an Activity", new_activity_path %></li>
-        <li><a href="#">Find Plans</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Memories <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Plan Partners</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Past Plans</a></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= (link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in") if !logged_in?  %></li>
-
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Your Account <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%=link_to "View Profile", current_user%></li>
-              <li><%=link_to "Edit Profile", edit_user_path(current_user)%></li>
-              <li><%=link_to "Logout", logout_path%></li>
-              <li role="separator" class="divider"></li>
-              <li><%= link_to "Chat Center", chats_path %></li>
-            </ul>
-          </li>
-        <% end %>
-
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+</section><!--navigation section end here-->

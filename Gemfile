@@ -38,6 +38,7 @@ gem 'aasm'
 # gem 'capistrano-rails', group: :development
 gem "rails_12factor"
 gem "bootstrap-sass"
+gem "font-awesome-rails"
 gem "omniauth-facebook"
 gem 'figaro'
 gem 'pry'
