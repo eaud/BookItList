@@ -1,0 +1,42 @@
+<h2 class="chat-name"><%=chat.name%></h2>
+<div id="chat-<%=chat.id%>" class="chat-zone col-md-4">
+  <div id="messages-<%=chat.id%>" class="chat-box">
+    <% chat.messages.each do |message| %>
+      <div class="message user-<%= message.sender.id %>">
+        <strong><%=link_to message.sender.name, user_path(message.sender)%>:</strong><br>
+        <%= message.content %>
+      </div>
+    <% end %>
+  </div>
+  <br><br>
+
+  <% if message.errors %>
+    <ul>
+      <% message.errors.full_messages.each do |error| %>
+        <li><%=error%></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for [chat, message], remote: true do |f| %>
+  <p>
+    <%= f.label :content, "New message" %><br>
+    <%= f.text_area :content, placeholder: "Send a new message!" %>
+  </p>
+    <%= f.submit "Send" %>
+  <% end %>
+</div>
+
+<script>
+  function readMessage() {
+    var chatId = <%= chat.id %>
+    $('.chat-zone').on('click', function(){
+      $.ajax({
+        type: "POST",
+        url: "<%= read_path %>",
+        data: {chat_id: chatId}
+      })
+    });
+  }
+  readMessage()
+</script>
