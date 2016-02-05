@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def unshown_activities
-    activities =  Activity.where.not(host: self)
+    activities =  Activity.where.not(host: self).where(aasm_state: "open")
     unshown_activities = activities.map do |activity|
         activity if (!self.funtimes.include?(activity)  && activity.host != self)
     end.compact
