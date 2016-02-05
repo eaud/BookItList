@@ -9,6 +9,15 @@
     <% end %>
   </div>
   <br><br>
+
+  <% if message.errors %>
+    <ul>
+      <% message.errors.full_messages.each do |error| %>
+        <li><%=error%></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_for [chat, message], remote: true do |f| %>
   <p>
     <%= f.label :content, "New message" %><br>
