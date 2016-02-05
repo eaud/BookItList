@@ -1,6 +1,4 @@
-.sender {
-  text-align: right;
-}
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -10,4 +8,5 @@
 @import "animate.css";
 @import "owl.carousel";
 @import "owl.theme";
-@import "rs-plugin/css/settings"
+@import "rs-plugin/css/settings";
+@import "my_style"

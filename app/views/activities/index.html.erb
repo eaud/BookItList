@@ -1,3 +1,9 @@
-<% if !!@fresh_activities %>
-<%= render @fresh_activities  %>
-<% end %>
+<div class="container">
+
+  <% if !!@fresh_activities %>
+    <div class="col-md-4 col-lg-3 col-xs-12 stack">
+      <%= render @fresh_activities  %>
+    </div>
+  <% end %>
+
+</div>
