@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def unshown_activities
-    activities =  Activity.where.not(host: self)
+    activities =  Activity.where.not(host: self).where(aasm_state: "open")
     unshown_activities = activities.map do |activity|
         activity if (!self.funtimes.include?(activity)  && activity.host != self)
     end.compact
@@ -75,12 +75,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  def my_approved_guests
-    approved_guests = []
+  def show_private_message
+    users_to_see = []
     self.activities.each do |activity|
-      approved_guests << activity.approved_guests
+      users_to_see << activity.approved_guests
+      users_to_see << activity.interested_guests
     end
-    approved_guests.flatten
+    self.activity_guests.each do |ag|
+      users_to_see << ag.activity.host if ag.approved?
+    end
+    users_to_see.flatten.uniq
   end
 
 

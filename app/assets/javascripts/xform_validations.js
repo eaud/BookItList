@@ -134,3 +134,14 @@ FormValidations.prototype.userForm = function () {
     }
   });
 };
+
+FormValidations.prototype.messageForm = function() {
+  $('#new_message').validate({
+    rules: {
+      "message[content]": "required"
+    },
+    messages: {
+      "message[content]": "Hey, leave us a message!"
+    }
+  });
+};

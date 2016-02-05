@@ -1,1 +1,4 @@
 <%= render @activity %>
+<p>
+  Activity is currently <%= "open" if @activity.open? %><%= "closed" if @activity.closed? %>.
+</p>

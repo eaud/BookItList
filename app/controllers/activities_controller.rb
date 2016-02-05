@@ -11,7 +11,8 @@ class ActivitiesController < ApplicationController
 
   def myindex
     if logged_in?
-      @activities = Activity.where(host_id: current_user.id)
+      @open_activities = Activity.where(host_id: current_user.id, aasm_state: "open")
+      @closed_activities = Activity.where(host_id: current_user.id, aasm_state: "closed")
     else
       redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
     end
@@ -61,7 +62,27 @@ class ActivitiesController < ApplicationController
     if current_user.id != @activity.host_id
       redirect_to mylist_path
     else
-      @activity.destroy
+      @activity.soft_delete!
+      redirect_to mylist_path
+    end
+  end
+
+  def close
+    @activity = Activity.find(params[:id])
+    if current_user.id != @activity.host_id
+      redirect_to mylist_path
+    else
+      @activity.close!
+      redirect_to mylist_path
+    end
+  end
+
+  def open
+    @activity = Activity.find(params[:id])
+    if current_user.id != @activity.host_id
+      redirect_to mylist_path
+    else
+      @activity.reopen!
       redirect_to mylist_path
     end
   end

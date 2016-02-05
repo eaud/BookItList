@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 
+
 <html lang="en">
     <head>
         <title>ROMP</title>
+        <style media="screen">
+        .user-<%=current_user.id if logged_in?%> {text-align:right;}
+        </style>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -26,7 +30,7 @@
           <%= yield %>
 
       </div>
-      
+
           <%= render "layouts/footer" %>
 
       </body>

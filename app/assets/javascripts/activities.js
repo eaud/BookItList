@@ -6,6 +6,7 @@ $(window).load(function(){
   var formValidator = new FormValidations();
     formValidator.activityForm();
     formValidator.userForm();
+    FormValidations.prototype.messageForm();
 });
 // $(document).on("pageload", function(){
   // $(".dropdown-toggle").dropdown();

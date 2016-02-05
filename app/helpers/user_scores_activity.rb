@@ -46,6 +46,7 @@ module UserScoresActivity
 
   def own_tag_percentage(activity)
     my_tags = self.tags
+    return 0 if my_tags.length == 0
     activity_tags = activity.tags
     intersection = my_tags & activity_tags
     tag_percentage = (intersection.length) *100 / my_tags.length

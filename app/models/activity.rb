@@ -10,7 +10,27 @@ class Activity < ActiveRecord::Base
   validates :cost, numericality: {greater_than_or_equal_to: 0}
   validates :guest_max, numericality: {greater_than_or_equal_to: 1}
   validates :guest_min, numericality: {greater_than_or_equal_to: 1}
-  validate :date_is_in_the_future, on: :create
+  validate :date_is_in_the_future
+  include AASM
+
+  aasm do
+    state :open, :initial => true
+    state :closed
+    state :deleted
+
+    event :close do
+      transitions :from => :open, :to => :closed
+    end
+
+    event :reopen do
+      transitions :from => :closed, :to => :open
+    end
+
+    event :soft_delete do
+      transitions :from => [:open, :closed], :to => :deleted
+    end
+
+  end
 
   def date_is_in_the_future
     if datetime.present? && datetime < Date.today

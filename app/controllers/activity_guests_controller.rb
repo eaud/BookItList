@@ -24,7 +24,7 @@ class ActivityGuestsController < ApplicationController
     @activity_guest.approve!
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
-    source = request.env["HTTP_REFERER"].split("/")[3]
+    source = page_source(request)
 
     if old_chat = Chat.find_by(activity: @activity)
       old_chat.users << @guest
@@ -32,18 +32,12 @@ class ActivityGuestsController < ApplicationController
       chat = Chat.new(name: @activity.name, activity: @activity)
       chat.save
       chat.users << [@guest, current_user]
+      ChatUser.find_by(chat: chat, user: current_user).update(host: true)
     end
 
-    if source == "users"
-      respond_to do |format|
-        format.js{render 'approve_from_users'}
-        format.html{redirect_to user_path(@guest)}
-      end
-    elsif source == "mylist"
-      respond_to do |format|
-        format.js{render 'approve_from_my_list'}
-        format.html{redirect_to mylist_path}
-      end
+    respond_to do |format|
+      format.js{render js_to_render(source)}
+      format.html{redirect_to html_to_render(source)}
     end
 
   end
@@ -53,20 +47,38 @@ class ActivityGuestsController < ApplicationController
     @activity_guest.deny!
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
-    source = request.env["HTTP_REFERER"].split("/")[3]
+    source = page_source(request)
 
-    if source == "users"
-      respond_to do |format|
-        format.js{}
-        format.html{redirect_to user_path(@guest)}
-      end
-    elsif source == "mylist"
-      respond_to do |format|
-        format.js{render 'approve_from_my_list'}
-        format.html{redirect_to mylist_path}
-      end
+    respond_to do |format|
+      format.js{render js_to_render(source)}
+      format.html{redirect_to html_to_render(source)}
     end
   end
 
+  def page_source(request)
+    request.env["HTTP_REFERER"].split("/")[3]
+  end
+
+  def js_to_render(source)
+    case  source
+    when "users"
+      'approve_from_users'
+    when "mylist"
+      'approve_from_my_list'
+    when "activities"
+      'approve_from_activities'
+    end
+  end
+
+  def html_to_render(source)
+    case  source
+    when "users"
+      user_path(@guest)
+    when "mylist"
+      mylist_path
+    when "activities"
+      activity_path(@activity)
+    end
+  end
 
 end
