@@ -1,4 +1,4 @@
-/* 
+/*
  * Theme: Codeon - one page responsive template built for humans.
  * Version: v1.1
  * Author:  Design_mylife
@@ -60,42 +60,27 @@ else {
 }
 close_toggle();
 
-$(window).resize(close_toggle); 
+$(window).resize(close_toggle);
 
 
-    
+
 /* ==============================================
 Smooth Scroll To Anchor
 =============================================== */
-$(function() {
-	  $('.scrollto a[href*=#]:not([href=#])').click(function() {
-	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-
-	      var target = $(this.hash);
-	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	      if (target.length) {
-	        $('html,body').animate({
-	          scrollTop: target.offset().top - 50
-	        }, 1000);
-	        return false;
-	      }
-	    }
-	  });
-	});
 
 
        /*=========================*/
      /*========tooltip and popovers====*/
      /*==========================*/
     $("[data-toggle=popover]").popover();
-    
+
     $("[data-toggle=tooltip]").tooltip();
 
 
 /*=========================*/
      /*========Animation on scroll with wow.js====*/
      /*==========================*/
-     
+
    wow = new WOW(
       {
         animateClass: 'animated',
@@ -104,13 +89,13 @@ $(function() {
       }
     );
     wow.init();
-    
-    
+
+
     /*=========================*/
      /*========on hover dropdown navigation====*/
      /*==========================*/
-     
-     
+
+
      $(document).ready(function() {
 
     $('.js-activated').dropdownHover({
@@ -144,7 +129,7 @@ jQuery(document).ready(function($) {
 });
 //owl carousel for testimonials
 $(document).ready(function() {
- 
+
   $("#testi-carousel").owlCarousel({
       // Most important owl features
     items : 1,
@@ -157,7 +142,7 @@ $(document).ready(function() {
     singleItem : false,
     startDragging : true
   });
- 
+
 });
 
 
@@ -209,23 +194,14 @@ jQuery(function () {
     jQuery(".player").mb_YTPlayer();
 });
 
- $(window).scroll(function(){      
+ $(window).scroll(function(){
         /* -------------------
         Header Animation
         ---------------------*/
-        if ($(this).scrollTop() > 5){  
+        if ($(this).scrollTop() > 5){
             $('.navbar-transparent').addClass("navbar-bg");
         }
         else{
             $('.navbar-transparent').removeClass("navbar-bg");
         }
     });
-
-
-
-
-
-
-
-
-

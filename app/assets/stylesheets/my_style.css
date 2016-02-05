@@ -9,23 +9,22 @@
 }
 
 .card {
-  display: inline !important;
+  /*display: inline !important;*/
   background-color: #ffffff;
-  height: 250px;
+  /*height: 250px;*/
 }
 
-/*.card *{
-  display: block;
-  float: left;
-
-}
-*/
 .clearfix:after {
    content: " "; /* Older browser do not support empty content */
    visibility: hidden;
    display: block;
    height: 0;
    clear: both;
+}
+
+.profile-thm {
+  max-width: 20%;
+  max-height: inherit;
 }
 
 body {
@@ -76,7 +75,7 @@ body {
 	max-width: 100%;
 }
 
-.stack div {
+.stack > div {
 	max-width: 100%;
 	position: absolute;
 	top: 0;
@@ -86,36 +85,24 @@ body {
 	outline: 1px solid transparent;
 }
 
-.stack div:last-child {
+.stack > div:last-child {
 	position: relative;
 }
 
 /* Individual effects */
 
 /* Random rotation */
-.stack-randomrot.active div:nth-child(3) {
+.stack-randomrot.active > div:nth-child(3) {
 	-webkit-transform: translate(15px,15px);
 	transform: translate(15px,15px);
 }
 
-.stack-randomrot.active div:first-child {
+.stack-randomrot.active > div:first-child {
 	-webkit-transform: rotate(-10deg);
 	transform: rotate(-10deg);
 }
 
-.stack-randomrot.active div:nth-child(2) {
+.stack-randomrot.active > div:nth-child(2) {
 	-webkit-transform: rotate(10deg);
 	transform: rotate(10deg);
-}
-
-
-/* Simple Spread */
-.stack-spread.active div:nth-child(3) {
-  -webkit-transform: translate(-15px,15px);
-  transform: translate(-15px,15px);
-}
-
-.stack-spread.active div:first-child {
-  -webkit-transform: translate(15px,-15px);
-  transform: translate(15px,-15px);
 }

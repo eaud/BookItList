@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
       if current_user.unseen_activity_guests.length < 5
         current_user.generate_activity_guests(5)
       end
-      @fresh_activities = current_user.fresh_activities[0..1] #REMOVE THIS LIMIT IT'S JUST STUBBING FOR DEREK'S STYLING
+      @fresh_activities = current_user.fresh_activities
     end
   end
 
