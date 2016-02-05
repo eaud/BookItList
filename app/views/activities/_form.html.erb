@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 
-
+  <div class="sea">
   <%= form_for(@activity, html:{id: 'activityForm'}) do |f| %>
     <p class="">
       <%= f.label :name, "Activity Name" %>
@@ -35,12 +35,14 @@
       <%= f.label :image_url, "Put an image on it!" %>
       <%= f.url_field :image_url, placeholder: "Go get an image URL from google", type: "url" %>
     </p>
+  </div>
+  <div class="river">
     <p class="tag-checkboxes">
       <%= f.label :tag_ids, "Check all that apply" %>
       <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
     </p>
     <p>
-
       <%= f.submit %>
     </p>
   <% end %>
+</div>
