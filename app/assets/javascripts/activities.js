@@ -6,6 +6,7 @@ $(document).ready(function(){
   var formValidator = new FormValidations();
     formValidator.activityForm();
     formValidator.userForm();
+    FormValidations.prototype.messageForm();
 });
 
 

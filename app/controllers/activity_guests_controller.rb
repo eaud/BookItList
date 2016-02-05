@@ -32,8 +32,9 @@ class ActivityGuestsController < ApplicationController
       chat = Chat.new(name: @activity.name, activity: @activity)
       chat.save
       chat.users << [@guest, current_user]
+      ChatUser.find_by(chat: chat, user: current_user).update(host: true)
     end
-
+    
     if source == "users"
       respond_to do |format|
         format.js{render 'approve_from_users'}
