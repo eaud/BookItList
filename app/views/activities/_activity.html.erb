@@ -16,6 +16,15 @@
     <div class="">
       <%= link_to "edit this", edit_activity_path(activity)  %>
     </div>
+    <% if activity.open? %>
+      <div class="">
+        <%= link_to "close this", close_path(activity), method: :post %>
+      </div>
+    <% elsif activity.closed? %>
+       <div class="">
+         <%= link_to "open this", open_path(activity), method: :post %>
+       </div>
+    <% end %>
     <div class="">
       <%= link_to "delete this", activity_path(activity), method: :delete, data: {confirm: "Are you sure you want to delete this activity? This action cannot be undone!"} %>
     </div>
