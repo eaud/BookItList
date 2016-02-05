@@ -1,9 +1,9 @@
 
   <% publish_to chat_path(@message.chat) do%>
-    var message = '<div class="message"><strong><%=link_to @message.sender.name, user_path(@message.sender)%>:</strong><br><%= @message.content %></div>'
-    $('#chat-box').append(message);
+    var message = '<div class="message"><strong><%=link_to @message.sender.name, user_path(@message.sender)%>:</strong><br><%= @message.content %></div>';
+    $('.chat-box').append(message);
   <% end %>
 
-$('.message').last().addClass("sender")
+$('.message').last().addClass("sender");
 
-$('#new_message')[0].reset()
+$('#new_message')[0].reset();
