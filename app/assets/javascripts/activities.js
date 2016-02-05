@@ -1,5 +1,4 @@
 $(window).load(function(){
-
   $(".dropdown-toggle").dropdown();
   addThumbsUpListener();
   addThumbsDownListener();
@@ -7,7 +6,7 @@ $(window).load(function(){
   var formValidator = new FormValidations();
     formValidator.activityForm();
     formValidator.userForm();
-})
+});
 // $(document).on("pageload", function(){
   // $(".dropdown-toggle").dropdown();
   // addThumbsUpListener();
