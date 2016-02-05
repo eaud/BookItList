@@ -1,10 +1,9 @@
-<% if current_user == @message.sender %>
-  var message = '<div class="message sender"><strong><%=link_to @message.sender.name, user_path(@message.sender)%>:</strong><br><%= @message.content %></div>'
-  $('#chat-box').append(message);
-<% else %>
+
   <% publish_to chat_path(@message.chat) do%>
     var message = '<div class="message"><strong><%=link_to @message.sender.name, user_path(@message.sender)%>:</strong><br><%= @message.content %></div>'
     $('#chat-box').append(message);
   <% end %>
-<% end %>
+
+$('.message').last().addClass("sender")
+
 $('#new_message')[0].reset()
