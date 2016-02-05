@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     fb_auth_hash = request.env['omniauth.auth']
-    if User.find_by(uid: fb_auth_hash["uid"])
-      @user = User.find_or_create_from_oauth(fb_auth_hash)
+    if @user = User.find_by(uid: fb_auth_hash["uid"])
       session[:user_id] = @user.id
       redirect_to root_path
     else
