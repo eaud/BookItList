@@ -1,17 +1,20 @@
-<div id="make-new-activity">
-  <h4> <%= link_to "Make a new Activity", new_activity_path, remote: true %></h4>
-</div>
 
-  <% if !@open_activities.empty? %>
-  <div class="open-activities">
-    <h2>Open Activities</h2>
-      <%= render @open_activities %>
+<div class="container">
+  <div id="make-new-activity" class="otter clearfix">
+    <h4> <%= link_to "Make a new Activity", new_activity_path, remote: true %></h4>
   </div>
-  <% end %>
-<br><br>
-  <% if !@closed_activities.empty? %>
-  <div class="closed-activities">
-    <h2>Closed Activities</h2>
-      <%= render @closed_activities %>
-  </div>
-  <% end %>
+
+    <% if !@open_activities.empty? %>
+    <div class="open-activities">
+      <h2>Open Activities</h2>
+        <%= render @open_activities %>
+    </div>
+    <% end %>
+  <br><br>
+    <% if !@closed_activities.empty? %>
+    <div class="closed-activities">
+      <h2>Closed Activities</h2>
+        <%= render @closed_activities %>
+    </div>
+    <% end %>
+</div>

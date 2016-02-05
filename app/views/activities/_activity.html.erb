@@ -1,11 +1,11 @@
 
-<div class="col-md-4 col-xs-12 activity" id="<%= activity.id %>" style="border-style:solid;border-color:grey;">
+<div class="activity card clearfix" id="<%= activity.id %>" style="border-style:solid;border-color:grey;">
   <%= render 'voting' if activity.host != current_user %>
 
-  <div class="">
-    <%= image_tag(activity.image_url, class: "img-responsive") %>
+  <div class="container center-container" style="align:center;">
+    <%= image_tag(activity.image_url) %>
   </div>
-  <div class="">
+  <div>
     <%= activity.name %>
   </div>
   <% if logged_in? && current_user.id == activity.host_id %>
@@ -41,7 +41,7 @@
       <a href="#"><%= " " + tag.name + " " %></a>
     <% end %>
   </div>
-  <div class="user" style="border-style:solid;border-color:grey;">
+  <div class="user clearfix" style="border-style:solid;border-color:grey;">
     <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
     <%= "Host: " + activity.host.name %>
   </div>

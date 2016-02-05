@@ -1,3 +1,4 @@
+
 <% if @activity.errors %>
   <ul>
     <% @activity.errors.full_messages.each do |error| %>
@@ -6,40 +7,42 @@
   </ul>
 <% end %>
 
-
-<%= form_for(@activity, html:{id: 'activityForm'}) do |f| %>
-  <p class="">
-    <%= f.label :name, "Activity Name" %>
-    <%= f.text_field :name, placeholder: "What do you want to do?"%>
-  </p>
-  <p class="">
-    <%= f.label :guest_min, "Min number of guests" %>
-    <%= f.text_field :guest_min, placeholder: "Is this a 1-on-1"%>
-  </p>
-  <p class="">
-    <%= f.label :guest_max, "Max number of guests" %>
-    <%= f.text_field :guest_max, placeholder: "Is this a group activity" %>
-  </p>
-  <p class="">
-    <%= f.label :details, "Let people know more about this activity" %>
+  <div class="sea">
+  <%= form_for(@activity, html:{id: 'activityForm'}) do |f| %>
     <p class="">
-      <%= f.text_area :details, placeholder: "This is gon be Drunk herstory"%>
+      <%= f.label :name, "Activity Name" %>
+      <%= f.text_field :name, placeholder: "What do you want to do?"%>
     </p>
-  </p>
-  <p class="">
-    <%= f.label :cost %>
-    <%= f.text_field :cost, placeholder: "You rollin?"%>
-  </p>
-  <p class="">
-    <%= f.label :image_url, "Put an image on it!" %>
-    <%= f.url_field :image_url, placeholder: "Go get an image URL from google", type: "url" %>
-  </p>
-  <p class="tag-checkboxes">
-    <%= f.label :tag_ids, "Check all that apply" %>
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
-  </p>
-  <p>
-
-    <%= f.submit %>
-  </p>
-<% end %>
+    <p class="">
+      <%= f.label :guest_min, "Min number of guests" %>
+      <%= f.text_field :guest_min, placeholder: "Is this a 1-on-1"%>
+    </p>
+    <p class="">
+      <%= f.label :guest_max, "Max number of guests" %>
+      <%= f.text_field :guest_max, placeholder: "Is this a group activity" %>
+    </p>
+    <p class="">
+      <%= f.label :details, "Let people know more about this activity" %>
+      <p class="">
+        <%= f.text_area :details, placeholder: "This is gon be Drunk herstory"%>
+      </p>
+    </p>
+    <p class="">
+      <%= f.label :cost %>
+      <%= f.text_field :cost, placeholder: "You rollin?"%>
+    </p>
+    <p class="">
+      <%= f.label :image_url, "Put an image on it!" %>
+      <%= f.url_field :image_url, placeholder: "Go get an image URL from google", type: "url" %>
+    </p>
+  </div>
+  <div class="river">
+    <p class="tag-checkboxes">
+      <%= f.label :tag_ids, "Check all that apply" %>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>

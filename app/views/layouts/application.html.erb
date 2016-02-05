@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>BookItList</title>
-    <style media="screen">
-      .user-<%=current_user.id%> {text-align:right;}
-    </style>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-</head>
-  <body>
-    <%= render "layouts/header" %>
-    <div class="container">
 
-        <%= yield %>
 
-    </div>
-    <%= render "layouts/footer" %>
-  </body>
+<html lang="en">
+    <head>
+        <title>ROMP</title>
+        <style media="screen">
+        .user-<%=current_user.id if logged_in?%> {text-align:right;}
+        </style>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--custom css-->
+        <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--google web fonts css-->
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,800' rel='stylesheet' type='text/css'>
+        <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+      <%= render "layouts/header" %>
+      <body data-spy="scroll" data-target="#navigation" data-offset="80">
+
+      <div id="wrap">
+
+          <%= yield %>
+
+      </div>
+
+          <%= render "layouts/footer" %>
+
+      </body>
 </html>
