@@ -2,12 +2,15 @@
 <html>
 <head>
   <title>BookItList</title>
+  <% if logged_in? %>
     <style media="screen">
       .user-<%=current_user.id%> {text-align:right;}
     </style>
+  <% end %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 </head>
   <body>
     <%= render "layouts/header" %>
