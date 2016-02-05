@@ -34,7 +34,7 @@ class ActivityGuestsController < ApplicationController
       chat.users << [@guest, current_user]
       ChatUser.find_by(chat: chat, user: current_user).update(host: true)
     end
-    binding.pry
+    
     if source == "users"
       respond_to do |format|
         format.js{render 'approve_from_users'}
@@ -44,11 +44,6 @@ class ActivityGuestsController < ApplicationController
       respond_to do |format|
         format.js{render 'approve_from_my_list'}
         format.html{redirect_to mylist_path}
-      end
-    elsif source == "activities"
-      respond_to do |format|
-        format.js{render 'approve_from_my_list'}
-        format.html{redirect_to activity_path(@activity)}
       end
     end
 
