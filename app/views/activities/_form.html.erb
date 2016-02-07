@@ -8,7 +8,7 @@
 <% end %>
 
   <div class="sea">
-  <%= form_for(@activity, html:{id: 'activityForm'}) do |f| %>
+  <%= form_for(@activity, remote: true, html:{id: 'activityForm'}) do |f| %>
     <p class="">
       <%= f.label :name, "Activity Name" %>
       <%= f.text_field :name, placeholder: "What do you want to do?"%>
@@ -41,8 +41,8 @@
       <%= f.label :tag_ids, "Check all that apply" %>
       <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
     </p>
-    <p>
-      <%= f.submit %>
-    </p>
+    <div class="actions">
+      <%= f.submit class: 'btn btn-default' %>
+    </div>
   <% end %>
 </div>
