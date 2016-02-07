@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 20160207195311) do
     t.string   "image_url"
     t.string   "token"
     t.datetime "token_expiration"
-    t.string   "profilepic"
     t.json     "score_data"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -11,8 +11,8 @@ class ActivitiesController < ApplicationController
 
   def myindex
     if user_signed_in?
-      @open_activities = Activity.where(host_id: current_user.id, aasm_state: "open")
-      @closed_activities = Activity.where(host_id: current_user.id, aasm_state: "closed")
+      @open_activities = Activity.where(host_id: current_user.id, aasm_state: "open").sort_by do |activity| activity.updated_at end.reverse!
+      @closed_activities = Activity.where(host_id: current_user.id, aasm_state: "closed").sort_by do |activity| activity.updated_at end.reverse!
     else
       redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
     end
@@ -22,8 +22,8 @@ class ActivitiesController < ApplicationController
     if user_signed_in?
       @activity = Activity.new
       respond_to do |format|
-        format.html{}
         format.js{}
+        format.html{}
       end
     else
       redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
@@ -34,7 +34,14 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.host = current_user
     if @activity.save
-      redirect_to activity_path(@activity)
+      if request.env["HTTP_REFERER"].split("/")[3] == "mylist"
+        respond_to do |format|
+          format.js {}
+          format.html {redirect_to mylist_path}
+        end
+      else
+        redirect_to mylist_path
+      end
     else
       render "new"
     end

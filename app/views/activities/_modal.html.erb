@@ -1,0 +1,14 @@
+<div class="modal fade" id="newActivityModal" tabindex="-1" role="dialog" aria-labelledby="newActivityLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="newActivityLabel">new romp</h4>
+      </div>
+
+      <div class="modal-body modal-footer">
+        <% @activity = Activity.new %>
+      <%= render "activities/form" %>
+      </div>
+    </div>
+  </div>
+</div>

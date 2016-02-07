@@ -1,6 +1,6 @@
 
 var new_form = "<%= j render partial: 'form', locals: {activity: @activity} %>"
-$("#make-new-activity").html(new_form)
+$(".modal-body").html(new_form)
 var activityValidator = new FormValidations();
   setTimeout(function(){
     activityValidator.activityForm();
