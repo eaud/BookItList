@@ -1,7 +1,10 @@
 class ChatsController < ApplicationController
 
   def index
-    @chats = current_user.chat_users.map {|cu| cu.chat }
+    chats = current_user.chat_users.map {|cu| cu.chat }
+    @chats = chats.sort_by do |chat|
+      (chat.messages.last.updated_at if !chat.messages.empty?) || chat.updated_at
+    end.reverse!
   end
 
   def new
