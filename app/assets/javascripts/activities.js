@@ -3,20 +3,12 @@ $(window).load(function(){
   addThumbsUpListener();
   addThumbsDownListener();
   hiddenBioListen();
+  jTinderSwipeEffect();
   var formValidator = new FormValidations();
     formValidator.activityForm();
     formValidator.userForm();
     FormValidations.prototype.messageForm();
 });
-// $(document).on("pageload", function(){
-  // $(".dropdown-toggle").dropdown();
-  // addThumbsUpListener();
-  // addThumbsDownListener();
-  // hiddenBioListen();
-  // var formValidator = new FormValidations();
-  //   formValidator.activityForm();
-  //   formValidator.userForm();
-// });
 
 
 var addThumbsUpListener = function(){

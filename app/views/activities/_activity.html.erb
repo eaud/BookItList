@@ -1,9 +1,10 @@
-<div class="activity card clearfix" id="<%= activity.id %>" style="border-style:solid;border-color:grey;">
+
+<li class="activity card col-md-12 col-lg-12 col-xl-12 col-xs-12" id="<%= activity.id %>">
   <% if activity.host != current_user %>
     <%= render partial: 'activities/voting', locals: {activity: activity} %>
   <% end %>
 
-  <div class="container center-container" style="align:center;">
+  <div style="align:center;">
     <%= image_tag(activity.image_url) %>
   </div>
   <div>
@@ -46,4 +47,4 @@
     <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
     <%= "Host: " + activity.host.name %>
   </div>
-</div>
+</li>
