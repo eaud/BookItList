@@ -23,8 +23,10 @@ module UserScoresActivity
     occurence = []
     comp_object.class == Activity ? kind = "activity" : kind = "host"
     raw_like_percent = comp_object.tags.map do |tag|
-      previously_liked = self.score_data[kind]["tag_likes"][tag.id.to_s]
-      previously_disliked = self.score_data[kind]["tag_dislikes"][tag.id.to_s]
+      if self.score_data
+        previously_liked = self.score_data[kind]["tag_likes"][tag.id.to_s]
+        previously_disliked = self.score_data[kind]["tag_dislikes"][tag.id.to_s]
+      end
       if !!previously_liked && !!previously_disliked
         occurence << (previously_liked + previously_disliked)
         (previously_liked * 100) / (previously_liked + previously_disliked)
@@ -54,9 +56,11 @@ module UserScoresActivity
 
   def host_percentage(activity)
     id = activity.host.id.to_s
-    likes = self.score_data["host"]["liked"][id] || 0
-    dislikes = self.score_data["host"]["disliked"][id] || 0
-    if (likes + dislikes) >= 1
+    if self.score_data
+      likes = self.score_data["host"]["liked"][id] || 0
+      dislikes = self.score_data["host"]["disliked"][id] || 0
+    end
+    if likes && (likes + dislikes) >= 1
       return likes * 100 / (likes + dislikes)
     else
       return 0

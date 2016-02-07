@@ -5,9 +5,17 @@ class ActivityGuestsController < ApplicationController
     liked_AG = ActivityGuest.where(activity_id: params[:id], guest_id: current_user.id)[0]
     current_user.like_activity(liked_AG.activity)
     liked_AG.like!
-    respond_to do |format|
-      format.all { render :nothing => true, :status => 200 }
-    end
+      if current_user.unseen_activity_guests.length < 5
+        @new_ags = current_user.generate_activity_guests
+        respond_to do |format|
+          binding.pry
+          format.js {}
+          format.html { render :nothing => true, :status => 200 }
+        end
+      end
+      respond_to do |format|
+        format.all { render :nothing => true, :status => 200 }
+      end
   end
 
   def dislike

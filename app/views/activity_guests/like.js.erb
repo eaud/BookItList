@@ -1,0 +1,4 @@
+<%= binding.pry %>
+  <% @new_ags.each do |ag| %>
+    $('.stack-randomrot').append("<%= j render partial: "activity", locals: {activity: ag.activity} %>");
+  <% end %>

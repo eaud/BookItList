@@ -61,18 +61,14 @@ class User < ActiveRecord::Base
     fresh_activities
   end
 
-  # def generate_activity_guests(num)
-  #   new_activity_guests = self.unshown_activities[0..num].each do |unshown|
-  #     ActivityGuest.create(guest_id: self.id, activity_id: unshown.id)
-  #   end
-  #   new_activity_guests
-  # end
-
-  def generate_activity_guests(num)
+  def generate_activity_guests
     unshown_scores = score_unshown_activities
+    new_ags = []
     unshown_scores.select{|k, v| unshown_scores.values.max(5).include?(v)}.each do |actid, score|
-      ActivityGuest.create(guest_id: self.id, activity_id: actid, serv_score: score)
+      binding.pry
+      new_ags << ActivityGuest.create(guest_id: self.id, activity_id: actid, serv_score: score)
     end
+    new_ags
   end
 
   def show_private_message
