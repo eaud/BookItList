@@ -8,7 +8,7 @@
 <% end %>
 
   <div class="sea">
-  <%= form_for(@activity, html:{id: 'activityForm'}) do |f| %>
+  <%= form_for(@activity, remote: true, html:{id: 'activityForm'}) do |f| %>
     <p class="">
       <%= f.label :name, "Activity Name" %>
       <%= f.text_field :name, placeholder: "What do you want to do?"%>

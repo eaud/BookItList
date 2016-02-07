@@ -3,15 +3,15 @@
 
 
     <% if !@open_activities.empty? %>
+    <h2>Open Activities</h2>
     <div class="open-activities">
-      <h2>Open Activities</h2>
         <%= render @open_activities %>
     </div>
     <% end %>
   <br><br>
     <% if !@closed_activities.empty? %>
+    <h2>Closed Activities</h2>
     <div class="closed-activities">
-      <h2>Closed Activities</h2>
         <%= render @closed_activities %>
     </div>
     <% end %>
