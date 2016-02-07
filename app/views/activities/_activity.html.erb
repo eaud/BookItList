@@ -1,15 +1,15 @@
 
-<div class="activity card clearfix" id="<%= activity.id %>" style="border-style:solid;border-color:grey;">
+<li class="activity card col-md-12 col-lg-12 col-xl-12 col-xs-12" id="<%= activity.id %>">
   <%= render 'voting' if activity.host != current_user %>
 
-  <div class="container center-container" style="align:center;">
+  <div style="align:center;">
     <%= image_tag(activity.image_url) %>
   </div>
   <div>
     <%= activity.name %>
   </div>
   <% if logged_in? && current_user.id == activity.host_id %>
-  
+
   <% if activity.open? %>
     <%= render partial: 'interested_guests', locals: {activity: activity} %>
    <% end %>
@@ -45,4 +45,4 @@
     <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
     <%= "Host: " + activity.host.name %>
   </div>
-</div>
+</li>

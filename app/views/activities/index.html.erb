@@ -2,8 +2,10 @@
 <div class="container">
 
   <% if !@fresh_activities.empty? %>
-    <div class="col-md-4 col-lg-3 col-xl-2 col-xs-12 stack stack-randomrot active">
-      <%= render @fresh_activities  %>
+    <div id="tinderslide" class="stack stack-randomrot active">
+      <ul>
+        <%= render @fresh_activities  %>
+      </ul>
     </div>
   <% end %>
 

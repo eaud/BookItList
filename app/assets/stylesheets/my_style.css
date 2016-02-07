@@ -44,6 +44,8 @@ body {
   background-image: url(romp_otters_home.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 
 
 }
@@ -92,7 +94,7 @@ body {
 	max-width: 100%;
 }
 
-.stack > div {
+.stack > li {
 	max-width: 100%;
 	position: absolute;
 	top: 0;
@@ -102,24 +104,24 @@ body {
 	outline: 1px solid transparent;
 }
 
-.stack > div:last-child {
+.stack > li:last-child {
 	position: relative;
 }
 
 /* Individual effects */
 
 /* Random rotation */
-.stack-randomrot.active > div:nth-child(odd) {
+.stack-randomrot.active > li:nth-child(odd) {
 	-webkit-transform: translate(15px,15px);
 	transform: translate(15px,15px);
 }
 
-.stack-randomrot.active > div:first-child {
+.stack-randomrot.active > li:first-child {
 	-webkit-transform: rotate(-10deg);
 	transform: rotate(-10deg);
 }
 
-.stack-randomrot.active > div:nth-child(even) {
+.stack-randomrot.active > li:nth-child(even) {
 	-webkit-transform: rotate(10deg);
 	transform: rotate(10deg);
 }

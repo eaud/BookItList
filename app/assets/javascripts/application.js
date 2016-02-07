@@ -13,7 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require private_pub
 //= require moderniz.min
 //= require jquery-migrate.min
@@ -36,6 +36,9 @@
 //= require custom
 //= require rs-plugin/js/jquery.themepunch.tools.min
 //= require rs-plugin/js/jquery.themepunch.revolution.min
+//= require jtinder/jquery.jTinder
+//= require jtinder/jquery.transform2d
+//= require jtinder/main
 //= require revolution-custom
 //= require isotope-custom
 //= require activities
