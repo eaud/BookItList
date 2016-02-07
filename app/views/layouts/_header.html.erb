@@ -17,7 +17,7 @@
 
                 <ul class="nav navbar-nav navbar-right scrollto">
                     <li class="active"><%= link_to "My List", mylist_path %></li>
-                    <li><%= link_to "Add an Activity", new_activity_path %></li>
+                    <li><%= link_to "Add an Activity", '#newActivityModal', "data-toggle": "modal", "data-target": "#newActivityModal", remote: true %></li>
                     <li><%= (link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in") if !logged_in?  %></li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Pages <b class="caret"></b></a>
@@ -74,3 +74,6 @@
         </div><!--/.container -->
     </div>
 </section><!--navigation section end here-->
+
+
+<%= render "activities/modal" %>
