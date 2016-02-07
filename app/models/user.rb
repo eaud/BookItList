@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
   has_many :activities, foreign_key: "host_id", dependent: :destroy
   has_many :activity_guests, foreign_key: "guest_id", dependent: :destroy
   has_many :funtimes, through: :activity_guests, source: :activity
@@ -6,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :tags, through: :user_tags
   has_many :chat_users, dependent: :destroy
   has_many :chats, through: :chat_users, dependent: :destroy
-  validates_presence_of :uid, :name, :token, :image_url, :token_expiration
+  # validates_presence_of :uid, :name, :token, :image_url, :token_expiration
   validates_uniqueness_of :uid, :email
   include UserLikeData
   include UserScoresActivity

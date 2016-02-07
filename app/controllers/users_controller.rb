@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     @user.destroy
-    session[:user_id] = nil
+    session["warden.user.user.key"][0][0] = nil
     redirect_to root_path
   end
 

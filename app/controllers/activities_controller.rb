@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    if logged_in?
+    if user_signed_in?
       if current_user.unseen_activity_guests.length < 5
         current_user.generate_activity_guests
       end
@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
   end
 
   def myindex
-    if logged_in?
+    if user_signed_in?
       @open_activities = Activity.where(host_id: current_user.id, aasm_state: "open").sort_by do |activity| activity.updated_at end.reverse!
       @closed_activities = Activity.where(host_id: current_user.id, aasm_state: "closed").sort_by do |activity| activity.updated_at end.reverse!
     else
@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    if logged_in?
+    if user_signed_in?
       @activity = Activity.new
       respond_to do |format|
         format.js{}

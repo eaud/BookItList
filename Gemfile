@@ -39,13 +39,17 @@ gem 'aasm'
 gem "rails_12factor"
 gem "bootstrap-sass"
 gem "font-awesome-rails"
-gem "omniauth-facebook"
 gem 'figaro'
 gem 'pry'
 gem 'rails-erd'
 #for private real-time updates - includes faye
 gem "private_pub"
 gem "thin"
+
+#login gems
+gem "omniauth-facebook"
+gem "devise"
+
 
 
 group :development, :test do
