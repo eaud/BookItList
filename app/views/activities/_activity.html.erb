@@ -1,6 +1,5 @@
-<%= binding.pry %>
 <div class="activity card clearfix" id="<%= activity.id %>" style="border-style:solid;border-color:grey;">
-  <%= render 'voting' if activity.host != current_user %>
+  <%= render 'activities/voting' if activity.host != current_user %>
 
   <div class="container center-container" style="align:center;">
     <%= image_tag(activity.image_url) %>

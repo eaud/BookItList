@@ -1,4 +1,6 @@
 <%= binding.pry %>
+<% if !@new_ags.empty? %>
   <% @new_ags.each do |ag| %>
-    $('.stack-randomrot').append("<%= j render partial: "activity", locals: {activity: ag.activity} %>");
+    $('.stack-randomrot').prepend("<%= j render partial: "activities/activity", locals: {activity: ag.activity} %>");
   <% end %>
+<% end %>

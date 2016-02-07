@@ -65,7 +65,6 @@ class User < ActiveRecord::Base
     unshown_scores = score_unshown_activities
     new_ags = []
     unshown_scores.select{|k, v| unshown_scores.values.max(5).include?(v)}.each do |actid, score|
-      binding.pry
       new_ags << ActivityGuest.create(guest_id: self.id, activity_id: actid, serv_score: score)
     end
     new_ags
