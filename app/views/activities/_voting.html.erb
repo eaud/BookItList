@@ -1,8 +1,12 @@
 <div class="interest">
     <div class="dislike">
+      <%= link_to dislike_path(ActivityGuest.find_by(activity_id: activity.id, guest_id: current_user.id)), method: :post, remote: true do %>
       I don't want to go  <span class="glyphicon glyphicon-thumbs-down" ></span>
+      <% end %>
     </div>
     <div class="like">
+      <%= link_to like_path(ActivityGuest.find_by(activity_id: activity.id, guest_id: current_user.id)), method: :post, remote: true do %>
       I want to go  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+      <% end %>
     </div>
 </div>

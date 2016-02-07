@@ -1,4 +1,3 @@
-<%= binding.pry %>
 <% if !@new_ags.empty? %>
   <% @new_ags.each do |ag| %>
     $('.stack-randomrot').prepend("<%= j render partial: "activities/activity", locals: {activity: ag.activity} %>");
