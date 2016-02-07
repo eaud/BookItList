@@ -16,46 +16,11 @@
             <div class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav navbar-right scrollto">
+                  <% if user_signed_in? %>
                     <li class="active"><%= link_to "My List", mylist_path %></li>
                     <li><%= link_to "Add an Activity", new_activity_path %></li>
-                    <li><%= (link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in") if !logged_in?  %></li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog-list.html">Blog List</a></li>
-                            <li><a href="blog-post.html">Blog Post</a></li>
-                            <li><a href="portfolio-3.html">Portfolio 3 columns</a></li>
-                            <li><a href="portfolio-full.html">Portfolio Full width</a></li>
-                            <li><a href="portfolio-masonry.html">Portfolio Masonry</a></li>
-                            <li><a href="single-work.html">Portfolio Single</a></li>
-                            <li><a href="soon.html">Coming Soon</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Find Plans <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Plan Partners</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li><a href="#">Past Plans</a></li>
-                          <li><a href="#">Separated link</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Demos <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="demo-default.html">Slider revolution</a></li>
-                            <li><a href="video-slider.html">Slider Video</a></li>
-                            <li><a href="fullscreen-parallax-bg-demo.html">Full screen parallax</a></li>
-                            <li><a href="demo-video-bg.html">Video background</a></li>
-
-                            <li><a href="transparent-header-demo.html">Header transparent</a></li>
-                        </ul>
-                    </li>
-                    <% if logged_in? %>
+                  <% end %>
+                    <% if user_signed_in? %>
                       <li class="dropdown">
                           <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">Your Account <b class="caret"></b></a>
                           <ul class="dropdown-menu">
@@ -65,6 +30,11 @@
                             <li role="separator" class="divider"></li>
                             <li><%= link_to "Chat Center", chats_path %></li>
                           </ul>
+                      </li>
+                    <% else %>
+                      <li class="dropdown">
+                            <li><%= (link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)) %></li>
+                            <li><%= (link_to "Signup with email", new_user_registration_path, id: "sign_up_email") %></li>
                       </li>
                     <% end %>
 

@@ -9,7 +9,7 @@
   <div>
     <%= activity.name %>
   </div>
-  <% if logged_in? && current_user.id == activity.host_id %>
+  <% if user_signed_in? && current_user.id == activity.host_id %>
 
   <% if activity.open? %>
     <%= render partial: 'interested_guests', locals: {activity: activity} %>

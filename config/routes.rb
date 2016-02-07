@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :chat_users
   resources :messages
   resources :chats
   root "sessions#index"
-  resources :registrations
+  # resources :registrations
   # resources :sessions
   resources :tags
   resources :activities
-  resources :users, only: [:edit, :update, :destroy, :show]
+  resources :users
   get '/auth/:provider/callback', to: 'sessions#create', as: "login"
   get '/logout', to: 'sessions#delete', as: 'logout'
   get '/mylist', to: 'activities#myindex', as: 'mylist'

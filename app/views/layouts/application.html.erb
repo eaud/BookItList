@@ -2,7 +2,7 @@
     <head>
         <title>ROMP</title>
         <style media="screen">
-        .user-<%=current_user.id if logged_in?%> {text-align:right;}
+        .user-<%=current_user.id if user_signed_in?%> {text-align:right;}
         </style>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
@@ -23,6 +23,8 @@
       <body data-spy="scroll" data-target="#navigation" data-offset="80">
 
       <div id="wrap">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
           <%= yield %>
 
