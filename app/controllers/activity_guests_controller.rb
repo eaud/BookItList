@@ -2,7 +2,7 @@ class ActivityGuestsController < ApplicationController
 
   def like
     # params look like=> {"controller"=>"activity_guests", "action"=>"update", "id"=>"1"}
-    liked_AG = ActivityGuest.find(params[:id])
+    liked_AG = ActivityGuest.find_by(activity_id: params[:id], guest_id: current_user.id)
     current_user.like_activity(liked_AG.activity)
     liked_AG.like!
       if current_user.unseen_activity_guests.length < 5
@@ -19,7 +19,7 @@ class ActivityGuestsController < ApplicationController
   end
 
   def dislike
-    disliked_AG = ActivityGuest.find(params[:id])
+    disliked_AG = ActivityGuest.find_by(activity_id: params[:id], guest_id: current_user.id)
     current_user.dislike_activity(disliked_AG.activity)
     disliked_AG.dislike!
     if current_user.unseen_activity_guests.length < 5
