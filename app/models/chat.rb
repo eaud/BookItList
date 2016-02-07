@@ -6,4 +6,5 @@ class Chat < ActiveRecord::Base
 
   validates_presence_of :name
   validates :activity_id, uniqueness: true, if: 'activity_id.present?'
+
 end
