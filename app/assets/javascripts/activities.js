@@ -20,7 +20,7 @@ $(window).load(function(){
 
 
 var addThumbsUpListener = function(){
-  $("span.glyphicon-thumbs-up").on("click", function(event){
+  $('.stack-randomrot').on("click", "span.glyphicon-thumbs-up", function(event){
     console.log("thumbs up!");
     var activity_container = this.parentElement.parentElement.parentElement;
     var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;
@@ -34,7 +34,7 @@ var addThumbsUpListener = function(){
 };
 
 var addThumbsDownListener = function(){
-  $("span.glyphicon-thumbs-down").on("click", function(event){
+  $('.stack-randomrot').on("click", "span.glyphicon-thumbs-down", function(event){
     console.log("thumbs down!");
     var activity_container = this.parentElement.parentElement.parentElement;
     var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;

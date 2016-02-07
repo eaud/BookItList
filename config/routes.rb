@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create', as: "login"
   get '/logout', to: 'sessions#delete', as: 'logout'
   get '/mylist', to: 'activities#myindex', as: 'mylist'
-  post 'like/:id', to: 'activity_guests#like'
-  post 'dislike/:id', to: 'activity_guests#dislike'
+  post 'like/:id', to: 'activity_guests#like', as: 'like'
+  post 'dislike/:id', to: 'activity_guests#dislike', as: 'dislike'
   post 'approve', to: 'activity_guests#approve'
   post 'deny', to: 'activity_guests#deny'
   post 'read', to: 'chats#read', as: 'read'

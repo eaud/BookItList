@@ -2,20 +2,36 @@ class ActivityGuestsController < ApplicationController
 
   def like
     # params look like=> {"controller"=>"activity_guests", "action"=>"update", "id"=>"1"}
-    liked_AG = ActivityGuest.where(activity_id: params[:id], guest_id: current_user.id)[0]
+    liked_AG = ActivityGuest.find_by(activity_id: params[:id], guest_id: current_user.id)
     current_user.like_activity(liked_AG.activity)
     liked_AG.like!
-    respond_to do |format|
-      format.all { render :nothing => true, :status => 200 }
-    end
+      if current_user.unseen_activity_guests.length < 5
+        @new_ags = current_user.generate_activity_guests
+        respond_to do |format|
+            format.js {}
+            format.html { render :nothing => true, :status => 200 }
+          end
+        else
+          respond_to do |format|
+            format.all { render :nothing => true, :status => 200 }
+          end
+      end
   end
 
   def dislike
-    disliked_AG = ActivityGuest.where(activity_id: params[:id], guest_id: current_user.id)[0]
+    disliked_AG = ActivityGuest.find_by(activity_id: params[:id], guest_id: current_user.id)
     current_user.dislike_activity(disliked_AG.activity)
     disliked_AG.dislike!
-    respond_to do |format|
-      format.all { render :nothing => true, :status => 200 }
+    if current_user.unseen_activity_guests.length < 5
+      @new_ags = current_user.generate_activity_guests
+      respond_to do |format|
+          format.js {render "like"}
+          format.html { render :nothing => true, :status => 200 }
+        end
+      else
+        respond_to do |format|
+          format.all { render :nothing => true, :status => 200 }
+        end
     end
   end
 
