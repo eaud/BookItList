@@ -41,7 +41,7 @@
 }
 
 body {
-  background-image: url(romp_otters_home.jpg);
+  background-image: url("romp_otters_home.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
