@@ -12,33 +12,29 @@ $(window).load(function(){
 
 
 var addThumbsUpListener = function(){
-  $("span.glyphicon-thumbs-up").on("click", voteYes);
-};
-
-var voteYes = function(event){
-  console.log("thumbs up!");
-  var activity_container = this.parentElement.parentElement.parentElement;
-  var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;
-  $.ajax({
-    url: "/like/" + activity_id_this_is_janky,
-    method: "POST",
-    datatype: 'script'
+  $('.stack-randomrot').on("click", "span.glyphicon-thumbs-up", function(event){
+    console.log("thumbs up!");
+    var activity_container = this.parentElement.parentElement.parentElement;
+    var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;
+    $.ajax({
+      url: "/like/" + activity_id_this_is_janky,
+      method: "POST",
+      datatype: 'script'
+    });
+    activity_container.remove();
   });
-  activity_container.remove();
 };
 
 var addThumbsDownListener = function(){
-  $("span.glyphicon-thumbs-down").on("click", voteNo);
-};
-
-var voteNo = function(event){
-  console.log("thumbs down!");
-  var activity_container = this.parentElement.parentElement.parentElement;
-  var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;
-  $.ajax({
-    url: "/dislike/" + activity_id_this_is_janky,
-    method: "POST",
-    datatype: 'script'
+  $('.stack-randomrot').on("click", "span.glyphicon-thumbs-down", function(event){
+    console.log("thumbs down!");
+    var activity_container = this.parentElement.parentElement.parentElement;
+    var activity_id_this_is_janky = this.parentElement.parentElement.parentElement.id;
+    $.ajax({
+      url: "/dislike/" + activity_id_this_is_janky,
+      method: "POST",
+      datatype: 'script'
+    });
+    activity_container.remove();
   });
-  activity_container.remove();
 };

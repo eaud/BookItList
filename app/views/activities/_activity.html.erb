@@ -1,6 +1,8 @@
 
 <li class="activity card col-md-12 col-lg-12 col-xl-12 col-xs-12" id="<%= activity.id %>">
-  <%= render 'voting' if activity.host != current_user %>
+  <% if activity.host != current_user %>
+    <%= render partial: 'activities/voting', locals: {activity: activity} %>
+  <% end %>
 
   <div style="align:center;">
     <%= image_tag(activity.image_url) %>

@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   def index
     if logged_in?
       if current_user.unseen_activity_guests.length < 5
-        current_user.generate_activity_guests(5)
+        current_user.generate_activity_guests
       end
       @fresh_activities = current_user.fresh_activities
     end
