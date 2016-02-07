@@ -43,7 +43,6 @@ gem "omniauth-facebook"
 gem 'figaro'
 gem 'pry'
 gem 'rails-erd'
-
 #for private real-time updates - includes faye
 gem "private_pub"
 gem "thin"

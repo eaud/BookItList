@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160205163601) do
     t.string   "image_url"
     t.string   "token"
     t.datetime "token_expiration"
+    t.string   "profilepic"
     t.json     "score_data"
   end
 
