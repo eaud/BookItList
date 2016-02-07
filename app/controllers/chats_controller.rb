@@ -1,17 +1,25 @@
 class ChatsController < ApplicationController
 
   def index
-    @chats = current_user.chat_users.map {|cu| cu.chat }
+    chats = current_user.chat_users.map {|cu| cu.chat }
+    @chats = chats.sort_by do |chat|
+      (chat.messages.last.updated_at if !chat.messages.empty?) || chat.updated_at
+    end.reverse!
   end
 
   def new
-    @chat = Chat.new
     @receiver = User.find(request.env["HTTP_REFERER"].split("/")[4])
-    @chat.name = "Private Chat between #{@receiver.name} & #{current_user.name}"
-    @chat.save
-    @chat.users << [@receiver, current_user]
-    @message = Message.new
-    redirect_to chat_path(@chat)
+    if @chat = current_user.chats.where(personal: true).find {|chat|chat.users.include?(@receiver)}
+      redirect_to chat_path(@chat)
+    else
+      @chat = Chat.new
+      @chat.name = "Private Chat between #{@receiver.name} & #{current_user.name}"
+      @chat.personal = true
+      @chat.save
+      @chat.users << [@receiver, current_user]
+      @message = Message.new
+      redirect_to chat_path(@chat)
+    end
   end
 
 
