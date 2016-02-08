@@ -34,17 +34,11 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.host = current_user
     if @activity.save
-      if request.env["HTTP_REFERER"].split("/")[3] == "mylist"
+      @request = request.env["HTTP_REFERER"].split("/")[3]
         respond_to do |format|
           format.js {}
           format.html {redirect_to mylist_path}
         end
-      else
-        respond_to do |format|
-          format.js {}
-        end
-        redirect_to mylist_path
-      end
     else
       render "new"
     end
