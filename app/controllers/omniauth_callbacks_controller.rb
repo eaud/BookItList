@@ -9,10 +9,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in(:user, @user)
       render 'sessions/first_login'
     end
-
   end
 
   def failure
     redirect_to root_path
+  end
+
+private
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

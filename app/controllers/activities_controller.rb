@@ -79,9 +79,7 @@ class ActivitiesController < ApplicationController
       redirect_to mylist_path
     else
       @activity.close!
-      respond_to do |format|
-        format.all redirect_to mylist_path
-      end
+      redirect_to mylist_path
     end
   end
 
@@ -91,9 +89,15 @@ class ActivitiesController < ApplicationController
       redirect_to mylist_path
     else
       @activity.reopen!
-      respond_to do |format|
-        format.all redirect_to mylist_path
-      end
+      redirect_to mylist_path
+    end
+  end
+
+  def modal
+    @activity = Activity.find(params[:id])
+    respond_to do |format|
+      format.js {}
+      format.html {redirect_to activity_path(@activity)}
     end
   end
 

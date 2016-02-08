@@ -9,11 +9,12 @@
         <li> <strong><%= "UNREAD" if chat.chat_users.where(user: current_user)[0].unread? %></strong> <%= link_to chat.name, chat_path(chat), remote: true %> with <% chat.users.reject do |user| user == current_user end.each do |user| %>
             /<%= (link_to user.name, user_path(user)) %>/
           <% end %>
+          <br><strong><%= link_to "Activity Page", activity_path(chat.activity)%></strong>
         </li>
       <% end %>
     <% end %>
   </ul>
 </div>
 <div class="col-md-6 chatz show-page">
-  
+
 </div>
