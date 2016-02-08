@@ -28,6 +28,10 @@ class ChatsController < ApplicationController
     @message = Message.new
     cu = ChatUser.find_by(chat: @chat, user: current_user)
     cu.view! if cu.unread?
+    respond_to do |format|
+      format.js{}
+      format.html{}
+    end
   end
 
   def read

@@ -34,14 +34,11 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.host = current_user
     if @activity.save
-      if request.env["HTTP_REFERER"].split("/")[3] == "mylist"
+      @request = request.env["HTTP_REFERER"].split("/")[3]
         respond_to do |format|
           format.js {}
           format.html {redirect_to mylist_path}
         end
-      else
-        redirect_to mylist_path
-      end
     else
       render "new"
     end
@@ -49,6 +46,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    @chat = @activity.chat || Chat.create(name: @activity.name, activity: @activity)
+    @message = Message.new
   end
 
   def edit
@@ -80,7 +79,9 @@ class ActivitiesController < ApplicationController
       redirect_to mylist_path
     else
       @activity.close!
-      redirect_to mylist_path
+      respond_to do |format|
+        format.all redirect_to mylist_path
+      end
     end
   end
 
@@ -90,7 +91,9 @@ class ActivitiesController < ApplicationController
       redirect_to mylist_path
     else
       @activity.reopen!
-      redirect_to mylist_path
+      respond_to do |format|
+        format.all redirect_to mylist_path
+      end
     end
   end
 

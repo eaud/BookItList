@@ -1,7 +1,7 @@
 
 <div class="container">
 
-  <% if !@fresh_activities.empty? %>
+  <% if @fresh_activities && !@fresh_activities.empty? %>
     <div id="tinderslide" class="stack stack-randomrot active">
       <ul>
         <%= render @fresh_activities  %>
