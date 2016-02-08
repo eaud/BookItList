@@ -1,5 +1,5 @@
 <h2 class="chat-name"><%=chat.name%></h2>
-<div id="chat-<%=chat.id%>" class="chat-zone col-md-4">
+<div id="chat-<%=chat.id%>" class="chat-zone">
   <div id="messages-<%=chat.id%>" class="chat-box">
     <% chat.messages.each do |message| %>
       <div class="message user-<%= message.sender.id %>">
@@ -40,3 +40,5 @@
   }
   readMessage()
 </script>
+
+<%= subscribe_to chat_path(chat) %>
