@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 20160208013618) do
     t.string   "image_url"
     t.string   "token"
     t.datetime "token_expiration"
-    t.string   "profilepic"
     t.json     "score_data",             default: {"activity"=>{"liked"=>[], "disliked"=>[], "tag_likes"=>{}, "tag_dislikes"=>{}}, "host"=>{"liked"=>{}, "disliked"=>{}, "tag_likes"=>{}, "tag_dislikes"=>{}}}
     t.string   "encrypted_password",     default: "",                                                                                                                                                           null: false
     t.string   "reset_password_token"
