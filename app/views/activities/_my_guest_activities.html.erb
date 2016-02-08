@@ -1,0 +1,18 @@
+
+
+<li class="card <%="col-md-4 col-lg-4 col-xl-4 col-xs-12 activity"%>" id="<%= activity.id %>">
+  <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;">
+  </div>
+  <div>
+    <%= link_to activity.name, activity_path(activity), class: "name-click" %>
+  </div>
+  <div class="tags">
+    <% activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
+      <%= "/ " + tag.name + " /" %>
+    <% end %>
+  </div>
+  <div class="user clearfix" style="border-style:solid;border-color:grey;">
+    <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
+    <%= "Hosted by: " + activity.host.name %>
+  </div>
+</li>
