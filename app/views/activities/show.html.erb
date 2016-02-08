@@ -1,9 +1,9 @@
-<div class="col-md-4">
+<div class="col-md-4 show-page">
 
 <%= render @activity %>
 </div>
 
-<div class="col-md-4 additional-info otter">
+<div class="col-md-4 additional-info otter show-page">
   <div>
     Activity is currently <%= "open" if @activity.open? %><%= "closed" if @activity.closed? %>.
   </div>
@@ -23,6 +23,6 @@
 
 </div>
 
-<div class="col-md-4 chatz">
+<div class="col-md-4 chatz show-page">
   <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
 </div>
