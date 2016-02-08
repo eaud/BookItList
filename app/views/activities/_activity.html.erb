@@ -17,9 +17,11 @@
       <%= render partial: 'interested_guests', locals: {activity: activity} %>
     <% end %>
    <% end %>
-   <% if activity.activity_guests.where(aasm_state: "approved").length > 0 %>
-     <%= render partial: 'approved_guests', locals: {activity: activity} %>
-    <% end %> 
+   <div class="accepted-guests" id="<%=activity.id%>" >
+     <% if activity.activity_guests.where(aasm_state: "approved").length > 0 %>
+       <%= render partial: 'approved_guests', locals: {activity: activity} %>
+      <% end %>
+  </div>
     <div class="">
       <%= link_to "edit this", edit_activity_path(activity)  %>
     </div>

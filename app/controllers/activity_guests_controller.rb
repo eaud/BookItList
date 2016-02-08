@@ -41,7 +41,6 @@ class ActivityGuestsController < ApplicationController
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
     source = page_source(request)
-
     if old_chat = Chat.find_by(activity: @activity)
       old_chat.users << @guest
     else
