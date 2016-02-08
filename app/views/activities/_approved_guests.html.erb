@@ -2,7 +2,7 @@
   Accepted Guests:
   <ul>
     <% activity.activity_guests.where(aasm_state: "approved").each do |ag| %>
-    <li><%=link_to user_path(ag.guest), id: "#{ag.guest.id}" do %>
+    <li><%=link_to user_path(ag.guest), id: "#{ag.guest.id}", class: "accepted-guest" do %>
       <div class="">
         <%= image_tag(ag.guest.image_url, class: "col-md-3 col-xs-3") %>
         <%= ag.guest.name %>
