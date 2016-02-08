@@ -2,11 +2,12 @@
   Interested Guests:
   <ul>
     <% activity.activity_guests.where(aasm_state: "liked").each do |ag| %>
-        <li><%=link_to ag.guest.name, user_path(ag.guest), class: "mouseover-bio", id: "#{ag.guest.id}" %>
-          <div id="<%=ag.guest.id%>-info" class="hidden-bio">
+        <li><%=link_to user_path(ag.guest), id: "#{ag.guest.id}" do %>
+          <div class="">
             <%= image_tag(ag.guest.image_url, class: "col-md-3 col-xs-3") %>
-            <%= ag.guest.bio %>
+            <%= ag.guest.name %>
           </div>
+          <% end %>
           <div>
             <%= render partial: 'approval', locals:{activity_guest: ag} %>
           </div>
