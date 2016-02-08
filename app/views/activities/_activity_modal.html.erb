@@ -1,7 +1,15 @@
-
-<div class="col-md-6">
-  <%= render partial: "activities/activity", locals: {activity: activity} %>
-</div>
-<div class="col-md-6">
-  <%= render partial: "activities/additional_info", locals: {activity: activity} %>
-</div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>@activity.name</h2>
+      </div>
+      <div class="modal-body modal-footer">
+        <div class="col-md-6">
+          <%= render partial: "activities/activity", locals: {activity: activity} %>
+        </div>
+        <div class="col-md-6">
+          <%= render partial: "activities/additional_info", locals: {activity: activity} %>
+        </div>
+      </div>
+    </div>
+  </div>
