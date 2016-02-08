@@ -71,6 +71,19 @@ class ActivityGuestsController < ApplicationController
     end
   end
 
+  def remove
+     @activity_guest = ActivityGuest.find(params[:activity_guest_id])
+     @activity_guest.remove!
+     chat_user = @activity_guest.activity.chat.chat_users.where(user_id: @activity_guest.guest_id)[0]
+     chat_user.destroy
+
+     respond_to do |format|
+       format.js{}
+       format.html{render :nothing => true, :status => 200}
+     end
+
+  end
+
   def page_source(request)
     request.env["HTTP_REFERER"].split("/")[3]
   end

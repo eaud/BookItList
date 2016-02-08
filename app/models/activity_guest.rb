@@ -10,6 +10,7 @@ class ActivityGuest < ActiveRecord::Base
     state :liked
     state :denied
     state :approved
+    state :removed
 
     event :like do
       transitions :from => :unseen, :to => :liked
@@ -25,6 +26,10 @@ class ActivityGuest < ActiveRecord::Base
 
     event :deny do
       transitions :from => :liked, :to => :denied
+    end
+
+    event :remove do
+      transitions :from => :approved, :to => :removed
     end
   end
 

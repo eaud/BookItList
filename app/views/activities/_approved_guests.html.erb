@@ -3,7 +3,7 @@
   <ul>
     <% activity.activity_guests.where(aasm_state: "approved").each do |ag| %>
         <li><%=link_to ag.guest.name, user_path(ag.guest), class: "mouseover-bio", id: "#{ag.guest.id}" %>
-        <%=link_to "- remove this guest", user_path(ag.guest), id: "#{ag.guest.id}" %></li>
+        <%= link_to "- remove this guest", remove_path(activity_guest_id: ag.id), method: :post, remote: true %></li>
         <div id="<%=ag.guest.id%>-info" class="hidden-bio">
           <%= image_tag(ag.guest.image_url, class: "col-md-3 col-xs-3") %>
           <%= ag.guest.bio %>
