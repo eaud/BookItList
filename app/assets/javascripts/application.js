@@ -16,7 +16,7 @@
 // require turbolinks
 //= require private_pub
 //= require moderniz.min
-//= require jquery-migrate.min
+// require jquery-migrate.min
 //= require jquery.easing.1.3.min
 //= require jquery.flexslider-min
 //= require wow.min

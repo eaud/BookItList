@@ -1,13 +1,13 @@
 <div class="approval">
     <div class="approve">
       They are in
-      <%= link_to approve_path(activity_guest_id: activity_guest.id), method: :post do %>
+      <%= link_to approve_path(activity_guest_id: activity_guest.id), method: :post, remote: true do %>
       <span class="glyphicon glyphicon-plus" ></span>
       <% end %>
     </div>
     <div class="disapprove">
       They are out
-      <%= link_to deny_path(activity_guest_id: activity_guest.id), method: :post do %>
+      <%= link_to deny_path(activity_guest_id: activity_guest.id), method: :post, remote: true do %>
       <span class="glyphicon glyphicon-minus" ></span>
       <% end %>
     </div>
