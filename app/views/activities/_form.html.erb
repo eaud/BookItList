@@ -38,11 +38,11 @@
   </div>
   <div class="river">
     <p class="tag-checkboxes">
-      <%= f.label :tag_ids, "Check all that apply" %>
+      <%= f.label :tag_ids, "Check all that apply:" %>
       <%= f.collection_check_boxes :tag_ids, (Tag.all.sort_by{|tag| tag.name}), :id, :name %><br>
     </p>
     <div class="actions">
       <%= f.submit class: 'btn btn-default' %>
     </div>
   <% end %>
-</div>
+  </div>
