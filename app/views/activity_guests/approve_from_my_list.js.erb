@@ -1,6 +1,5 @@
 var new_form = "<%= j render partial: 'activities/approved_guests', locals: {activity: @activity} %>"
 var actid = <%= @activity.id%>
 var guest_id = <%=@guest.id%>
-$("#"+ actid + ".accepted-guests").replaceWith(new_form);
+$("#"+ actid + ".accepted-guests").html(new_form);
 $("#" + actid+ ".interested-guests").find("#"+guest_id).parent().remove()
-hiddenBioListen();
