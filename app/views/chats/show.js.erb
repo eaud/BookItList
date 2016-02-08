@@ -1,1 +1,3 @@
 $('.chatz').html("<%= j render partial: 'chats/chat', locals: {chat: @chat, message: @message} %>")
+chat = $('.chatz');
+chat[0].scrollTop = chat[0].scrollHeight;
