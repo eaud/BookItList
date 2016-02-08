@@ -1,9 +1,4 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
-  def create
-    binding.pry
-  end
-
   def facebook
     fb_auth_hash = request.env['omniauth.auth']
     if @user = User.find_by(uid: fb_auth_hash["uid"])
