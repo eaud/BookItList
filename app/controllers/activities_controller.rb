@@ -40,6 +40,9 @@ class ActivitiesController < ApplicationController
           format.html {redirect_to mylist_path}
         end
       else
+        respond_to do |format|
+          format.js {}
+        end
         redirect_to mylist_path
       end
     else
@@ -49,6 +52,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    @chat = @activity.chat || Chat.create(name: @activity.name, activity: @activity)
+    @message = Message.new
   end
 
   def edit
