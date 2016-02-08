@@ -53,6 +53,11 @@ class User < ActiveRecord::Base
     current_user_AGs
   end
 
+  def approved_activities
+    current_user_AGs = ActivityGuest.where(guest_id: self.id, aasm_state: "approved")
+    current_user_AGs.map {|ag| ag.activity}
+  end
+
   def score_unshown_activities
     unshown_scores = {}
     self.unshown_activities[0..20].each do |activity|

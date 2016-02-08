@@ -18,6 +18,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def myguestindex
+    @approved_activities = current_user.approved_activities
+  end
+
   def new
     if user_signed_in?
       @activity = Activity.new

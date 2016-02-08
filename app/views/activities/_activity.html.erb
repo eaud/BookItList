@@ -1,21 +1,22 @@
 
 
 <li class="card <%=(user_signed_in? && current_user.id == activity.host_id) ? "col-md-4 col-lg-4 col-xl-4 col-xs-12 activity" : "col-md-12 col-lg-12 col-xl-12 col-xs-12"%>" id="<%= activity.id %>">
-    <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;">
-    </div>
+  <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;">
+  </div>
   <div>
     <%= link_to activity.name, activity_path(activity), class: "name-click" %>
   </div>
   <% if user_signed_in? && current_user.id == activity.host_id %>
-
-  <% if activity.open? %>
-    <% if activity.activity_guests.where(aasm_state: "liked").length > 0 %>
-      <%= render partial: 'interested_guests', locals: {activity: activity} %>
+    <% if activity.open? %>
+      <% if activity.activity_guests.where(aasm_state: "liked").length > 0 %>
+        <%= render partial: 'interested_guests', locals: {activity: activity} %>
+      <% end %>
     <% end %>
-   <% end %>
-   <% if activity.activity_guests.where(aasm_state: "approved").length > 0 %>
-     <%= render partial: 'approved_guests', locals: {activity: activity} %>
+    <div class="accepted-guests" id="<%=activity.id%>" >
+    <% if activity.activity_guests.where(aasm_state: "approved").length > 0 %>
+      <%= render partial: 'approved_guests', locals: {activity: activity} %>
     <% end %>
+    </div>
     <div class="">
       <%= link_to "edit this", edit_activity_path(activity)  %>
     </div>
@@ -24,20 +25,18 @@
         <%= link_to "close this", close_path(activity), method: :post %>
       </div>
     <% elsif activity.closed? %>
-       <div class="">
-         <%= link_to "open this", open_path(activity), method: :post %>
-       </div>
+      <div class="">
+        <%= link_to "open this", open_path(activity), method: :post %>
+      </div>
     <% end %>
     <div class="">
       <%= link_to "delete this", activity_path(activity), method: :delete, data: {confirm: "Are you sure you want to delete this activity? This action cannot be undone!"} %>
     </div>
-
   <% end %>
-
 
   <div class="tags">
     <% activity.tags.each do |tag| %>
-      /<%= " " + tag.name + " " %>/
+      <%= "/ " + tag.name + " /" %>
     <% end %>
   </div>
   <div class="user clearfix" style="border-style:solid;border-color:grey;">

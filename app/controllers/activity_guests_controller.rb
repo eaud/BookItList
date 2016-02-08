@@ -41,7 +41,6 @@ class ActivityGuestsController < ApplicationController
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
     source = page_source(request)
-
     if old_chat = Chat.find_by(activity: @activity)
       old_chat.users << @guest
     else
@@ -69,6 +68,19 @@ class ActivityGuestsController < ApplicationController
       format.js{render js_to_render(source)}
       format.html{redirect_to html_to_render(source)}
     end
+  end
+
+  def remove
+     @activity_guest = ActivityGuest.find(params[:activity_guest_id])
+     @activity_guest.remove!
+     chat_user = @activity_guest.activity.chat.chat_users.where(user_id: @activity_guest.guest_id)[0]
+     chat_user.destroy
+
+     respond_to do |format|
+       format.js{}
+       format.html{render :nothing => true, :status => 200}
+     end
+
   end
 
   def page_source(request)

@@ -17,7 +17,8 @@
 
                 <ul class="nav navbar-nav navbar-right scrollto">
                     <% if user_signed_in? %>
-                      <li class="active"><%= link_to "My List", mylist_path %></li>
+                      <li class="active"><%= link_to "My Hosted Events", mylist_path %></li>
+                      <li class="active"><%= link_to "My Guest Events", myguestlist_path %></li>
                       <li><%= link_to "Add an Activity", '#newActivityModal', "data-toggle": "modal", "data-target": "#newActivityModal", remote: true %></li>
                       <li><%= link_to "Chat Center", chats_path %></li>
                       <li class="dropdown">

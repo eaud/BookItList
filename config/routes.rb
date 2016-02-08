@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }, :controllers => {registrations: 'registrations'}
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", registrations: 'registrations'}
   resources :chat_users
   resources :messages
   resources :chats
@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create', as: "login"
   get '/logout', to: 'sessions#delete', as: 'logout'
   get '/mylist', to: 'activities#myindex', as: 'mylist'
+  get '/myguestlist', to: 'activities#myguestindex', as: 'myguestlist'
   post 'like/:id', to: 'activity_guests#like', as: 'like'
   post 'dislike/:id', to: 'activity_guests#dislike', as: 'dislike'
   post 'approve', to: 'activity_guests#approve'
   post 'deny', to: 'activity_guests#deny'
+  post 'remove', to: 'activity_guests#remove'
   post 'read', to: 'chats#read', as: 'read'
   post 'close/:id', to: 'activities#close', as: 'close'
   post 'open/:id', to: 'activities#open', as: 'open'
