@@ -1,46 +1,48 @@
-<% if @user.errors %>
-  <ul>
-    <% @user.errors.full_messages.each do |error| %>
-      <li><%=error%></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container">
 
-<p>
-  <%= image_tag(@user.image_url) %>
-</p>
+  <% if @user.errors %>
+    <ul>
+      <% @user.errors.full_messages.each do |error| %>
+        <li><%=error%></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<%= form_for(@user, html:{id: 'userForm'}) do |f| %>
   <p>
-    <%= f.label :image_url %>:
-    <%= f.url_field :image_url %><br />
+    <%= image_tag(@user.image_url) %>
   </p>
 
-  <p>
-    <%= f.label :name%>
-    <%= f.text_field :name %><br />
-  </p>
-
-  <p>
-    <%= f.label :email %>:
-    <%= f.email_field :email %><br />
-  </p>
-  <p>
-    <%= f.label :bio %>:
+  <%= form_for(@user, html:{id: 'userForm'}) do |f| %>
     <p>
-      <%= f.text_area :bio %><br />
+      <%= f.label :image_url %>:
+      <%= f.url_field :image_url %><br />
     </p>
-  </p>
 
-  <p class="tag-checkboxes">
-     <%= f.label :tag_ids, "What kinds of activities are you interested in?" %>
-     <%= f.collection_check_boxes :tag_ids, (Tag.all.sort_by{|tag| tag.name}), :id, :name %><br>
-  </p>
+    <p>
+      <%= f.label :name%>
+      <%= f.text_field :name %><br />
+    </p>
 
-  <p>
-    <%= f.submit %>
-  </p>
+    <p>
+      <%= f.label :email %>:
+      <%= f.email_field :email %><br />
+    </p>
+    <p>
+      <%= f.label :bio %>:
+      <p>
+        <%= f.text_area :bio %><br />
+      </p>
+    </p>
 
+    <p class="tag-checkboxes">
+       <%= f.label :tag_ids, "What kinds of activities are you interested in?" %>
+       <%= f.collection_check_boxes :tag_ids, (Tag.all.sort_by{|tag| tag.name}), :id, :name %><br>
+    </p>
 
-<% end %>
-<%= link_to "Delete your account", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account? This action cannot be undone!"} %>
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+  <%= link_to "Delete your account", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account? This action cannot be undone!"} %>
+</div>
