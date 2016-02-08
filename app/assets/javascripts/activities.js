@@ -4,6 +4,7 @@ $(window).load(function(){
   addThumbsDownListener();
   hiddenBioListen();
   jTinderSwipeEffect();
+  chatScrollListener();
   var formValidator = new FormValidations();
     formValidator.activityForm();
     formValidator.userForm();
