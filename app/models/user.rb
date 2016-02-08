@@ -11,8 +11,9 @@ class User < ActiveRecord::Base
   has_many :tags, through: :user_tags
   has_many :chat_users, dependent: :destroy
   has_many :chats, through: :chat_users, dependent: :destroy
-  # validates_presence_of :uid, :name, :token, :image_url, :token_expiration
+  validates_presence_of :name, :email
   validates_uniqueness_of :email
+  
   include UserLikeData
   include UserScoresActivity
 
