@@ -93,6 +93,14 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def modal
+    @activity = Activity.find(params[:id])
+    respond_to do |format|
+      format.js {}
+      format.html {redirect_to activity_path(@activity)}
+    end
+  end
+
   private
   def activity_params
     params.require("activity").permit(:name, :guest_min, :guest_max, :details, :cost, :image_url, :host_id, :tag_ids => [])

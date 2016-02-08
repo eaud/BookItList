@@ -10,3 +10,33 @@
   <% end %>
 
 </div>
+
+<div class="modal fade" id="showActivityModal" tabindex="-1" role="dialog" aria-labelledby="showActivityLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="showActivityLabel"></h4>
+      </div>
+
+      <div class="show-activity modal-body modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  var activityModal = function(){
+    $('.stack-randomrot').on('click', ".name-click", function(e){
+      e.preventDefault()
+      var activityId = this.href.split('/')[4]
+
+      $.ajax({
+        type: "GET",
+        url: "/activity/" + activityId + "/additional_info",
+      });
+    });
+  }
+  activityModal()
+</script>

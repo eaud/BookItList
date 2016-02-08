@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'read', to: 'chats#read', as: 'read'
   post 'close/:id', to: 'activities#close', as: 'close'
   post 'open/:id', to: 'activities#open', as: 'open'
+  get '/activity/:id/additional_info', to: 'activities#modal', as: 'modal'
 
   resources :chats do
     resources :messages

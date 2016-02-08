@@ -4,23 +4,7 @@
 </div>
 
 <div class="col-md-4 additional-info otter show-page">
-  <div>
-    Activity is currently <%= "open" if @activity.open? %><%= "closed" if @activity.closed? %>.
-  </div>
-  <div>
-    Cost: <%= @activity.cost %>
-  </div>
-  <div class="">
-    Guest Min: <%= @activity.guest_min %>
-  </div>
-  <div class="">
-    Guest Max: <%= @activity.guest_max %>
-  </div>
-
-  <div class="">
-    Details: <%= @activity.details %>
-  </div>
-
+  <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
 </div>
 
 <% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
