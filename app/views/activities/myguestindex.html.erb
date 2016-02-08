@@ -1,8 +1,9 @@
-
 <div class="container">
-
-    <h2>My approved guest activities</h2>
-    <div class="activities">
-        <%= render @approved_activities %>
-    </div>
+    <h2>My Approved Activities</h2>
+    <ul class="open-activities container center-container">
+      <div class="row">
+        <%= render partial: "my_guest_activities", collection: @approved_activities, as: :activity %>
+      </div>
+    </ul>
+  <br><br>
 </div>

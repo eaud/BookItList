@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
 
   def myguestindex
     @approved_activities = current_user.approved_activities
+    
   end
 
   def new
