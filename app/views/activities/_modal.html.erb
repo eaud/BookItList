@@ -1,8 +1,10 @@
 <div class="my-modal modal fade" id="newActivityModal" tabindex="-1" role="dialog" aria-labelledby="newActivityLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      
-      <div class="modal-header modal-body modal-footer">
+      <div class="modal-header">
+        <h2>what do you want to do?</h2>
+      </div>
+      <div class="modal-body modal-footer">
         <% @activity = Activity.new %>
       <%= render "activities/form" %>
       </div>

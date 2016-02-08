@@ -1,45 +1,51 @@
-<% if @user == current_user %>
-  <%= link_to "Update user info", edit_user_path %>
-<% end %>
-<h1> <%=@user.name%> </h1>
-<div>
-  <%= image_tag(@user.image_url) %>
-</div>
-
-<% if current_user.show_private_message.include? @user %>
-<div class="send-message">
-  <h3><%= link_to "Send Private Message", new_chat_path %></h3>
-</div>
-<% end %>
-
-<div>
-  <% if @user.bio %>
-    <%=@user.bio%>
-  <% elsif @user == current_user %>
-    <%= link_to "Please update your bio", edit_user_path %>
-  <% end %>
-</div>
-
-<div class="tag-list">
- Tags:
-    <% @user.tags.each do |tag| %>
-      <%= "/ " + tag.name + " /" %> 
-    <% end %>
-</div>
-
-<div class="approved-list">
-  <h3>Approved events:</h3>
-    <% ActivityGuest.approved_activity_guests(current_user, @user).each do |x| %>
-      <h4><%=link_to x.activity.name, activity_path(x.activity)%></h4>
-    <% end %>
-</div>
-
-<div class="pending-list" id= "<%=@user.id%>">
-  <h3>Pending events:</h3>
-    <% ActivityGuest.interested_activity_guests(current_user, @user).each do |x| %>
-      <div id = "<%=x.id%>">
-        <h4><%=x.activity.name%>:</h4>
-        <div><%= render partial: 'activities/approval', locals:{activity_guest: x} %></div>
+<div class="container">
+  <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+    <div class="person">
+      <% if @user == current_user %>
+        <%= link_to "Update user info", edit_user_path %>
+      <% end %>
+      <h1> <%=@user.name%> </h1>
+      <div>
+        <%= image_tag(@user.image_url) %>
       </div>
-    <% end %>
+
+      <% if current_user.show_private_message.include? @user %>
+      <div class="send-message">
+        <h3><%= link_to "Send Private Message", new_chat_path %></h3>
+      </div>
+      <% end %>
+
+      <div>
+        <% if @user.bio %>
+          <%=@user.bio%>
+        <% elsif @user == current_user %>
+          <%= link_to "Please update your bio", edit_user_path %>
+        <% end %>
+      </div>
+
+      <div class="tag-list">
+       Tags:
+          <% @user.tags.each do |tag| %>
+            <%= "/ " + tag.name + " /" %>
+          <% end %>
+      </div>
+
+      <div class="approved-list">
+        <h3>Approved events:</h3>
+          <% ActivityGuest.approved_activity_guests(current_user, @user).each do |x| %>
+            <h4><%=link_to x.activity.name, activity_path(x.activity)%></h4>
+          <% end %>
+      </div>
+
+      <div class="pending-list" id= "<%=@user.id%>">
+        <h3>Pending events:</h3>
+          <% ActivityGuest.interested_activity_guests(current_user, @user).each do |x| %>
+            <div id = "<%=x.id%>">
+              <h4><%=x.activity.name%>:</h4>
+              <div><%= render partial: 'activities/approval', locals:{activity_guest: x} %></div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
 </div>
