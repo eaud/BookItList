@@ -35,7 +35,7 @@
   <% end %>
 
   <div class="tags">
-    <% activity.tags.each do |tag| %>
+    <% activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
       <%= "/ " + tag.name + " /" %>
     <% end %>
   </div>

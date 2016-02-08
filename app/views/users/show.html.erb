@@ -23,7 +23,7 @@
 <div class="tag-list">
  Tags:
     <% @user.tags.each do |tag| %>
-      <a href="#"><%= " " + tag.name + " " %></a>
+      <%= "/ " + tag.name + " /" %> 
     <% end %>
 </div>
 

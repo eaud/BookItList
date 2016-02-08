@@ -34,7 +34,7 @@
 
   <p class="tag-checkboxes">
      <%= f.label :tag_ids, "What kinds of activities are you interested in?" %>
-     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+     <%= f.collection_check_boxes :tag_ids, (Tag.all.sort_by{|tag| tag.name}), :id, :name %><br>
   </p>
 
   <p>
