@@ -2,7 +2,6 @@ $(window).load(function(){
   $(".dropdown-toggle").dropdown();
   addThumbsUpListener();
   addThumbsDownListener();
-  hiddenBioListen();
   jTinderSwipeEffect();
   var formValidator = new FormValidations();
     formValidator.activityForm();
