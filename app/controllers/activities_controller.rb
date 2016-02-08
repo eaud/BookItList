@@ -80,7 +80,9 @@ class ActivitiesController < ApplicationController
       redirect_to mylist_path
     else
       @activity.close!
-      redirect_to mylist_path
+      respond_to do |format|
+        format.all redirect_to mylist_path
+      end
     end
   end
 
@@ -90,7 +92,9 @@ class ActivitiesController < ApplicationController
       redirect_to mylist_path
     else
       @activity.reopen!
-      redirect_to mylist_path
+      respond_to do |format|
+        format.all redirect_to mylist_path
+      end
     end
   end
 

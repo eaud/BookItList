@@ -1,21 +1,4 @@
 module UserLikeData
-  def set_hash
-    initial_hash = {
-      activity: {
-        liked: [],
-        disliked: [],
-        tag_likes: {},
-        tag_dislikes: {}
-      },
-      host: {
-        liked: {},
-        disliked: {},
-        tag_likes: {},
-        tag_dislikes: {}
-      }
-    }
-    self.update(score_data: initial_hash)
-  end
 
   def like_activity(activity) #add the id of the current activity to score_data[liked_activities]
     score_data = self.score_data
