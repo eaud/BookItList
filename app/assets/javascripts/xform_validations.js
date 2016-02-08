@@ -8,13 +8,13 @@ jQuery.validator.addMethod("greaterThanMin", function(value, element) {
 
 FormValidations.prototype.activityForm = function () {
   $("#activityForm").validate({
-    errorPlacement: function(error,element) {
-      if (element.attr("name") == "activity[tag_ids][]"){
-        error.insertAfter($(".tag-checkboxes"));
-      }else{
-        error.insertAfter(element);
-      }
-    },
+    // // errorPlacement: function(error,element) {
+    // //   if (element.attr("name") == "activity[tag_ids][]"){
+    // //     error.insertAfter($(".tag-checkboxes"));
+    // //   }else{
+    // //     error.insertAfter(element);
+    // //   }
+    // },
     rules: {
       "activity[name]": {
         required: true,
