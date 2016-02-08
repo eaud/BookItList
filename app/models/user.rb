@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   has_many :chats, through: :chat_users, dependent: :destroy
   validates_presence_of :name, :email
   validates_uniqueness_of :email
-  
+  validates :uid, uniqueness: true, if: 'uid.present?'
+
   include UserLikeData
   include UserScoresActivity
 
@@ -26,7 +27,6 @@ class User < ActiveRecord::Base
     user.token = auth.credentials.token
     user.token_expiration = Time.at(auth.credentials.expires_at)
     user.save
-    user.set_hash #updates hash data, method is in serv_score.rb helper
     user
   end
 

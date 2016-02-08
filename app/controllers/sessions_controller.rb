@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
     fb_auth_hash = request.env['omniauth.auth']
     if @user = User.find_by(uid: fb_auth_hash["uid"])
       session["warden.user.user.key"][0][0] = @user.id
