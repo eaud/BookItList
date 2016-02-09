@@ -1,4 +1,3 @@
-<h2 class="chat-name"><%=chat.name%></h2>
 <div id="chat-<%=chat.id%>" class="chat-zone">
   <div id="messages-<%=chat.id%>" class="chat-box">
     <% chat.messages.each do |message| %>
@@ -38,7 +37,21 @@
       })
     });
   }
+  function submitOnEnter() {
+    $('#message_content').keydown(function(e){
+      if(e.which == 13){
+        var chatId = $(this).parents('.chat-zone')[0].id.split("-")[1]
+        var messageContent = $(this).val()
+        $.ajax({
+          method: "POST",
+          url: "<%=messages_path%>",
+          data: {chat_id: chatId, message: {content: messageContent}}
+        })
+      }
+    })
+  }
   readMessage()
+  submitOnEnter()
 </script>
 
 <%= subscribe_to chat_path(chat) %>

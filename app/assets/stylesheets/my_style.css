@@ -2,8 +2,13 @@
   border-radius: 0;
 }
 
+.chat-index {
+  overflow: scroll;
+  height: 500px;
+}
+
 .chatz {
-  float: right;
+  padding: 10px;
   border-radius: 3%;
 }
 
