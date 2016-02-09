@@ -1,6 +1,6 @@
 <% if !@new_ags.empty? %>
   <% @new_ags.each do |ag| %>
-    $('.stack-randomrot').prepend("<%= j render partial: "activities/activity", locals: {activity: ag.activity} %>");
+    $('#tinderslide > ul').prepend("<%= j render partial: 'activities/activity', locals: {activity: ag.activity} %>");
   <% end %>
 <% end %>
 

@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 
 <div class="container">
   <% if @fresh_activities && !@fresh_activities.empty? %>
@@ -35,3 +36,39 @@
   }
   activityModal()
 </script>
+
+<% else %>
+
+<div class="container">
+  <div class="fun-facts parallax testi">
+
+    <div class="col-md-3 margin-btm-20">
+      <div class="fact-inner">
+        <h1 class="super-large">welcome to </h1><h1 class="super-super-large">romp</h1>
+      </div>
+    </div>
+    <div class="col-md-3 margin-btm-20">
+      <div class="fact-inner">
+        <h3>meet people in nyc who like the same stuff you do. then get out and do the damn thing!</h3>
+      </div>
+    </div>
+    <div class="col-md-3 margin-btm-20">
+      <div class="fact-inner">
+        <h5 class="be-normal">share an adventure you've always wanted to go on, a favorite pastime you're too embarrassed to tell your friends about, or an event it'd be nice to have a little company for.</h5>
+      </div>
+    </div>
+    <div class="col-md-3 margin-btm-20">
+      <div class="fact-inner">
+        <h3 class="super-large">sign up now to start romping!</h3>
+      </div>
+    </div>
+
+    <%= image_tag("otter_large_flipped.png", class: "fact-inner col-md-3 margin-btm-20", id: "otter-pic") %>
+
+  </div>
+
+
+
+</div>
+
+<% end %>
