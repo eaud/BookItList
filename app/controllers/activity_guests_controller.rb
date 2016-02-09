@@ -75,12 +75,12 @@ class ActivityGuestsController < ApplicationController
      @activity_guest.remove!
      chat_user = @activity_guest.activity.chat.chat_users.where(user_id: @activity_guest.guest_id)[0]
      chat_user.destroy
+     source = page_source(request)
 
      respond_to do |format|
-       format.js{}
+       format.js{render js_to_render(source)}
        format.html{render :nothing => true, :status => 200}
      end
-
   end
 
   def page_source(request)
@@ -95,6 +95,8 @@ class ActivityGuestsController < ApplicationController
       'approve_from_my_list'
     when "activities"
       'approve_from_activities'
+    when "myguestlist"
+      'remove_from_myguestlist'
     end
   end
 

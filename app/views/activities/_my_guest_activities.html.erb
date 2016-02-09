@@ -4,7 +4,8 @@
   <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;">
   </div>
   <div>
-    <%= link_to activity.name, activity_path(activity), class: "name-click" %>
+    <%= link_to activity.name, activity_path(activity), class: "name-click" %> -
+    <%= link_to "remove me", remove_path(activity_guest_id: ActivityGuest.where(guest: current_user, activity: activity)[0].id), method: :post, remote: true %>
   </div>
   <div class="tags">
     <% activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
