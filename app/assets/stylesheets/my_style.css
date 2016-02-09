@@ -4,6 +4,7 @@
 
 .chatz {
   float: right;
+  border-radius: 3%;
 }
 
 .small-text {
@@ -63,7 +64,7 @@
 
 .show-page {
   overflow: scroll;
-  height: 400px
+  height: 400px;
 }
 
 .otter {
