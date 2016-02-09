@@ -143,7 +143,15 @@ a.name-click > h5:hover {
 }
 
 div.modal-header > h2 {
-  color: grey;
+  color: #60c;
+}
+
+a {
+  color: #60c;
+}
+
+a:hover {
+  color: #9eca45;
 }
 
 body {
