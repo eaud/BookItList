@@ -15,25 +15,25 @@
     </p>
     <p class="">
       <%= f.label :guest_min, "Min number of guests" %>
-      <%= f.text_field :guest_min, placeholder: "Is this a 1-on-1"%>
+      <%= f.text_field :guest_min%>
     </p>
     <p class="">
       <%= f.label :guest_max, "Max number of guests" %>
-      <%= f.text_field :guest_max, placeholder: "Is this a group activity" %>
+      <%= f.text_field :guest_max %>
     </p>
     <p class="">
       <%= f.label :details, "Let people know more about this activity" %>
       <p class="">
-        <%= f.text_area :details, placeholder: "This is gon be Drunk herstory"%>
+        <%= f.text_area :details, placeholder: "Give us the deets!"%>
       </p>
     </p>
     <p class="">
       <%= f.label :cost %>
-      <%= f.text_field :cost, placeholder: "You rollin?"%>
+      <%= f.text_field :cost, placeholder: "Approx. $$$"%>
     </p>
     <p class="">
       <%= f.label :image_url, "Put an image on it!" %>
-      <%= f.url_field :image_url, placeholder: "Go get an image URL from google", type: "url" %>
+      <%= f.url_field :image_url, placeholder: "Grab an image URL from google", type: "url" %>
     </p>
   </div>
   <div class="river">

@@ -49,28 +49,28 @@ FormValidations.prototype.activityForm = function () {
     messages: {
       "activity[name]": {
         required: "Your activity must have a name, silly!",
-        minlength: "Type more... size matters.",
-        maxlength: "..But it doesn't matter that much"
+        minlength: "One letter isn't a name...",
+        maxlength: "Keep it short & sweet."
       },
       "activity[guest_min]": {
-        required: "Don't you want someone to come?",
+        required: "Let us know how many people can come!",
         digits: "It's gotta be a number"
       },
       "activity[guest_max]": {
-        required: "Don't let it get too crowded",
+        required: "Let us know how many people can come!",
         digits: "It's gotta be a number",
         greaterThanMin: "Must be greater than or equal to minimum guest number"
       },
       "activity[details]": {
-        required: "Seriously let us know what's up",
-        minlength: "Give us an actual description"
+        required: "Let us know the deets!",
+        minlength: "Be at least 10 characters worth of descriptive, please."
       },
       "activity[cost]": {
-        required: "tell us bout the $$$",
-        digits: "provide a guess at the cost as a whole number, no $"
+        required: "Tell us 'bout the $$$'",
+        digits: "Provide a guess at the cost as a whole number, no $$$"
       },
       "activity[image_url]": {
-        required: "It has to be pretty!"
+        required: "Go snag an image url!"
       },
       "activity[tag_ids][]": {
         required: "Include at least one tag so people can find your activity!"
@@ -98,7 +98,7 @@ FormValidations.prototype.userForm = function () {
       "user[bio]": {
         required: true,
         minlength: 2,
-        maxlength: 140
+        maxlength: 300
       },
       "user[email]": {
         required: true,
@@ -113,23 +113,23 @@ FormValidations.prototype.userForm = function () {
     },
     messages: {
       "user[name]": {
-        required: "What's your name!",
-        minlength: "Type more... size matters.",
-        maxlength: "..check yourself nobody care that much"
+        required: "What's your name?",
+        minlength: "At least 2 letters",
+        maxlength: "Shorten it up a bit"
       },
       "user[bio]": {
-        required: "TELL US ABOUT YOU",
-        minlength: "Type more... size matters.",
-        maxlength: "..check yourself nobody care that much"
+        required: "Tell us all about you!!!",
+        minlength: "Give us a little bit more to go on ;)",
+        maxlength: "Keep it short & sweet"
       },
       "user[email]": {
-        required: "how are people supposed to contact you when you're matched?",
+        required: "Please provide an email so we can stay in touch!",
       },
       "user[image_url]": {
-        required: "It has to be pretty!"
+        required: "Great place for your best selfie (use a url)"
       },
       "user[tag_ids][]": {
-        required: "Check at least one thing to make you more scoreable"
+        required: "Check at least one thing so we can give you better matches!"
       },
     }
   });
