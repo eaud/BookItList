@@ -2,6 +2,9 @@
   border-radius: 0;
 }
 
+.small-text {
+  font-size: 80%
+}
 
 .glyphicon-heart {
   color: #E4003D !important;
