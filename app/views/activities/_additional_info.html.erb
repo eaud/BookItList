@@ -1,10 +1,11 @@
 
 
-<div>
+<div class="<%= "open-green" if activity.open? %><%= "closed-red" if activity.closed? %>" >
   Activity is currently <%= "open" if activity.open? %><%= "closed" if activity.closed? %>.
 </div>
+<hr>
 <div>
-  Cost: <%= activity.cost %>
+  Cost: $<%= activity.cost %>0
 </div>
 <div class="">
   Guest Min: <%= activity.guest_min %>
