@@ -24,5 +24,6 @@ module BookItList
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
     config.time_zone = 'Eastern Time (US & Canada)'
+    config.action_mailer.default_url_options = { host: 'http://romp.herokuapp.com/' }
   end
 end

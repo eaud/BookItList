@@ -5,6 +5,8 @@ class ActivityGuestsController < ApplicationController
     liked_AG = ActivityGuest.find_by(activity_id: params[:id], guest_id: current_user.id)
     current_user.like_activity(liked_AG.activity)
     liked_AG.like!
+    activity = Activity.find(params[:id])
+    UserMailer.like_notification(activity.host, activity).deliver_now if activity.host.wants_notifications
       if current_user.unseen_activity_guests.length < 5
         @new_ags = current_user.generate_activity_guests
         respond_to do |format|
@@ -41,6 +43,7 @@ class ActivityGuestsController < ApplicationController
     @activity = Activity.find(@activity_guest.activity_id)
     @guest = @activity_guest.guest
     source = page_source(request)
+    UserMailer.approved_notification(@guest, @activity).deliver_now if @guest.wants_notifications
     if old_chat = Chat.find_by(activity: @activity)
       old_chat.users << @guest
     else
