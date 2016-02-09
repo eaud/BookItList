@@ -1,10 +1,8 @@
 
 $('#editActivityModal').modal()
-setTimeout(function(){
-$('.modal-content').html("<%= j render partial: 'activities/edit_modal', locals: {activity: @activity} %>")
-}, 500);
+$('#editActivityModal .modal-content').html("<%= j render partial: 'activities/edit_modal', locals: {activity: @activity} %>")
 
 var activityValidator = new FormValidations();
   setTimeout(function(){
     activityValidator.activityForm();
-}, 1000);
+}, 500);
