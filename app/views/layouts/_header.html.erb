@@ -19,7 +19,7 @@
                     <% if user_signed_in? %>
                       <li class="active"><%= link_to "My Hosted Events", mylist_path %></li>
                       <li class="active"><%= link_to "My Guest Events", myguestlist_path %></li>
-                      <li><%= link_to "Add an Activity", '#newActivityModal', "data-toggle": "modal", "data-target": "#newActivityModal", remote: true %></li>
+                      <li><%= link_to "Add an Activity", new_activity_path, "data-toggle": "modal", "data-target": "#newActivityModal", remote: true %></li>
                       <li><%= link_to "Chat Center", chats_path %></li>
                       <li class="dropdown">
                           <a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated">My Account <b class="caret"></b></a>
@@ -44,5 +44,15 @@
     </div>
 </section><!--navigation section end here-->
 
+<div class="my-modal modal fade" id="newActivityModal" tabindex="-1" role="dialog" aria-labelledby="newActivityLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>what do you want to do?</h2>
+      </div>
+      <div class="modal-body modal-footer">
 
-<%= render "activities/modal" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,18 +7,18 @@
   </ul>
 <% end %>
 
-  <div class="sea">
   <%= form_for(@activity, remote: true, html:{id: 'activityForm'}) do |f| %>
+  <div class="sea">
     <p class="">
       <%= f.label :name, "Activity Name" %>
       <%= f.text_field :name, placeholder: "What do you want to do?"%>
     </p>
     <p class="">
-      <%= f.label :guest_min, "Min number of guests" %>
+      <%= f.label :guest_min, "Min number of guests", placeholder: "1 or more" %>
       <%= f.text_field :guest_min%>
     </p>
     <p class="">
-      <%= f.label :guest_max, "Max number of guests" %>
+      <%= f.label :guest_max, "Max number of guests", placeholder: "More than min" %>
       <%= f.text_field :guest_max %>
     </p>
     <p class="">
@@ -52,5 +52,5 @@
     <div class="actions">
       <%= f.submit class: 'btn btn-default' %>
     </div>
-  <% end %>
   </div>
+  <% end %>
