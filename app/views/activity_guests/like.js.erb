@@ -3,3 +3,7 @@
     $('.stack-randomrot').prepend("<%= j render partial: "activities/activity", locals: {activity: ag.activity} %>");
   <% end %>
 <% end %>
+
+setTimeout(function(){
+  jTinderSwipeEffect();
+}, 500);

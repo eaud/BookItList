@@ -1,32 +1,6 @@
 <div class="container ferret">
-  <% if user_signed_in? && current_user.id == @activity.host_id %>
-    <h6> Your Activity: </h6>
-    <h2> <%= @activity.name %> </h2>
-  <% else %>
-    <h6> <%= @activity.host.name +"'s Activity:" %> </h6>
-    <h2> <%= @activity.name %> </h2>
-  <% end %>
-  <div class="card activity col-md-8">
-    <div class="col-md-6">
-      <div class="activity-image container" style="background: url(<%= @activity.image_url %>) 50% 50% no-repeat;background-size: cover;">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
-      <hr>
-      <div class="tags">
-        <% @activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
-          <%= "/ " + tag.name + " /" %>
-        <% end %>
-      </div>
-      <br>
-      <div class="user clearfix outline">
-        <%= image_tag(@activity.host.image_url, class: "col-md-3 col-xs-3") %>
-        <div class="host-by">
-           Hosted by: <%= link_to @activity.host.name, user_path(@activity.host) %>
-        </div>
-      </div>
-    </div>
+  <div class="show-page-card">
+    <%= render partial: "activities/show_page_card", locals: {activity: @activity} %>
   </div>
 
   <% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>

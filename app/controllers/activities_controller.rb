@@ -52,7 +52,6 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.host = current_user
     if @activity.save
-      @request = request.env["HTTP_REFERER"].split("/")[3]
         respond_to do |format|
           format.js {}
           format.html {redirect_to mylist_path}
@@ -78,10 +77,18 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
+    source = request.env["HTTP_REFERER"].split("/")[3]
     if @activity.update(activity_params)
-      respond_to do |format|
-      format.js {}
-      format.html {redirect_to activity_path(@activity)}
+      if source == "mylist"
+        respond_to do |format|
+        format.js {}
+        format.html {redirect_to activity_path(@activity)}
+        end
+      else
+        respond_to do |format|
+        format.js {render "other_update"}
+        format.html {redirect_to activity_path(@activity)}
+        end
       end
     else
       render "edit"
