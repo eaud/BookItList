@@ -1,22 +1,44 @@
-<div class="show-page">
+<div class="container">
 
-<%= render @activity %>
-</div>
-
-<div class="col-md-4 additional-info otter show-page">
-  <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
-</div>
-
-<% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
-  <div class="col-md-4 chatz show-page">
-    <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
+  <div class="show-page">
+    <%= render @activity %>
   </div>
 
-  <script>
-    var chatScrollListener = function(){
-      chat = $('.chatz');
-      chat[0].scrollTop = chat[0].scrollHeight;
-    };
-    chatScrollListener()
-  </script>
-<% end %>
+  <div class="col-md-4 additional-info otter show-page">
+    <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
+  </div>
+  <div class="col-md-6">
+    <div class="activity-image container" style="background: url(<%= @activity.image_url %>) 50% 50% no-repeat;">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
+    <hr>
+    <div class="tags">
+      <% @activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
+        <%= "/ " + tag.name + " /" %>
+      <% end %>
+    </div>
+    <br>
+    <div class="user clearfix outline">
+      <%= image_tag(@activity.host.image_url, class: "col-md-3 col-xs-3") %>
+      <div class="host-by">
+         <%= "Hosted by: " + @activity.host.name %>
+      </div>
+    </div>
+  </div>
+
+  <% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
+    <div class="col-md-4 chatz show-page">
+      <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
+    </div>
+
+    <script>
+      var chatScrollListener = function(){
+        chat = $('.chatz');
+        chat[0].scrollTop = chat[0].scrollHeight;
+      };
+      chatScrollListener();
+    </script>
+  <% end %>
+</div>
