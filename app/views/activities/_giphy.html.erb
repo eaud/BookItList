@@ -1,0 +1,7 @@
+<div class="col-md-12 giphys">
+<h4>Click the picture you want to use!</h4>
+<% @urls.each_with_index do |url, index| image_tag url %>
+<div class="activity-image container" style="background: url(<%= url %>) 50% 50% no-repeat;background-size: cover;">
+</div>
+<% end%>
+</div>

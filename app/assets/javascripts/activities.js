@@ -7,6 +7,12 @@ $(window).load(function(){
     FormValidations.prototype.messageForm();
 });
 
+var linkGiphys = function(){
+  $(".giphys").on("click", "div.activity-image.container", function(event){
+    var url = this.style.backgroundImage.split('"')[1];
+    $("#activity_image_url").val(url);
+  });
+};
 //
 // var addThumbsUpListener = function(){
 //   $('.stack-randomrot').on("click", "span.glyphicon-thumbs-up", function(event){

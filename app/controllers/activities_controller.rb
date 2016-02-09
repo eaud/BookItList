@@ -1,3 +1,4 @@
+require 'net/http'
 class ActivitiesController < ApplicationController
 
   def index
@@ -20,7 +21,19 @@ class ActivitiesController < ApplicationController
 
   def myguestindex
     @approved_activities = current_user.approved_activities.sort_by do |activity| activity.updated_at end.reverse!
+  end
 
+  def giphy
+    search_term = params[:search_term].gsub(" ", "+")
+    url = "http://api.giphy.com/v1/gifs/search?q=" + search_term + "&api_key=dc6zaTOxFJmzC&limit=5"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    buffer = resp.body
+    result = JSON.parse(buffer)
+    @urls = result["data"].map {|result| result["images"]["fixed_height"]["url"]}
+    respond_to do |format|
+      format.js {}
+      format.html {redirect_to mylist_path}
+    end
   end
 
   def new
