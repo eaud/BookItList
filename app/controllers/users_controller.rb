@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    sign_in(:user, User.find(session[:id])) if !current_user
     @user = current_user
   end
 
