@@ -8,13 +8,13 @@ jQuery.validator.addMethod("greaterThanMin", function(value, element) {
 
 FormValidations.prototype.activityForm = function () {
   $("#activityForm").validate({
-    // // errorPlacement: function(error,element) {
-    // //   if (element.attr("name") == "activity[tag_ids][]"){
-    // //     error.insertAfter($(".tag-checkboxes"));
-    // //   }else{
-    // //     error.insertAfter(element);
-    // //   }
-    // },
+    errorPlacement: function(error,element) {
+      if (element.attr("name") == "activity[tag_ids][]"){
+        error.insertAfter($(".tag-checkboxes"));
+      }else{
+        error.insertAfter(element);
+      }
+    },
     rules: {
       "activity[name]": {
         required: true,
@@ -36,7 +36,7 @@ FormValidations.prototype.activityForm = function () {
       },
       "activity[cost]": {
         required: true,
-        digits: true
+        number: true
       },
       "activity[image_url]": {
         required: true,
@@ -67,7 +67,7 @@ FormValidations.prototype.activityForm = function () {
       },
       "activity[cost]": {
         required: "Tell us 'bout the $$$'",
-        digits: "Provide a guess at the cost as a whole number, no $$$"
+        digits: "Estimate the cost, just digits no $-sign necessary :)"
       },
       "activity[image_url]": {
         required: "Go snag an image url!"
