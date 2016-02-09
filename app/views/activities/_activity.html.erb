@@ -4,7 +4,9 @@
   <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;">
   </div>
   <div>
-    <%= link_to activity.name, activity_path(activity), class: "name-click" %>
+    <%= link_to activity_path(activity), class: "name-click"  do%>
+    <h5> <%= activity.name %> </h5>
+    <% end %>
   </div>
   <% if user_signed_in? && current_user.id == activity.host_id %>
     <% if activity.open? %>
@@ -36,9 +38,10 @@
 
   <div class="tags">
     <% activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
-      <%= "/ " + tag.name + " /" %>
+      <%= "| " + tag.name + " |" %>
     <% end %>
   </div>
+  <br>
   <div class="user clearfix outline">
     <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
     <%= "Hosted by: " + activity.host.name %>
