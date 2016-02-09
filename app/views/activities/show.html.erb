@@ -2,7 +2,6 @@
   <div class="show-page-card">
     <%= render partial: "activities/show_page_card", locals: {activity: @activity} %>
   </div>
-
   <% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 chatz show-page card show-chat">
       <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
