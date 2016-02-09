@@ -1,3 +1,4 @@
+$('.chat-whole-box').prepend("<div><h4 class='chat-name'><%=@chat.name%></h4></div>")
 $('.chatz').html("<%= j render partial: 'chats/chat', locals: {chat: @chat, message: @message} %>")
 chat = $('.chatz');
 chat.addClass('card')
