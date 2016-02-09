@@ -1,35 +1,36 @@
-<div class="container">
-
-  <div class="show-page">
-    <%= render @activity %>
-  </div>
-
-  <div class="col-md-4 additional-info otter show-page">
-    <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
-  </div>
-  <div class="col-md-6">
-    <div class="activity-image container" style="background: url(<%= @activity.image_url %>) 50% 50% no-repeat;">
+<div class="container ferret">
+  <% if user_signed_in? && current_user.id == @activity.host_id %>
+    <h6> Your Activity: </h6>
+    <h2> <%= @activity.name %> </h2>
+  <% else %>
+    <h6> <%= @activity.host.name +"'s Activity:" %> </h6>
+    <h2> <%= @activity.name %> </h2>
+  <% end %>
+  <div class="card activity col-md-8">
+    <div class="col-md-6">
+      <div class="activity-image" style="background: url(<%= @activity.image_url %>) 50% 50% no-repeat;">
+      </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
-    <hr>
-    <div class="tags">
-      <% @activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
-        <%= "/ " + tag.name + " /" %>
-      <% end %>
-    </div>
-    <br>
-    <div class="user clearfix outline">
-      <%= image_tag(@activity.host.image_url, class: "col-md-3 col-xs-3") %>
-      <div class="host-by">
-         <%= "Hosted by: " + @activity.host.name %>
+    <div class="col-md-6">
+      <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
+      <hr>
+      <div class="tags">
+        <% @activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
+          <%= "/ " + tag.name + " /" %>
+        <% end %>
+      </div>
+      <br>
+      <div class="user clearfix outline">
+        <%= image_tag(@activity.host.image_url, class: "col-md-3 col-xs-3") %>
+        <div class="host-by">
+           <%= "Hosted by: " + @activity.host.name %>
+        </div>
       </div>
     </div>
   </div>
 
   <% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
-    <div class="col-md-4 chatz show-page">
+    <div class="col-md-3 chatz show-page">
       <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
     </div>
 
@@ -40,5 +41,26 @@
       };
       chatScrollListener();
     </script>
+  <% end %>
+
+  <% if user_signed_in? && current_user.id == @activity.host_id %>
+    <div class="activity card col-md-3">
+
+    <div class="">
+      <%= link_to "edit this", edit_activity_path(@activity)  %>
+    </div>
+    <% if @activity.open? %>
+      <div class="">
+        <%= link_to "close this", close_path(@activity), method: :post, remote: true %>
+      </div>
+    <% elsif @activity.closed? %>
+      <div class="">
+        <%= link_to "open this", open_path(@activity), method: :post, remote: true  %>
+      </div>
+    <% end %>
+    <div class="">
+      <%= link_to "delete this", activity_path(@activity), method: :delete, data: {confirm: "Are you sure you want to delete this activity? This action cannot be undone!"} %>
+    </div>
+  </div>
   <% end %>
 </div>
