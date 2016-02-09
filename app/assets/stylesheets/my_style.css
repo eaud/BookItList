@@ -154,7 +154,7 @@ div.modal-header > h2 {
   color: #60c;
 }
 
-div.card.activity h1, h2, h3, h4, h5, h6 {
+div.card.activity h1, div.card.activity h2,div.card.activity h3,div.card.activity h4,div.card.activity h5,div.card.activity h6 {
   color: #60c;
 }
 
