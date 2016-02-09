@@ -50,6 +50,13 @@
 
            <% end %>
          </p>
+         <p>
+           Would you like email notifications about what's happening on Romp? <br>
+           <%= f.label :wants_notifications, "yes!" %>
+           <%= f.radio_button(:wants_notifications, true) %>
+           <%= f.label :wants_notifications, "no :(" %>
+           <%= f.radio_button(:wants_notifications, false) %>
+         </p>
 
         <p>
           <%= f.submit %>

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "bookitlistapp@gmail.com"
+  default from: "romp.mailer@gmail.com"
   layout 'mailer'
 end

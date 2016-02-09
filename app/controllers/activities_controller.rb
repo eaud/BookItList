@@ -70,12 +70,19 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find(params[:id])
+    respond_to do |format|
+      format.js{}
+      format.html{}
+    end
   end
 
   def update
     @activity = Activity.find(params[:id])
     if @activity.update(activity_params)
-      redirect_to activity_path(@activity)
+      respond_to do |format|
+      format.js {}
+      format.html {redirect_to activity_path(@activity)}
+      end
     else
       render "edit"
     end

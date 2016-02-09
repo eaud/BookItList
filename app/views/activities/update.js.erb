@@ -1,0 +1,3 @@
+$('#editActivityModal').modal('hide')
+$("li#<%=@activity.id%>").replaceWith("<%=j render partial: 'activities/activity', locals: {activity: @activity}%>");
+$('.additional-info').html("<%= j render partial: 'activities/additional_info', locals: {activity: @activity} %>")
