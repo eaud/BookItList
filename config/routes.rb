@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   resources :chat_users
   resources :messages
   resources :chats
-  root "sessions#index"
+  root "activities#index"
   # resources :registrations
   # resources :sessions
   resources :tags
   resources :activities
   resources :users
-  get '/auth/:provider/callback', to: 'sessions#create', as: "login"
+  # get '/auth/:provider/callback', to: 'sessions#create', as: "login"
   get '/logout', to: 'sessions#delete', as: 'logout'
   get '/mylist', to: 'activities#myindex', as: 'mylist'
   get '/myguestlist', to: 'activities#myguestindex', as: 'myguestlist'
