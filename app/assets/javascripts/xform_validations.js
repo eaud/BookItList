@@ -67,7 +67,7 @@ FormValidations.prototype.activityForm = function () {
       },
       "activity[cost]": {
         required: "Tell us 'bout the $$$'",
-        digits: "Provide a guess at the cost, just digits no $$$"
+        digits: "Estimate the cost, just digits no $-sign necessary :)"
       },
       "activity[image_url]": {
         required: "Go snag an image url!"
