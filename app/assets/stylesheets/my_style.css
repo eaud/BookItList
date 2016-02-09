@@ -1,9 +1,31 @@
+#otter-pic {
+  border-radius: 0;
+}
+
+
+.glyphicon-heart {
+  color: #E4003D !important;
+}
+
+.super-large {
+  font-size: 350%;
+}
+
+.super-super-large {
+  line-height: 70%;
+  font-size: 500%;
+}
+
+.be-normal {
+  font-size: 150%;
+}
+
 .my-modal {
   margin-top: 65px;
 }
 
 .error {
-  color: E4003D;
+  color: #E4003D;
   font-style: italic;
 }
 
@@ -149,7 +171,7 @@ body {
   min-height: 100%;
   /*height: 100%;*/
   /* Negative indent footer by its height */
-  margin: 0 auto -82px 0;
+  margin: 0 auto -22px 0;
   /* Pad bottom by footer height */
   padding: 0 0 100px 0;
 }
@@ -168,6 +190,9 @@ body {
   padding-right: 15px;
 }
 
+#footer {
+  padding: 20px 0px;
+}
 
 
 /*FROM STACK-EFFECTS*/
