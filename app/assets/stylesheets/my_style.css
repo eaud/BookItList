@@ -72,10 +72,20 @@
   height: 400px;
 }
 
+.show-chat {
+  margin-top: 10px;
+  float: right;
+}
+
 .otter {
   background-image: linear-gradient(0deg, rgba(255,255,255, .5), rgba(255,255,255,0.8));
   background-blend-mode: luminosity;
   padding: 1% 10%;
+}
+
+.ferret {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .07), rgba(0,0,0,0.4));
+  background-blend-mode: luminosity;
 }
 
 .sea {
@@ -155,7 +165,7 @@ a.name-click > h5:hover {
   color: #9eca45;
 }
 
-div.modal-header > h2 {
+div.modal-header > h2, div.modal-header > h6 {
   color: #60c;
 }
 
@@ -169,6 +179,12 @@ a {
 
 a:hover {
   color: #9eca45;
+}
+
+p.notice, p.alert {
+  color: #E4003D;
+  text-emphasis-color: #eee;
+  display: inline-block;
 }
 
 body {
@@ -204,7 +220,7 @@ body {
   /* Negative indent footer by its height */
   margin: 0 auto -22px 0;
   /* Pad bottom by footer height */
-  padding: 0 0 100px 0;
+  padding: 60px 0 80px 0;
 }
 
 /* Set the fixed height of the footer here */
