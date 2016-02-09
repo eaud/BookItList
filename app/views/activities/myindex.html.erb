@@ -1,20 +1,19 @@
 <div class="container">
 
-
+  <h2>Open Activities</h2>
+  <ul class="open-activities container center-container">
     <% if !@open_activities.empty? %>
-    <h2>Open Activities</h2>
-
-    <ul class="open-activities container center-container">
       <div class="row">
         <%= render @open_activities %>
       </div>
-    </ul>
     <% end %>
+    </ul>
+
   <br><br>
-    <% if !@closed_activities.empty? %>
     <h2>Closed Activities</h2>
     <ul class="closed-activities">
+      <% if !@closed_activities.empty? %>
         <%= render @closed_activities %>
+      <% end %>
     </ul>
-    <% end %>
 </div>

@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
 
   def myguestindex
     @approved_activities = current_user.approved_activities.sort_by do |activity| activity.updated_at end.reverse!
+
   end
 
   def new
@@ -79,21 +80,19 @@ class ActivitiesController < ApplicationController
 
   def close
     @activity = Activity.find(params[:id])
-    if current_user.id != @activity.host_id
-      redirect_to mylist_path
-    else
-      @activity.close!
-      redirect_to mylist_path
+    @activity.close!
+    respond_to do |format|
+      format.js {}
+      format.html {redirect_to mylist_path}
     end
   end
 
   def open
     @activity = Activity.find(params[:id])
-    if current_user.id != @activity.host_id
-      redirect_to mylist_path
-    else
-      @activity.reopen!
-      redirect_to mylist_path
+    @activity.reopen!
+    respond_to do |format|
+      format.js {}
+      format.html {redirect_to mylist_path}
     end
   end
 
