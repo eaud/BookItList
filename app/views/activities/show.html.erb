@@ -1,22 +1,24 @@
-<div class="col-md-4 show-page">
-
-<%= render @activity %>
-</div>
-
-<div class="col-md-4 additional-info otter show-page">
-  <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
-</div>
-
-<% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
-  <div class="col-md-4 chatz show-page">
-    <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
+<div class="container">
+  <div class="activity-show-page">
+  <div class="ctivity-image container card col-md-4 col-lg-4 col-xl-4 col-xs-12 activity">
+    <%= render partial: "activity_show", locals: {activity: @activity}%>
   </div>
 
-  <script>
-    var chatScrollListener = function(){
-      chat = $('.chatz');
-      chat[0].scrollTop = chat[0].scrollHeight;
-    };
-    chatScrollListener()
-  </script>
-<% end %>
+  <div class="col-md-4 additional-info otter show-page activity ">
+    <%= render partial: "activities/additional_info", locals: {activity: @activity} %>
+  </div>
+
+  <% if (@activity.host == current_user) || (@activity.approved_guests.include? current_user) %>
+    <div class="col-md-4 chatz show-page" >
+      <%= render partial: "chats/chat", locals: {chat: @chat, message: @message} %>
+    </div>
+    <script>
+      var chatScrollListener = function(){
+        chat = $('.chatz');
+        chat[0].scrollTop = chat[0].scrollHeight;
+      };
+      chatScrollListener()
+    </script>
+  <% end %>
+</div>
+</div>

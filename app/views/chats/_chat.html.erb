@@ -1,5 +1,4 @@
-<h2 class="chat-name"><%=chat.name%></h2>
-<div id="chat-<%=chat.id%>" class="chat-zone">
+<h2 class="chat-name"><%=chat.name%> chat </h2>
   <div id="messages-<%=chat.id%>" class="chat-box">
     <% chat.messages.each do |message| %>
       <div class="message user-<%= message.sender.id %>">
