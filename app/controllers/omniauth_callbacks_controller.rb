@@ -8,7 +8,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = User.find_or_create_from_oauth(fb_auth_hash)
       sign_in(:user, @user)
       flash[:notice] = "Welcome! You have signed up successfully. Please fill out as much of the info below as possible. Especially the tags because that is how we find awesome acitivities for you!!!"
-      render "users/edit"
+      session[:id] = @user.id
+      redirect_to edit_user_path(@user)
     end
   end
 
