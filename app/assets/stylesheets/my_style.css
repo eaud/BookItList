@@ -1,3 +1,16 @@
+.super-large {
+  font-size: 350%;
+}
+
+.super-super-large {
+  line-height: 80%;
+  font-size: 500%;
+}
+
+.be-normal {
+  font-size: 150%;
+}
+
 .my-modal {
   margin-top: 65px;
 }
