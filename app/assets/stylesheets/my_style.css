@@ -131,6 +131,7 @@
 
 }
 
+
 .modal-footer {
   text-align: left;
 }
@@ -165,7 +166,7 @@ a.name-click > h5:hover {
   color: #9eca45;
 }
 
-div.modal-header > h2, div.modal-header > h6 {
+div.modal-header > h2, div.modal-header h4, div.modal-header > h6 {
   color: #60c;
 }
 

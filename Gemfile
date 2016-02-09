@@ -29,6 +29,10 @@ gem 'bcrypt', '~> 3.1.7'
 #Use AASM for activity_guest state
 gem 'aasm'
 
+#Used for giphy search
+gem "json"
+gem "rest-client"
+
 #Use Sprockets Rails to manage the asset pipeline
 # gem 'sprockets-rails', require => 'sprockets/railtie'
 

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'close/:id', to: 'activities#close', as: 'close'
   post 'open/:id', to: 'activities#open', as: 'open'
   get '/activity/:id/additional_info', to: 'activities#modal', as: 'modal'
+  post '/giphy', to: "activities#giphy", as: 'giphy'
 
   resources :chats do
     resources :messages
