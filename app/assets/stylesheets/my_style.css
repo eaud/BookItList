@@ -88,6 +88,28 @@
 
 }
 
+.modal-footer {
+  text-align: left;
+}
+
+.host-by {
+  vertical-align: middle;
+}
+
+.open-green {
+  color: green;
+}
+
+.closed-red {
+  color: red;
+}
+
+.outline {
+  border: 1px;
+  border-style: solid;
+  border-color: rgba(44, 62, 80, 0.3);
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }

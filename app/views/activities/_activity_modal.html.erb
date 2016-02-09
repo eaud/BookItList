@@ -1,14 +1,28 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>@activity.name</h2>
+        <h2><%= activity.name  %></h2>
       </div>
-      <div class="modal-body modal-footer">
+      <div class="modal-footer modal-body">
         <div class="col-md-6">
-          <%= render partial: "activities/activity", locals: {activity: activity} %>
+          <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;">
+          </div>
         </div>
         <div class="col-md-6">
           <%= render partial: "activities/additional_info", locals: {activity: activity} %>
+          <hr>
+          <div class="tags">
+            <% activity.tags.sort_by do |tag| tag.name end.each do |tag| %>
+              <%= "/ " + tag.name + " /" %>
+            <% end %>
+          </div>
+          <br>
+          <div class="user clearfix outline">
+            <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
+            <div class="host-by">
+               <%= "Hosted by: " + activity.host.name %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
