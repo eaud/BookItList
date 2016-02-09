@@ -7,8 +7,8 @@
   </ul>
 <% end %>
 
-  <div class="sea">
   <%= form_for(@activity, remote: true, html:{id: 'activityForm'}) do |f| %>
+  <div class="sea">
     <p class="">
       <%= f.label :name, "Activity Name" %>
       <%= f.text_field :name, placeholder: "What do you want to do?"%>
@@ -52,5 +52,5 @@
     <div class="actions">
       <%= f.submit class: 'btn btn-default' %>
     </div>
-  <% end %>
   </div>
+  <% end %>
