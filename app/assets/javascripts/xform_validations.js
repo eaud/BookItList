@@ -98,7 +98,7 @@ FormValidations.prototype.userForm = function () {
       "user[bio]": {
         required: true,
         minlength: 2,
-        maxlength: 140
+        maxlength: 300
       },
       "user[email]": {
         required: true,
@@ -126,7 +126,7 @@ FormValidations.prototype.userForm = function () {
         required: "Please provide an email so we can stay in touch!",
       },
       "user[image_url]": {
-        required: "Great place for your best selfie"
+        required: "Great place for your best selfie (use a url)"
       },
       "user[tag_ids][]": {
         required: "Check at least one thing so we can give you better matches!"
