@@ -1,23 +1,22 @@
 <div class="container">
 
-<div class="show-page col-md-6">
-  <h1>My current chats:</h1>
-  <ul>
+<div class="show-page col-md-6 otter">
+  <h2>My current chats:</h2>
+
     <% @chats.each do |chat| %>
       <% if chat.personal %>
         <% receiver = chat.users.find{|user| user != current_user} %>
-        <li> <strong><%= "UNREAD" if chat.chat_users.where(user: current_user)[0].unread? %></strong> <%= link_to "#{receiver.name} (Private Message)", chat_path(chat), remote: true%> </li>
+        <div class="outline"> <strong><%= "UNREAD" if chat.chat_users.where(user: current_user)[0].unread? %></strong> <%= link_to "#{receiver.name} (Private Message)", chat_path(chat), remote: true%> </div>
       <% else %>
-        <li> <strong><%= "UNREAD" if chat.chat_users.where(user: current_user)[0].unread? %></strong> <%= link_to chat.name, chat_path(chat), remote: true %> with <% chat.users.reject do |user| user == current_user end.each do |user| %>
+        <div class="outline"> <strong><%= "UNREAD" if chat.chat_users.where(user: current_user)[0].unread? %></strong> <%= link_to chat.name, chat_path(chat), remote: true %> with <% chat.users.reject do |user| user == current_user end.each do |user| %>
             /<%= (link_to user.name, user_path(user)) %>/
           <% end %>
           <br><strong><%= link_to "Activity Page", activity_path(chat.activity)%></strong>
-        </li>
+        </div>
       <% end %>
     <% end %>
-  </ul>
 </div>
-<div class="col-md-6 chatz show-page">
+<div class="col-md-4 chatz show-page">
 
 </div>
 </div>

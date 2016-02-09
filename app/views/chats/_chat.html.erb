@@ -3,7 +3,7 @@
   <div id="messages-<%=chat.id%>" class="chat-box">
     <% chat.messages.each do |message| %>
       <div class="message user-<%= message.sender.id %>">
-        <strong><%=link_to message.sender.name, user_path(message.sender)%>:</strong><br>
+        <div class="small-text"><strong><%=link_to message.sender.name, user_path(message.sender)%></strong> <%= message.created_at.strftime("%b%e,%l:%M %p") %><br></div>
         <%= message.content %>
       </div>
     <% end %>

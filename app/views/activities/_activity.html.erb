@@ -1,5 +1,3 @@
-
-
 <li class="card <%=(user_signed_in? && current_user.id == activity.host_id) ? "col-md-4 col-lg-4 col-xl-4 col-xs-12 activity" : "col-md-12 col-lg-12 col-xl-12 col-xs-12"%>" id="<%= activity.id %>">
   <div class="activity-image container" style="background: url(<%= activity.image_url %>) 50% 50% no-repeat;background-size: cover;">
   </div>
@@ -44,6 +42,10 @@
   <br>
   <div class="user clearfix outline">
     <%= image_tag(activity.host.image_url, class: "col-md-3 col-xs-3") %>
-    <%= "Hosted by: " + activity.host.name %>
+    <% if activity.approved_guests.include? current_user %>
+      Hosted by: <%= link_to activity.host.name, user_path(activity.host)  %>
+    <% else %>
+      <%= "Hosted by: " + activity.host.name %>
+    <% end %>
   </div>
 </li>

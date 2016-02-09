@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+  <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 otter">
     <div class="person">
       <% if @user == current_user %>
         <%= link_to "Update user info", edit_user_path %>
@@ -11,7 +11,7 @@
 
       <% if current_user.show_private_message.include? @user %>
       <div class="send-message">
-        <h3><%= link_to "Send Private Message", new_chat_path %></h3>
+        <h3><%= link_to "Send Private Message", new_chat_path, remote: true %></h3>
       </div>
       <% end %>
 
@@ -48,4 +48,9 @@
       </div>
     </div>
   </div>
+
+  <div class="col-md-4 chatz show-page">
+
+  </div>
+
 </div>

@@ -2,6 +2,14 @@
   border-radius: 0;
 }
 
+.chatz {
+  float: right;
+  border-radius: 3%;
+}
+
+.small-text {
+  font-size: 80%
+}
 
 .glyphicon-heart {
   color: #E4003D !important;
@@ -56,7 +64,7 @@
 
 .show-page {
   overflow: scroll;
-  height: 400px
+  height: 400px;
 }
 
 .otter {

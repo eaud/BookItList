@@ -10,7 +10,11 @@ class ChatsController < ApplicationController
   def new
     @receiver = User.find(request.env["HTTP_REFERER"].split("/")[4])
     if @chat = current_user.chats.where(personal: true).find {|chat|chat.users.include?(@receiver)}
-      redirect_to chat_path(@chat)
+      @message = Message.new
+      respond_to do |format|
+        format.js {}
+        format.html {redirect_to chat_path(@chat)}
+      end
     else
       @chat = Chat.new
       @chat.name = "Private Chat between #{@receiver.name} & #{current_user.name}"
@@ -18,7 +22,10 @@ class ChatsController < ApplicationController
       @chat.save
       @chat.users << [@receiver, current_user]
       @message = Message.new
-      redirect_to chat_path(@chat)
+      respond_to do |format|
+        format.js {}
+        format.html {redirect_to chat_path(@chat)}
+      end
     end
   end
 
