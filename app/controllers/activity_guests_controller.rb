@@ -5,6 +5,8 @@ class ActivityGuestsController < ApplicationController
     liked_AG = ActivityGuest.find_by(activity_id: params[:id], guest_id: current_user.id)
     current_user.like_activity(liked_AG.activity)
     liked_AG.like!
+    activity = Activity.find(params[:id])
+    UserMailer.like_notification(activity.host, activity).deliver_now
       if current_user.unseen_activity_guests.length < 5
         @new_ags = current_user.generate_activity_guests
         respond_to do |format|
