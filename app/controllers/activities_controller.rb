@@ -19,8 +19,7 @@ class ActivitiesController < ApplicationController
   end
 
   def myguestindex
-    @approved_activities = current_user.approved_activities
-    
+    @approved_activities = current_user.approved_activities.sort_by do |activity| activity.updated_at end.reverse!
   end
 
   def new
