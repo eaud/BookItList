@@ -3,20 +3,24 @@
 
   <div class="card activity col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 otter">
     <div class="person">
-      <% if @user == current_user %>
-        <%= link_to "Update user info", edit_user_path %>
-      <% end %>
       <h1> <%=@user.name%> </h1>
       <p>
         <div class="activity-image container" style="background: url(<%= @user.image_url %>) 50% 50% no-repeat;background-size: cover;">
         </div>
       </p>
+      <% if @user == current_user %>
+        <%= link_to edit_user_path do%>
+        <button>Update user info</button>
+        <% end %>
+      <% end %>
 
       <% if current_user.show_private_message.include? @user %>
-      <div class="send-message">
-        <h3><%= link_to "Send Private Message", new_chat_path, remote: true %></h3>
-      </div>
+        <div class="send-message">
+          <h3><%= link_to "Send Private Message", new_chat_path, remote: true %></h3>
+        </div>
       <% end %>
+
+      <br><br>
 
       <div>
         <% if @user.bio %>
@@ -25,13 +29,15 @@
           <%= link_to "Please update your bio", edit_user_path %>
         <% end %>
       </div>
-
+      <hr>
       <div class="tag-list">
        Tags:
+       <br>
           <% @user.tags.each do |tag| %>
             <%= "/ " + tag.name + " /" %>
           <% end %>
       </div>
+      <hr>
 
       <div class="approved-list">
         <h5>Approved events:</h5>
