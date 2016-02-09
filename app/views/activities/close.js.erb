@@ -1,0 +1,4 @@
+var actid = <%=@activity.id%>
+var form = "<%= j render @activity %>"
+$("#" + actid).remove()
+$(".closed-activities").append(form)
