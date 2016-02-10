@@ -162,8 +162,9 @@
   border: 3px;
   border-style: solid;
   border-color: #60c;
-  -webkit-transform: rotate(-10deg);
-  transform: rotate(-10deg);
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  z-index: 2;
 }
 
 h1, h2, h3, h4, h5, h6 {
