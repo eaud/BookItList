@@ -31,9 +31,9 @@
       <%= f.label :cost %>
       <%= f.text_field :cost, placeholder: "Approx. $$$"%>
     </p>
-    <p class="">
+    <p class="" style="display:none;">
       <%= f.label :image_url, "Put an image on it!" %>
-      <%= f.url_field :image_url, placeholder: "Grab an image URL from google", type: "url" %>
+      <%= f.url_field :image_url, placeholder: "Grab an image URL from google", type: "url"%>
     </p>
   </div>
   <div class="river">
@@ -54,8 +54,16 @@
     </div>
   </div>
   <% end %>
+<div class="giphy_form">
 
   <%= form_tag(giphy_path, remote: true) do %>
+    <p>
+      it needs an image
+    </p>
     <%= text_field_tag :search_term %>
-    <%= submit_tag "search for giphy" %>
+    <%= submit_tag "search giphy for gif", class: "btn btn-default" %>
   <% end %>
+</div>
+  <div id="giphy_result">
+
+  </div>

@@ -154,6 +154,18 @@
   border-color: rgba(44, 62, 80, 0.3);
 }
 
+.giphy_form {
+ padding-left: 10px;
+}
+
+.selected {
+  border: 3px;
+  border-style: solid;
+  border-color: #60c;
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
