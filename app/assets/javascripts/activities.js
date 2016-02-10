@@ -10,6 +10,12 @@ $(window).load(function(){
 var linkGiphys = function(){
   $(".giphys").on("click", "div.activity-image.container", function(event){
     var url = this.style.backgroundImage.split('"')[1];
+    this.classList.add("selected");
+    var sibs = $(this).siblings();
+    for (i = 0; i < sibs.length; i++) {
+        sibs[i].classList.remove("selected");
+    }
+
     $("#activity_image_url").val(url);
   });
 };

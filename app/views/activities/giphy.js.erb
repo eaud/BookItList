@@ -1,5 +1,5 @@
 var form = "<%= j render partial: 'activities/giphy' %>";
-$(".modal-body").append(form);
+$("#giphy_result").replaceWith(form);
 setTimeout(function(){
-  linkGiphys()
+  linkGiphys();
 }, 500);
