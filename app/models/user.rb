@@ -94,5 +94,9 @@ class User < ActiveRecord::Base
     users_to_see.flatten.uniq
   end
 
-
+  def approved_guest_activities_hosted_by host
+    activity_guests.hosted_by(host)
+                   .approved
+                   .flat_map(&:activity)
+  end
 end
