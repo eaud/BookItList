@@ -1,6 +1,11 @@
 class ActivityGuest < ActiveRecord::Base
   belongs_to :activity
   belongs_to :guest, class_name: "User"
+
+  scope :approved, -> { where(aasm_state: 'approved') }
+  scope :unseen,   -> { where(aasm_state: 'unseen') }
+  scope :liked,    -> { where(aasm_state: 'liked') }
+
   validates_presence_of :activity_id, :guest_id
   include AASM
 
