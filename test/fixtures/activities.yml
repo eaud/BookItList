@@ -1,19 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  host_id: 
-  action: MyString
+  host_id:
   datetime: 2016-01-27 17:05:12
-  cost: 
+  cost:
   guest_min: 1
   guest_max: 1
   details: MyString
 
 two:
-  host_id: 
-  action: MyString
+  host_id:
   datetime: 2016-01-27 17:05:12
-  cost: 
+  cost:
   guest_min: 1
   guest_max: 1
   details: MyString
