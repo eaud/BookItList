@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ActivityTest < ActiveSupport::TestCase
   test 'correctly find activities user hosts or doesnt host' do
-    derek = User.find_or_create_by!(email: "derek@gmail.com")
+    derek = User.find_or_create_by!(email: "derek@flatiron.com")
     rando = User.find_or_create_by!(email: "rando@gmail.com")
 
     derek_activity = derek.activities.create!(name: 'Beyonce Bash',
@@ -23,7 +23,7 @@ class ActivityTest < ActiveSupport::TestCase
   end
 
   test 'correctly find activities that are open or closed' do
-    derek = User.find_or_create_by!(email: "derek@gmail.com")
+    derek = User.find_or_create_by!(email: "derek@flatiron.com")
     rando = User.find_or_create_by!(email: "rando@gmail.com")
 
     open_activity = derek.activities.create!(name: 'Beyonce Bash',
