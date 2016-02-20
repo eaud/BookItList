@@ -95,7 +95,8 @@ class User < ActiveRecord::Base
   end
 
   def approved_guest_activities_hosted_by host
-    activity_guests.hosted_by(host)
+    activity_guests.eager_load(:activity)
+                   .hosted_by(host)
                    .approved
                    .flat_map(&:activity)
   end
