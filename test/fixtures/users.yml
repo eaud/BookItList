@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  email: "derek@gmail.com"
+derek:
+  email: "derek@flatiron.com"
+kaylee:
+  email: "kaylee@flatiron.com"
+jappleba:
+  email: "jappleba@flatiron.com"
 
-two:
+rando:
   email: "rando@gmail.com"
