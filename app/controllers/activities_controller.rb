@@ -12,15 +12,15 @@ class ActivitiesController < ApplicationController
 
   def myindex
     if user_signed_in?
-      @open_activities = Activity.where(host_id: current_user.id, aasm_state: "open").sort_by do |activity| activity.updated_at end.reverse!
-      @closed_activities = Activity.where(host_id: current_user.id, aasm_state: "closed").sort_by do |activity| activity.updated_at end.reverse!
+      @open_activities   = current_user.activities.open.order_by_most_recent
+      @closed_activities = current_user.activities.closed.order_by_most_recent
     else
       redirect_to root_path #EVENTUALLY THIS WILL NEED TO BE JS TO SUGGEST LOGGING IN
     end
   end
 
   def myguestindex
-    @approved_activities = current_user.approved_activities.sort_by do |activity| activity.updated_at end.reverse!
+    @approved_activities = current_user.approved_activities.order_by_most_recent
   end
 
   def giphy
